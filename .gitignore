@@ -1,0 +1,11 @@
+__pycache__
+
+# simulator fits, regenerated from A100_results/summary.json:
+#   python3 sim/fit.py                                                            -> sim/theta.json
+#   python3 sim/fit.py --exclude '^T[456]_|simbest' --out sim/theta_preheldout.json
+sim/*.json
+
+project_description.pdf
+project_team07.pdf
+
+*.kubeconfig
