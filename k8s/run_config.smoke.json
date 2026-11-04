@@ -1,0 +1,33 @@
+{
+  "tag": "smoke",
+  "rank_map": null,
+  "delay_ms": null,
+  "bandwidth_gbps": null,
+  "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "4",
+    "--data-group-size",
+    "2",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "1",
+    "--batch-size",
+    "8",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "1",
+    "--num-iters",
+    "3",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+  ]
+}

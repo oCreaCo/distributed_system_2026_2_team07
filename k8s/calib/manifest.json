@@ -1,0 +1,2457 @@
+{
+ "common_args": [
+  "--pp-mode",
+  "gpipe",
+  "--dp-mode",
+  "central_ps",
+  "--pipeline-group-size",
+  "4",
+  "--data-group-size",
+  "2",
+  "--embedding-dim",
+  "2048",
+  "--num-heads",
+  "16",
+  "--fp16",
+  "--num-layers",
+  "6",
+  "--batch-size",
+  "64",
+  "--micro-batch-size",
+  "1",
+  "--gradient-accumulate-step",
+  "2",
+  "--num-iters",
+  "6",
+  "--train-data",
+  "./task_datasets/data/QQP/train_small.tsv"
+ ],
+ "topologies": {
+  "T1": {
+   "delay_ms": [
+    [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     11.0,
+     11.0,
+     11.0,
+     11.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     11.0,
+     11.0,
+     11.0,
+     11.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     11.0,
+     11.0,
+     11.0,
+     11.0
+    ],
+    [
+     1.0,
+     1.0,
+     1.0,
+     1.0,
+     11.0,
+     11.0,
+     11.0,
+     11.0
+    ],
+    [
+     11.0,
+     11.0,
+     11.0,
+     11.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     11.0,
+     11.0,
+     11.0,
+     11.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     11.0,
+     11.0,
+     11.0,
+     11.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ],
+    [
+     11.0,
+     11.0,
+     11.0,
+     11.0,
+     1.0,
+     1.0,
+     1.0,
+     1.0
+    ]
+   ],
+   "bandwidth_gbps": [
+    [
+     5.0,
+     5.0,
+     5.0,
+     5.0,
+     1.12,
+     1.12,
+     1.12,
+     1.12
+    ],
+    [
+     5.0,
+     5.0,
+     5.0,
+     5.0,
+     1.12,
+     1.12,
+     1.12,
+     1.12
+    ],
+    [
+     5.0,
+     5.0,
+     5.0,
+     5.0,
+     1.12,
+     1.12,
+     1.12,
+     1.12
+    ],
+    [
+     5.0,
+     5.0,
+     5.0,
+     5.0,
+     1.12,
+     1.12,
+     1.12,
+     1.12
+    ],
+    [
+     1.12,
+     1.12,
+     1.12,
+     1.12,
+     5.0,
+     5.0,
+     5.0,
+     5.0
+    ],
+    [
+     1.12,
+     1.12,
+     1.12,
+     1.12,
+     5.0,
+     5.0,
+     5.0,
+     5.0
+    ],
+    [
+     1.12,
+     1.12,
+     1.12,
+     1.12,
+     5.0,
+     5.0,
+     5.0,
+     5.0
+    ],
+    [
+     1.12,
+     1.12,
+     1.12,
+     1.12,
+     5.0,
+     5.0,
+     5.0,
+     5.0
+    ]
+   ]
+  },
+  "T2": {
+   "delay_ms": [
+    [
+     10.0,
+     10.0,
+     67.0,
+     67.0,
+     59.0,
+     59.0,
+     11.0,
+     11.0
+    ],
+    [
+     10.0,
+     10.0,
+     67.0,
+     67.0,
+     59.0,
+     59.0,
+     11.0,
+     11.0
+    ],
+    [
+     67.0,
+     67.0,
+     10.0,
+     10.0,
+     12.0,
+     12.0,
+     49.0,
+     49.0
+    ],
+    [
+     67.0,
+     67.0,
+     10.0,
+     10.0,
+     12.0,
+     12.0,
+     49.0,
+     49.0
+    ],
+    [
+     59.0,
+     59.0,
+     12.0,
+     12.0,
+     10.0,
+     10.0,
+     52.0,
+     52.0
+    ],
+    [
+     59.0,
+     59.0,
+     12.0,
+     12.0,
+     10.0,
+     10.0,
+     52.0,
+     52.0
+    ],
+    [
+     11.0,
+     11.0,
+     49.0,
+     49.0,
+     52.0,
+     52.0,
+     10.0,
+     10.0
+    ],
+    [
+     11.0,
+     11.0,
+     49.0,
+     49.0,
+     52.0,
+     52.0,
+     10.0,
+     10.0
+    ]
+   ],
+   "bandwidth_gbps": [
+    [
+     2.0,
+     2.0,
+     1.15,
+     1.15,
+     1.05,
+     1.05,
+     1.12,
+     1.12
+    ],
+    [
+     2.0,
+     2.0,
+     1.15,
+     1.15,
+     1.05,
+     1.05,
+     1.12,
+     1.12
+    ],
+    [
+     1.15,
+     1.15,
+     2.0,
+     2.0,
+     1.25,
+     1.25,
+     1.1,
+     1.1
+    ],
+    [
+     1.15,
+     1.15,
+     2.0,
+     2.0,
+     1.25,
+     1.25,
+     1.1,
+     1.1
+    ],
+    [
+     1.05,
+     1.05,
+     1.25,
+     1.25,
+     2.0,
+     2.0,
+     1.02,
+     1.02
+    ],
+    [
+     1.05,
+     1.05,
+     1.25,
+     1.25,
+     2.0,
+     2.0,
+     1.02,
+     1.02
+    ],
+    [
+     1.12,
+     1.12,
+     1.1,
+     1.1,
+     1.02,
+     1.02,
+     2.0,
+     2.0
+    ],
+    [
+     1.12,
+     1.12,
+     1.1,
+     1.1,
+     1.02,
+     1.02,
+     2.0,
+     2.0
+    ]
+   ]
+  },
+  "T3": {
+   "delay_ms": [
+    [
+     1.25,
+     16.75,
+     12.25,
+     24.0,
+     31.0,
+     34.0,
+     35.75,
+     31.0
+    ],
+    [
+     16.75,
+     1.25,
+     2.75,
+     35.75,
+     43.0,
+     19.0,
+     22.5,
+     16.75
+    ],
+    [
+     12.25,
+     2.75,
+     1.25,
+     32.5,
+     39.75,
+     21.5,
+     24.75,
+     19.25
+    ],
+    [
+     24.0,
+     35.75,
+     32.5,
+     1.25,
+     8.5,
+     52.5,
+     55.75,
+     49.75
+    ],
+    [
+     31.0,
+     43.0,
+     39.75,
+     8.5,
+     1.25,
+     59.5,
+     58.75,
+     57.0
+    ],
+    [
+     34.0,
+     19.0,
+     21.5,
+     52.5,
+     59.5,
+     1.25,
+     3.5,
+     3.0
+    ],
+    [
+     35.75,
+     22.5,
+     24.75,
+     55.75,
+     58.75,
+     3.5,
+     1.25,
+     6.0
+    ],
+    [
+     31.0,
+     16.75,
+     19.25,
+     49.75,
+     57.0,
+     3.0,
+     6.0,
+     1.25
+    ]
+   ],
+   "bandwidth_gbps": [
+    [
+     2.0,
+     0.79,
+     1.1,
+     0.523,
+     0.46,
+     0.42,
+     0.404,
+     0.482
+    ],
+    [
+     0.79,
+     2.0,
+     1.12,
+     0.524,
+     0.5,
+     1.16,
+     1.02,
+     1.05
+    ],
+    [
+     1.1,
+     1.12,
+     2.0,
+     0.694,
+     0.529,
+     1.05,
+     0.799,
+     1.14
+    ],
+    [
+     0.523,
+     0.524,
+     0.694,
+     2.0,
+     1.1,
+     0.366,
+     0.36,
+     0.465
+    ],
+    [
+     0.46,
+     0.5,
+     0.529,
+     1.1,
+     2.0,
+     0.342,
+     0.358,
+     0.335
+    ],
+    [
+     0.42,
+     1.16,
+     1.05,
+     0.366,
+     0.342,
+     2.0,
+     1.14,
+     1.09
+    ],
+    [
+     0.404,
+     1.02,
+     0.799,
+     0.36,
+     0.358,
+     1.14,
+     2.0,
+     1.08
+    ],
+    [
+     0.482,
+     1.05,
+     1.14,
+     0.465,
+     0.335,
+     1.09,
+     1.08,
+     2.0
+    ]
+   ]
+  },
+  "T4": {
+   "delay_ms": [
+    [
+     2.0,
+     2.0,
+     2.0,
+     30.0,
+     30.0,
+     30.0,
+     30.0,
+     30.0
+    ],
+    [
+     2.0,
+     2.0,
+     2.0,
+     30.0,
+     30.0,
+     30.0,
+     30.0,
+     30.0
+    ],
+    [
+     2.0,
+     2.0,
+     2.0,
+     30.0,
+     30.0,
+     30.0,
+     30.0,
+     30.0
+    ],
+    [
+     30.0,
+     30.0,
+     30.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0
+    ],
+    [
+     30.0,
+     30.0,
+     30.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0
+    ],
+    [
+     30.0,
+     30.0,
+     30.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0
+    ],
+    [
+     30.0,
+     30.0,
+     30.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0
+    ],
+    [
+     30.0,
+     30.0,
+     30.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0,
+     2.0
+    ]
+   ],
+   "bandwidth_gbps": [
+    [
+     4.0,
+     4.0,
+     4.0,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8
+    ],
+    [
+     4.0,
+     4.0,
+     4.0,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8
+    ],
+    [
+     4.0,
+     4.0,
+     4.0,
+     0.8,
+     0.8,
+     0.8,
+     0.8,
+     0.8
+    ],
+    [
+     0.8,
+     0.8,
+     0.8,
+     4.0,
+     4.0,
+     4.0,
+     4.0,
+     4.0
+    ],
+    [
+     0.8,
+     0.8,
+     0.8,
+     4.0,
+     4.0,
+     4.0,
+     4.0,
+     4.0
+    ],
+    [
+     0.8,
+     0.8,
+     0.8,
+     4.0,
+     4.0,
+     4.0,
+     4.0,
+     4.0
+    ],
+    [
+     0.8,
+     0.8,
+     0.8,
+     4.0,
+     4.0,
+     4.0,
+     4.0,
+     4.0
+    ],
+    [
+     0.8,
+     0.8,
+     0.8,
+     4.0,
+     4.0,
+     4.0,
+     4.0,
+     4.0
+    ]
+   ]
+  },
+  "T5": {
+   "delay_ms": [
+    [
+     3.0,
+     3.0,
+     3.0,
+     20.0,
+     20.0,
+     20.0,
+     45.0,
+     45.0
+    ],
+    [
+     3.0,
+     3.0,
+     3.0,
+     20.0,
+     20.0,
+     20.0,
+     45.0,
+     45.0
+    ],
+    [
+     3.0,
+     3.0,
+     3.0,
+     20.0,
+     20.0,
+     20.0,
+     45.0,
+     45.0
+    ],
+    [
+     20.0,
+     20.0,
+     20.0,
+     3.0,
+     3.0,
+     3.0,
+     15.0,
+     15.0
+    ],
+    [
+     20.0,
+     20.0,
+     20.0,
+     3.0,
+     3.0,
+     3.0,
+     15.0,
+     15.0
+    ],
+    [
+     20.0,
+     20.0,
+     20.0,
+     3.0,
+     3.0,
+     3.0,
+     15.0,
+     15.0
+    ],
+    [
+     45.0,
+     45.0,
+     45.0,
+     15.0,
+     15.0,
+     15.0,
+     3.0,
+     3.0
+    ],
+    [
+     45.0,
+     45.0,
+     45.0,
+     15.0,
+     15.0,
+     15.0,
+     3.0,
+     3.0
+    ]
+   ],
+   "bandwidth_gbps": [
+    [
+     3.0,
+     3.0,
+     3.0,
+     1.5,
+     1.5,
+     1.5,
+     0.9,
+     0.9
+    ],
+    [
+     3.0,
+     3.0,
+     3.0,
+     1.5,
+     1.5,
+     1.5,
+     0.9,
+     0.9
+    ],
+    [
+     3.0,
+     3.0,
+     3.0,
+     1.5,
+     1.5,
+     1.5,
+     0.9,
+     0.9
+    ],
+    [
+     1.5,
+     1.5,
+     1.5,
+     3.0,
+     3.0,
+     3.0,
+     1.2,
+     1.2
+    ],
+    [
+     1.5,
+     1.5,
+     1.5,
+     3.0,
+     3.0,
+     3.0,
+     1.2,
+     1.2
+    ],
+    [
+     1.5,
+     1.5,
+     1.5,
+     3.0,
+     3.0,
+     3.0,
+     1.2,
+     1.2
+    ],
+    [
+     0.9,
+     0.9,
+     0.9,
+     1.2,
+     1.2,
+     1.2,
+     3.0,
+     3.0
+    ],
+    [
+     0.9,
+     0.9,
+     0.9,
+     1.2,
+     1.2,
+     1.2,
+     3.0,
+     3.0
+    ]
+   ]
+  },
+  "T6": {
+   "delay_ms": [
+    [
+     2.0,
+     2.0,
+     8.0,
+     8.0,
+     25.0,
+     25.0,
+     40.0,
+     40.0
+    ],
+    [
+     2.0,
+     2.0,
+     8.0,
+     8.0,
+     25.0,
+     25.0,
+     40.0,
+     40.0
+    ],
+    [
+     8.0,
+     8.0,
+     2.0,
+     2.0,
+     15.0,
+     15.0,
+     30.0,
+     30.0
+    ],
+    [
+     8.0,
+     8.0,
+     2.0,
+     2.0,
+     15.0,
+     15.0,
+     30.0,
+     30.0
+    ],
+    [
+     25.0,
+     25.0,
+     15.0,
+     15.0,
+     2.0,
+     2.0,
+     10.0,
+     10.0
+    ],
+    [
+     25.0,
+     25.0,
+     15.0,
+     15.0,
+     2.0,
+     2.0,
+     10.0,
+     10.0
+    ],
+    [
+     40.0,
+     40.0,
+     30.0,
+     30.0,
+     10.0,
+     10.0,
+     2.0,
+     2.0
+    ],
+    [
+     40.0,
+     40.0,
+     30.0,
+     30.0,
+     10.0,
+     10.0,
+     2.0,
+     2.0
+    ]
+   ],
+   "bandwidth_gbps": [
+    [
+     4.0,
+     4.0,
+     2.0,
+     2.0,
+     0.7,
+     0.7,
+     0.5,
+     0.5
+    ],
+    [
+     4.0,
+     4.0,
+     2.0,
+     2.0,
+     0.7,
+     0.7,
+     0.5,
+     0.5
+    ],
+    [
+     2.0,
+     2.0,
+     4.0,
+     4.0,
+     1.2,
+     1.2,
+     0.6,
+     0.6
+    ],
+    [
+     2.0,
+     2.0,
+     4.0,
+     4.0,
+     1.2,
+     1.2,
+     0.6,
+     0.6
+    ],
+    [
+     0.7,
+     0.7,
+     1.2,
+     1.2,
+     4.0,
+     4.0,
+     1.5,
+     1.5
+    ],
+    [
+     0.7,
+     0.7,
+     1.2,
+     1.2,
+     4.0,
+     4.0,
+     1.5,
+     1.5
+    ],
+    [
+     0.5,
+     0.5,
+     0.6,
+     0.6,
+     1.5,
+     1.5,
+     4.0,
+     4.0
+    ],
+    [
+     0.5,
+     0.5,
+     0.6,
+     0.6,
+     1.5,
+     1.5,
+     4.0,
+     4.0
+    ]
+   ]
+  }
+ },
+ "runs": {
+  "bench_notc": {
+   "kind": "bench",
+   "rank_map": null,
+   "args": [],
+   "topology": "notc"
+  },
+  "homo_d0_b1": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "homo",
+   "delay": 0,
+   "bw": 1.0,
+   "placement": "identity"
+  },
+  "homo_d10_b1": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "homo",
+   "delay": 10,
+   "bw": 1.0,
+   "placement": "identity"
+  },
+  "homo_d50_b1": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "homo",
+   "delay": 50,
+   "bw": 1.0,
+   "placement": "identity"
+  },
+  "homo_d100_b1": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "homo",
+   "delay": 100,
+   "bw": 1.0,
+   "placement": "identity"
+  },
+  "homo_d10_b0.3": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "homo",
+   "delay": 10,
+   "bw": 0.3,
+   "placement": "identity"
+  },
+  "homo_d10_b3.0": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "homo",
+   "delay": 10,
+   "bw": 3.0,
+   "placement": "identity"
+  },
+  "bench_T1": {
+   "kind": "bench",
+   "rank_map": null,
+   "args": [],
+   "topology": "T1"
+  },
+  "T1_identity": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "identity",
+   "paper_cost": 13.913714285714285
+  },
+  "T1_dplocal": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    4,
+    1,
+    5,
+    2,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "dplocal",
+   "paper_cost": 21.673714285714286
+  },
+  "T1_ga": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    3,
+    2,
+    0,
+    4,
+    6,
+    5,
+    7
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "ga",
+   "paper_cost": 13.913714285714285
+  },
+  "T1_worst": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    6,
+    5,
+    3,
+    0,
+    4,
+    1,
+    2
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "worst",
+   "paper_cost": 36.125142857142855
+  },
+  "T1_rnd0": {
+   "kind": "train",
+   "rank_map": [
+    3,
+    1,
+    7,
+    5,
+    2,
+    0,
+    4,
+    6
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "rnd0",
+   "paper_cost": 21.673714285714286
+  },
+  "T1_rnd1": {
+   "kind": "train",
+   "rank_map": [
+    2,
+    3,
+    6,
+    5,
+    0,
+    4,
+    1,
+    7
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "rnd1",
+   "paper_cost": 36.125142857142855
+  },
+  "bench_T2": {
+   "kind": "bench",
+   "rank_map": null,
+   "args": [],
+   "topology": "T2"
+  },
+  "T2_identity": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "identity",
+   "paper_cost": 35.037142857142854
+  },
+  "T2_dplocal": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    4,
+    1,
+    5,
+    2,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "dplocal",
+   "paper_cost": 43.59875776397516
+  },
+  "T2_ga": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    0,
+    6,
+    7,
+    4,
+    5,
+    2,
+    3
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "ga",
+   "paper_cost": 35.037142857142854
+  },
+  "T2_worst": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    6,
+    3,
+    0,
+    5,
+    1,
+    4,
+    2
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "worst",
+   "paper_cost": 48.17248936570676
+  },
+  "T2_rnd0": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    2,
+    4,
+    5,
+    3,
+    6,
+    7,
+    1
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "rnd0",
+   "paper_cost": 44.76559663865547
+  },
+  "T2_rnd1": {
+   "kind": "train",
+   "rank_map": [
+    3,
+    7,
+    1,
+    4,
+    6,
+    5,
+    0,
+    2
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "rnd1",
+   "paper_cost": 46.58505118411
+  },
+  "bench_T3": {
+   "kind": "bench",
+   "rank_map": null,
+   "args": [],
+   "topology": "T3"
+  },
+  "T3_identity": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "identity",
+   "paper_cost": 81.16477268452557
+  },
+  "T3_dplocal": {
+   "kind": "train",
+   "rank_map": [
+    3,
+    0,
+    1,
+    2,
+    6,
+    4,
+    7,
+    5
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "dplocal",
+   "paper_cost": 81.43235390888033
+  },
+  "T3_ga": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    4,
+    6,
+    1,
+    0,
+    3,
+    2,
+    5
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "ga",
+   "paper_cost": 64.45787625534888
+  },
+  "T3_worst": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    3,
+    5,
+    1,
+    4,
+    2,
+    6,
+    0
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "worst",
+   "paper_cost": 97.77390199468603
+  },
+  "T3_rnd0": {
+   "kind": "train",
+   "rank_map": [
+    5,
+    1,
+    2,
+    7,
+    0,
+    3,
+    6,
+    4
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "rnd0",
+   "paper_cost": 67.97828684455563
+  },
+  "T3_rnd1": {
+   "kind": "train",
+   "rank_map": [
+    2,
+    7,
+    5,
+    4,
+    1,
+    0,
+    6,
+    3
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "rnd1",
+   "paper_cost": 79.39336503845608
+  },
+  "T1_identity_nooffload": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--use-offload",
+    "false"
+   ],
+   "topology": "T1",
+   "placement": "identity",
+   "variant": "nooffload"
+  },
+  "T1_dplocal_nooffload": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    4,
+    1,
+    5,
+    2,
+    6,
+    3,
+    7
+   ],
+   "args": [
+    "--use-offload",
+    "false"
+   ],
+   "topology": "T1",
+   "placement": "dplocal",
+   "variant": "nooffload"
+  },
+  "notc_nooffload": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--use-offload",
+    "false"
+   ],
+   "topology": "notc",
+   "placement": "identity",
+   "variant": "nooffload"
+  },
+  "T1_identity_b32": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--batch-size",
+    "32"
+   ],
+   "topology": "T1",
+   "placement": "identity",
+   "variant": "b32"
+  },
+  "T1_identity_l3": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--num-layers",
+    "3"
+   ],
+   "topology": "T1",
+   "placement": "identity",
+   "variant": "l3"
+  },
+  "notc_l3": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--num-layers",
+    "3"
+   ],
+   "topology": "notc",
+   "placement": "identity",
+   "variant": "l3"
+  },
+  "notc_rep1": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "notc",
+   "placement": "identity",
+   "rep": 1
+  },
+  "T1_identity_rep1": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [],
+   "topology": "T1",
+   "placement": "identity",
+   "rep": 1
+  },
+  "T1_dplocal_rep1": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    4,
+    1,
+    5,
+    2,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "dplocal",
+   "rep": 1
+  },
+  "T2_ga_rep1": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    0,
+    6,
+    7,
+    4,
+    5,
+    2,
+    3
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "ga",
+   "rep": 1
+  },
+  "T3_ga_rep1": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    4,
+    6,
+    1,
+    0,
+    3,
+    2,
+    5
+   ],
+   "args": [],
+   "topology": "T3",
+   "placement": "ga",
+   "rep": 1
+  },
+  "p2d4_T1_identity": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "2",
+    "--data-group-size",
+    "4",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "12",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+   ],
+   "pp": 2,
+   "dp": 4,
+   "topology": "T1",
+   "placement": "identity"
+  },
+  "p2d4_T1_dplocal": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    2,
+    4,
+    6,
+    1,
+    3,
+    5,
+    7
+   ],
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "2",
+    "--data-group-size",
+    "4",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "12",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+   ],
+   "pp": 2,
+   "dp": 4,
+   "topology": "T1",
+   "placement": "dplocal"
+  },
+  "p2d4_notc_identity": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "2",
+    "--data-group-size",
+    "4",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "12",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+   ],
+   "pp": 2,
+   "dp": 4,
+   "topology": "notc",
+   "placement": "identity"
+  },
+  "p8d1_T1_identity": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "8",
+    "--data-group-size",
+    "1",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "3",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+   ],
+   "pp": 8,
+   "dp": 1,
+   "topology": "T1",
+   "placement": "identity"
+  },
+  "p8d1_T1_rev": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    2,
+    4,
+    6,
+    7,
+    5,
+    3,
+    1
+   ],
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "8",
+    "--data-group-size",
+    "1",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "3",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+   ],
+   "pp": 8,
+   "dp": 1,
+   "topology": "T1",
+   "placement": "zigzag"
+  },
+  "p8d1_notc_identity": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "8",
+    "--data-group-size",
+    "1",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "3",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv"
+   ],
+   "pp": 8,
+   "dp": 1,
+   "topology": "notc",
+   "placement": "identity"
+  },
+  "T1_identity_b16": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "4",
+    "--data-group-size",
+    "2",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "6",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv",
+    "--batch-size",
+    "16"
+   ],
+   "pp": 4,
+   "dp": 2,
+   "topology": "T1",
+   "placement": "identity",
+   "variant": "b16"
+  },
+  "notc_b16": {
+   "kind": "train",
+   "rank_map": null,
+   "args": [
+    "--pp-mode",
+    "gpipe",
+    "--dp-mode",
+    "central_ps",
+    "--pipeline-group-size",
+    "4",
+    "--data-group-size",
+    "2",
+    "--embedding-dim",
+    "2048",
+    "--num-heads",
+    "16",
+    "--fp16",
+    "--num-layers",
+    "6",
+    "--batch-size",
+    "64",
+    "--micro-batch-size",
+    "1",
+    "--gradient-accumulate-step",
+    "2",
+    "--num-iters",
+    "6",
+    "--train-data",
+    "./task_datasets/data/QQP/train_small.tsv",
+    "--batch-size",
+    "16"
+   ],
+   "pp": 4,
+   "dp": 2,
+   "topology": "notc",
+   "placement": "identity",
+   "variant": "b16"
+  },
+  "bench_T4": {
+   "kind": "bench",
+   "topology": "T4"
+  },
+  "T4_identity": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "identity",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422
+  },
+  "T4_paper": {
+   "kind": "train",
+   "rank_map": [
+    5,
+    6,
+    7,
+    2,
+    0,
+    1,
+    4,
+    3
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "paper",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422
+  },
+  "T4_sim": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "sim",
+   "paper_cost": 50.184,
+   "sim_pred": 43.319576916374224
+  },
+  "T4_simworst": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    7,
+    6
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "simworst",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422
+  },
+  "T4_rnd0": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    0,
+    2,
+    7,
+    4,
+    6,
+    5,
+    3
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "rnd0",
+   "paper_cost": 34.128,
+   "sim_pred": 45.84737192418174
+  },
+  "bench_T5": {
+   "kind": "bench",
+   "topology": "T5"
+  },
+  "T5_identity": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "identity",
+   "paper_cost": 34.83266666666666,
+   "sim_pred": 33.17447085879845
+  },
+  "T5_paper": {
+   "kind": "train",
+   "rank_map": [
+    6,
+    5,
+    4,
+    2,
+    0,
+    1,
+    7,
+    3
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "paper",
+   "paper_cost": 31.78644444444444,
+   "sim_pred": 41.58887788825409
+  },
+  "T5_sim": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    2,
+    5,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "sim",
+   "paper_cost": 38.016666666666666,
+   "sim_pred": 28.26224444098999
+  },
+  "T5_simworst": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    5,
+    6,
+    7,
+    3,
+    4
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "simworst",
+   "paper_cost": 34.83266666666666,
+   "sim_pred": 47.52427646547856
+  },
+  "T5_rnd0": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    0,
+    2,
+    7,
+    4,
+    6,
+    5,
+    3
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "rnd0",
+   "paper_cost": 34.83266666666666,
+   "sim_pred": 45.203635689838535
+  },
+  "T1_simbest": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    5,
+    2,
+    3,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T1",
+   "placement": "simbest",
+   "paper_cost": 21.673714285714286,
+   "sim_pred": 26.416677299030866
+  },
+  "T2_simbest": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    2,
+    4,
+    7,
+    5,
+    6,
+    0,
+    3
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "simbest",
+   "paper_cost": 35.037142857142854,
+   "sim_pred": 36.778019011279916
+  },
+  "T4_q25": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    0,
+    1
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "q25",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422
+  },
+  "T4_q75": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    6,
+    5,
+    4,
+    3,
+    2,
+    0,
+    1
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "q75",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422
+  },
+  "T5_q25": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    3,
+    4,
+    1,
+    7,
+    6,
+    5,
+    2
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "q25",
+   "paper_cost": 33.43933333333333,
+   "sim_pred": 41.83392215492076
+  },
+  "T5_q75": {
+   "kind": "train",
+   "rank_map": [
+    7,
+    6,
+    5,
+    2,
+    1,
+    0,
+    3,
+    4
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "q75",
+   "paper_cost": 34.83266666666666,
+   "sim_pred": 47.52427646547856
+  },
+  "T5_sim_rep1": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    2,
+    5,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "sim",
+   "paper_cost": 38.016666666666666,
+   "sim_pred": 28.26224444098999,
+   "rep": 1
+  },
+  "T5_sim_rep2": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    2,
+    5,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "sim",
+   "paper_cost": 38.016666666666666,
+   "sim_pred": 28.26224444098999,
+   "rep": 2
+  },
+  "T5_paper_rep1": {
+   "kind": "train",
+   "rank_map": [
+    6,
+    5,
+    4,
+    2,
+    0,
+    1,
+    7,
+    3
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "paper",
+   "paper_cost": 31.78644444444444,
+   "sim_pred": 41.58887788825409,
+   "rep": 1
+  },
+  "T5_paper_rep2": {
+   "kind": "train",
+   "rank_map": [
+    6,
+    5,
+    4,
+    2,
+    0,
+    1,
+    7,
+    3
+   ],
+   "args": [],
+   "topology": "T5",
+   "placement": "paper",
+   "paper_cost": 31.78644444444444,
+   "sim_pred": 41.58887788825409,
+   "rep": 2
+  },
+  "T4_sim_rep1": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "sim",
+   "paper_cost": 50.184,
+   "sim_pred": 43.319576916374224,
+   "rep": 1
+  },
+  "T4_sim_rep2": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    4,
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "sim",
+   "paper_cost": 50.184,
+   "sim_pred": 43.319576916374224,
+   "rep": 2
+  },
+  "T4_paper_rep1": {
+   "kind": "train",
+   "rank_map": [
+    5,
+    6,
+    7,
+    2,
+    0,
+    1,
+    4,
+    3
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "paper",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422,
+   "rep": 1
+  },
+  "T4_paper_rep2": {
+   "kind": "train",
+   "rank_map": [
+    5,
+    6,
+    7,
+    2,
+    0,
+    1,
+    4,
+    3
+   ],
+   "args": [],
+   "topology": "T4",
+   "placement": "paper",
+   "paper_cost": 34.128,
+   "sim_pred": 45.86286523637422,
+   "rep": 2
+  },
+  "T2_simbest_rep1": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    2,
+    4,
+    7,
+    5,
+    6,
+    0,
+    3
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "simbest",
+   "paper_cost": 35.037142857142854,
+   "sim_pred": 36.778019011279916,
+   "rep": 1
+  },
+  "T2_simbest_rep2": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    2,
+    4,
+    7,
+    5,
+    6,
+    0,
+    3
+   ],
+   "args": [],
+   "topology": "T2",
+   "placement": "simbest",
+   "paper_cost": 35.037142857142854,
+   "sim_pred": 36.778019011279916,
+   "rep": 2
+  },
+  "bench_T6": {
+   "kind": "bench",
+   "topology": "T6"
+  },
+  "T6_identity": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+   ],
+   "args": [],
+   "topology": "T6",
+   "placement": "identity",
+   "paper_cost": 26.754666666666665,
+   "sim_pred": 39.29817526971143
+  },
+  "T6_paper": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    0,
+    2,
+    3,
+    4,
+    5,
+    7,
+    6
+   ],
+   "args": [],
+   "topology": "T6",
+   "placement": "paper",
+   "paper_cost": 26.754666666666665,
+   "sim_pred": 39.29817526971143
+  },
+  "T6_sim": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    4,
+    1,
+    5,
+    2,
+    6,
+    3,
+    7
+   ],
+   "args": [],
+   "topology": "T6",
+   "placement": "sim",
+   "paper_cost": 33.269999999999996,
+   "sim_pred": 26.567544457495167
+  },
+  "T6_simworst": {
+   "kind": "train",
+   "rank_map": [
+    0,
+    2,
+    1,
+    5,
+    6,
+    7,
+    3,
+    4
+   ],
+   "args": [],
+   "topology": "T6",
+   "placement": "simworst",
+   "paper_cost": 56.637142857142855,
+   "sim_pred": 70.95416720121227
+  },
+  "T6_q25": {
+   "kind": "train",
+   "rank_map": [
+    2,
+    3,
+    7,
+    1,
+    5,
+    0,
+    6,
+    4
+   ],
+   "args": [],
+   "topology": "T6",
+   "placement": "q25",
+   "paper_cost": 56.637142857142855,
+   "sim_pred": 58.209847371878936
+  },
+  "T6_q75": {
+   "kind": "train",
+   "rank_map": [
+    1,
+    2,
+    6,
+    4,
+    7,
+    5,
+    0,
+    3
+   ],
+   "args": [],
+   "topology": "T6",
+   "placement": "q75",
+   "paper_cost": 45.47333333333333,
+   "sim_pred": 67.03302757454561
+  }
+ }
+}
