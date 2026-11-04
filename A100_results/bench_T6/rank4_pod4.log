@@ -1,0 +1,27 @@
+[test.py] === run 11/17 tag=bench_T6 rank=4 master=experiment-0.experiment:29510
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 25.0ms rate 0.7Gbit limit 393750
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 10.0ms rate 1.5Gbit limit 337500
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.241/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 180000 delay 2ms rate 4Gbit
+qdisc netem 40: parent 1:4 limit 393750 delay 25ms rate 700Mbit
+qdisc netem 70: parent 1:7 limit 337500 delay 10ms rate 1500Mbit
+qdisc netem 50: parent 1:5 limit 405000 delay 15ms rate 1200Mbit
+[test.py] $ /workspace/venv/bin/python -u /workspace/nccl_bench.py --out /workspace/results/bench_T6/bench.json
+rank 4: process group ready
+pair 4-5: latency 2.05 ms, bandwidth 3.42 Gbit/s
+pair 4-6: latency 10.06 ms, bandwidth 1.19 Gbit/s
+pair 4-7: latency 10.05 ms, bandwidth 1.20 Gbit/s
+[test.py] run bench_T6 exited with 0
+[test.py] barrier run 11: waiting for pods [0, 1, 2, 3, 5, 6, 7]

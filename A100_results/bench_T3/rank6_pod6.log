@@ -1,0 +1,2 @@
+rank 6: process group ready
+[rank6]:[E1103 10:03:04.380220149 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 6] Exception (either an error or timeout) detected by watchdog at work: 54, last enqueued NCCL work: 54, last completed NCCL work: 53.

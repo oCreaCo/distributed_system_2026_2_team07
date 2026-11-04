@@ -1,0 +1,24 @@
+[test.py] === run 11/11 tag=T3_ga_rep1 rank=6 master=experiment-4.experiment:29510
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 10
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 12.25ms rate 1.1Gbit limit 303187
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.75ms rate 1.12Gbit limit 69300
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 32.5ms rate 0.694Gbit limit 507487
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 39.75ms rate 0.529Gbit limit 473124
+[test.py] $ tc qdisc add dev eth0 parent 1:8 handle 80: netem delay 21.5ms rate 1.05Gbit limit 507937
+[test.py] $ tc qdisc add dev eth0 parent 1:9 handle 90: netem delay 24.75ms rate 0.799Gbit limit 444943
+[test.py] $ tc qdisc add dev eth0 parent 1:10 handle 100: netem delay 19.25ms rate 1.14Gbit limit 493762
+Error: Specified class not found.
+Traceback (most recent call last):
+  File "/workspace/test.py", line 217, in <module>
+    main()
+  File "/workspace/test.py", line 187, in main
+    apply_tc(idx, peer_ips, r.get("delay_ms"), r.get("bandwidth_gbps"))
+  File "/workspace/test.py", line 108, in apply_tc
+    run(cmd)
+  File "/workspace/test.py", line 43, in run
+    return subprocess.run(cmd, check=check)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/conda/lib/python3.11/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['tc', 'qdisc', 'add', 'dev', 'eth0', 'parent', '1:10', 'handle', '100:', 'netem', 'delay', '19.25ms', 'rate', '1.14Gbit', 'limit', '493762']' returned non-zero exit status 2.

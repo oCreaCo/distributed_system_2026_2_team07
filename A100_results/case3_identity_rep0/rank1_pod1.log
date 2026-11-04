@@ -1,0 +1,105 @@
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 1
+Initialize NCCLCommunicator: < data_group_1 >; rank: 0
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 1 node forward pass 0/2 takes 3.56s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 1 node backward pass 0/2 takes 5.50s
+Rank 1 node forward pass 1/2 takes 3.51s
+Rank 1 node backward pass 1/2 takes 5.61s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 13.54s
+Rank 1 node whole iteration takes 31.72s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 2.71s
+Rank 1 node backward pass 0/2 takes 5.08s
+Rank 1 node forward pass 1/2 takes 3.40s
+Rank 1 node backward pass 1/2 takes 5.50s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 11.77s
+Rank 1 node whole iteration takes 28.46s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 3.02s
+Rank 1 node backward pass 0/2 takes 5.71s
+Rank 1 node forward pass 1/2 takes 3.16s
+Rank 1 node backward pass 1/2 takes 6.06s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 11.52s
+Rank 1 node whole iteration takes 29.47s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 2.88s
+Rank 1 node backward pass 0/2 takes 5.45s
+Rank 1 node forward pass 1/2 takes 3.44s
+Rank 1 node backward pass 1/2 takes 5.08s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 11.24s
+Rank 1 node whole iteration takes 28.10s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 2.97s
+Rank 1 node backward pass 0/2 takes 5.17s
+Rank 1 node forward pass 1/2 takes 3.42s
+Rank 1 node backward pass 1/2 takes 5.27s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 11.51s
+Rank 1 node whole iteration takes 28.34s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 3.11s
+Rank 1 node backward pass 0/2 takes 5.82s
+Rank 1 node forward pass 1/2 takes 3.39s
+Rank 1 node backward pass 1/2 takes 5.41s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 11.43s
+Rank 1 node whole iteration takes 29.15s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 2.35s
+Rank 1 node backward pass 0/2 takes 4.72s
+Rank 1 node forward pass 1/2 takes 3.25s
+Rank 1 node backward pass 1/2 takes 5.49s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 1 node optimizer step takes 11.42s
+Rank 1 node whole iteration takes 27.24s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 2.10s
+Rank 1 node backward pass 0/2 takes 4.61s
+Rank 1 node forward pass 1/2 takes 2.63s
+Rank 1 node backward pass 1/2 takes 4.46s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 1 node optimizer step takes 11.28s
+Rank 1 node whole iteration takes 25.07s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 1.94s
+Rank 1 node backward pass 0/2 takes 4.38s
+Rank 1 node forward pass 1/2 takes 2.38s
+Rank 1 node backward pass 1/2 takes 4.44s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 1 node optimizer step takes 11.19s
+Rank 1 node whole iteration takes 24.32s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 2.08s
+Rank 1 node backward pass 0/2 takes 4.47s
+Rank 1 node forward pass 1/2 takes 2.37s
+Rank 1 node backward pass 1/2 takes 4.49s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 1 node optimizer step takes 11.24s
+Rank 1 node whole iteration takes 24.65s
+-------------------------------------------

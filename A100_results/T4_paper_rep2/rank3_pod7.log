@@ -1,0 +1,89 @@
+[test.py] === run 8/17 tag=T4_paper_rep2 rank=3 master=experiment-4.experiment:29507
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 5
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 30.0ms rate 0.8Gbit limit 540000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.241/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:5
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 5 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 40: parent 1:4 limit 540000 delay 30ms rate 800Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-4.experiment:29507 --world-size 8 --rank 3 --cuda-id 0 --trace-postfix T4_paper_rep2 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 3
+Initialize NCCLCommunicator: < data_group_3 >; rank: 0
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 306350082, element size: 2, total size 584 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 306350082, element size: 2.
+Flattened parameter grad number: 306350082, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 3 node forward pass 0/2 takes 2.57s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 3 node backward pass 0/2 takes 8.85s
+Rank 3 node forward pass 1/2 takes 3.71s
+Rank 3 node backward pass 1/2 takes 10.26s
+cpu cpu cuda:0
+Rank 3 node optimizer step takes 18.54s
+Rank 3 node whole iteration takes 43.94s
+-------------------------------------------
+Rank 3 node forward pass 0/2 takes 2.19s
+Rank 3 node backward pass 0/2 takes 8.22s
+Rank 3 node forward pass 1/2 takes 3.40s
+Rank 3 node backward pass 1/2 takes 9.84s
+cpu cpu cuda:0
+Rank 3 node optimizer step takes 15.87s
+Rank 3 node whole iteration takes 39.52s
+-------------------------------------------
+Rank 3 node forward pass 0/2 takes 2.09s
+Rank 3 node backward pass 0/2 takes 8.41s
+Rank 3 node forward pass 1/2 takes 3.24s
+Rank 3 node backward pass 1/2 takes 9.70s
+cpu cpu cuda:0
+Rank 3 node optimizer step takes 16.01s
+Rank 3 node whole iteration takes 39.45s
+-------------------------------------------
+Rank 3 node forward pass 0/2 takes 2.17s
+Rank 3 node backward pass 0/2 takes 8.40s
+Rank 3 node forward pass 1/2 takes 3.30s
+Rank 3 node backward pass 1/2 takes 9.61s
+cpu cpu cuda:0
+Rank 3 node optimizer step takes 15.81s
+Rank 3 node whole iteration takes 39.30s
+-------------------------------------------
+Rank 3 node forward pass 0/2 takes 2.32s
+Rank 3 node backward pass 0/2 takes 8.51s
+Rank 3 node forward pass 1/2 takes 3.39s
+Rank 3 node backward pass 1/2 takes 10.07s
+cpu cpu cuda:0
+Rank 3 node optimizer step takes 14.92s
+Rank 3 node whole iteration takes 39.21s
+-------------------------------------------
+[test.py] run T4_paper_rep2 exited with 0
+[test.py] barrier run 8: waiting for pods [3, 4, 5]

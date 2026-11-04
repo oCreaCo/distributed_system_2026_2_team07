@@ -1,0 +1,183 @@
+rank=5 hostname=experiment-5 ip=10.42.0.141
+[test.py] tag=case3_dplocal_rep0 pod=5 rank=6 master=experiment-0 host=experiment-5
+[test.py] waiting for pods: experiment-1, experiment-2, experiment-3, experiment-5, experiment-6, experiment-7
+[test.py] peer ips (by pod index): ['10.42.0.136', '10.42.0.140', '10.42.0.139', '10.42.0.142', '10.42.0.137', '10.42.0.141', '10.42.0.138', '10.42.0.143']
+[test.py] $ dpkg -i /workspace/debs/iproute2_5.15.0-1ubuntu2.2_amd64.deb /workspace/debs/libatm1_1%3a2.5.1-4build2_amd64.deb /workspace/debs/libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb /workspace/debs/libbsd0_0.11.5-1_amd64.deb /workspace/debs/libcap2-bin_1%3a2.44-1ubuntu0.22.04.3_amd64.deb /workspace/debs/libelf1_0.186-1ubuntu0.1_amd64.deb /workspace/debs/libmd0_1.0.4-1build1_amd64.deb /workspace/debs/libmnl0_1.0.4-3build2_amd64.deb /workspace/debs/libpam-cap_1%3a2.44-1ubuntu0.22.04.3_amd64.deb /workspace/debs/libxtables12_1.8.7-1ubuntu5.2_amd64.deb
+Selecting previously unselected package iproute2.
+(Reading database ... 6642 files and directories currently installed.)
+Preparing to unpack .../iproute2_5.15.0-1ubuntu2.2_amd64.deb ...
+Unpacking iproute2 (5.15.0-1ubuntu2.2) ...
+Selecting previously unselected package libatm1:amd64.
+Preparing to unpack .../libatm1_1%3a2.5.1-4build2_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-4build2) ...
+Selecting previously unselected package libbpf0:amd64.
+Preparing to unpack .../libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb ...
+Unpacking libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Selecting previously unselected package libbsd0:amd64.
+Preparing to unpack .../libbsd0_0.11.5-1_amd64.deb ...
+Unpacking libbsd0:amd64 (0.11.5-1) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../libcap2-bin_1%3a2.44-1ubuntu0.22.04.3_amd64.deb ...
+Unpacking libcap2-bin (1:2.44-1ubuntu0.22.04.3) ...
+Selecting previously unselected package libelf1:amd64.
+Preparing to unpack .../libelf1_0.186-1ubuntu0.1_amd64.deb ...
+Unpacking libelf1:amd64 (0.186-1ubuntu0.1) ...
+Selecting previously unselected package libmd0:amd64.
+Preparing to unpack .../libmd0_1.0.4-1build1_amd64.deb ...
+Unpacking libmd0:amd64 (1.0.4-1build1) ...
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../libmnl0_1.0.4-3build2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3build2) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../libpam-cap_1%3a2.44-1ubuntu0.22.04.3_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.44-1ubuntu0.22.04.3) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../libxtables12_1.8.7-1ubuntu5.2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libatm1:amd64 (1:2.5.1-4build2) ...
+Setting up libcap2-bin (1:2.44-1ubuntu0.22.04.3) ...
+Setting up libelf1:amd64 (0.186-1ubuntu0.1) ...
+Setting up libmd0:amd64 (1.0.4-1build1) ...
+Setting up libmnl0:amd64 (1.0.4-3build2) ...
+Setting up libpam-cap:amd64 (1:2.44-1ubuntu0.22.04.3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Setting up libbsd0:amd64 (0.11.5-1) ...
+Setting up iproute2 (5.15.0-1ubuntu2.2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+[test.py] $ tc qdisc del dev eth0 root
+Error: Cannot delete qdisc with handle of zero.
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 5
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 11.0ms rate 1.12Gbit limit 277200
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 1.0ms rate 5.0Gbit limit 112500
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.136/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.140/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.139/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.142/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.137/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.138/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.143/32 flowid 1:5
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 5 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 40: parent 1:4 limit 277200 delay 11ms rate 1120Mbit
+qdisc netem 50: parent 1:5 limit 112500 delay 1ms rate 5Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29500 --world-size 8 --rank 6 --cuda-id 0 --trace-postfix case3_dplocal_rep0 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 10
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 2
+Initialize NCCLCommunicator: < data_group_2 >; rank: 1
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 6 node forward pass 0/2 takes 4.71s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 6 node backward pass 0/2 takes 5.66s
+Rank 6 node forward pass 1/2 takes 4.44s
+Rank 6 node backward pass 1/2 takes 5.23s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 6.65s
+Rank 6 node whole iteration takes 26.70s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.24s
+Rank 6 node backward pass 0/2 takes 4.87s
+Rank 6 node forward pass 1/2 takes 4.40s
+Rank 6 node backward pass 1/2 takes 4.92s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 6.15s
+Rank 6 node whole iteration takes 24.59s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.24s
+Rank 6 node backward pass 0/2 takes 4.83s
+Rank 6 node forward pass 1/2 takes 4.40s
+Rank 6 node backward pass 1/2 takes 4.81s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 6.23s
+Rank 6 node whole iteration takes 24.52s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.24s
+Rank 6 node backward pass 0/2 takes 5.03s
+Rank 6 node forward pass 1/2 takes 4.39s
+Rank 6 node backward pass 1/2 takes 5.04s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 6.07s
+Rank 6 node whole iteration takes 24.77s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.25s
+Rank 6 node backward pass 0/2 takes 4.85s
+Rank 6 node forward pass 1/2 takes 4.41s
+Rank 6 node backward pass 1/2 takes 4.89s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 6.14s
+Rank 6 node whole iteration takes 24.53s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.25s
+Rank 6 node backward pass 0/2 takes 5.03s
+Rank 6 node forward pass 1/2 takes 4.41s
+Rank 6 node backward pass 1/2 takes 5.16s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 6 node optimizer step takes 5.53s
+Rank 6 node whole iteration takes 24.38s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.25s
+Rank 6 node backward pass 0/2 takes 4.69s
+Rank 6 node forward pass 1/2 takes 4.41s
+Rank 6 node backward pass 1/2 takes 4.71s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 6 node optimizer step takes 5.49s
+Rank 6 node whole iteration takes 23.54s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.25s
+Rank 6 node backward pass 0/2 takes 4.64s
+Rank 6 node forward pass 1/2 takes 4.40s
+Rank 6 node backward pass 1/2 takes 4.71s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 6 node optimizer step takes 5.42s
+Rank 6 node whole iteration takes 23.41s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.25s
+Rank 6 node backward pass 0/2 takes 4.68s
+Rank 6 node forward pass 1/2 takes 4.39s
+Rank 6 node backward pass 1/2 takes 4.67s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 6 node optimizer step takes 5.61s
+Rank 6 node whole iteration takes 23.60s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 4.25s
+Rank 6 node backward pass 0/2 takes 4.68s
+Rank 6 node forward pass 1/2 takes 4.39s
+Rank 6 node backward pass 1/2 takes 4.72s
+cpu cpu cuda:0
+!!! Warning: find inf in fp16 optimizer-step() !!!
+Rank 6 node optimizer step takes 5.36s
+Rank 6 node whole iteration takes 23.40s
+-------------------------------------------
+[test.py] dist_runner exited with 0

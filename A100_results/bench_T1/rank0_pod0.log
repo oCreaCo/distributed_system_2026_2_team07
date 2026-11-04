@@ -1,0 +1,9 @@
+rank 0: process group ready
+pair 0-1: latency 1.06 ms, bandwidth 4.38 Gbit/s
+pair 0-2: latency 1.05 ms, bandwidth 4.38 Gbit/s
+pair 0-3: latency 1.05 ms, bandwidth 4.38 Gbit/s
+pair 0-4: latency 11.05 ms, bandwidth 0.91 Gbit/s
+pair 0-5: latency 11.05 ms, bandwidth 0.91 Gbit/s
+pair 0-6: latency 11.05 ms, bandwidth 0.91 Gbit/s
+pair 0-7: latency 11.05 ms, bandwidth 0.91 Gbit/s
+wrote /workspace/results/bench_T1/bench.json (28 pairs)

@@ -1,0 +1,414 @@
+Tue Nov  3 04:38:54 PM KST 2026 waiting for running job (job1)
+Tue Nov  3 04:57:38 PM KST 2026 waiting for running job (job1)
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job1
+split done
+tag                          ok   iter_s  opt(r0)  fwd(r0)   paper  topology/placement
+T1_dplocal                   ok    24.10     5.67     4.02   21.67  T1/dplocal
+T1_ga                        ok    28.46    11.13     3.07   13.91  T1/ga
+T1_identity                  ok    26.40    11.22     2.68   13.91  T1/identity
+T1_rnd0                      ok    28.37     5.58     5.13   21.67  T1/rnd0
+T1_rnd1                      ok    28.88     9.64     4.02   36.13  T1/rnd1
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 05:27:46 PM KST 2026 launching job2 (k8s/calib/job2.json)
+job.batch/dev created
+job.batch/experiment created
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job2
+split done
+tag                          ok   iter_s  opt(r0)  fwd(r0)   paper  topology/placement
+T1_dplocal                   ok    24.10     5.67     4.02   21.67  T1/dplocal
+T1_ga                        ok    28.46    11.13     3.07   13.91  T1/ga
+T1_identity                  ok    26.40    11.22     2.68   13.91  T1/identity
+T1_rnd0                      ok    28.37     5.58     5.13   21.67  T1/rnd0
+T1_rnd1                      ok    28.88     9.64     4.02   36.13  T1/rnd1
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+T2_dplocal                   ok    50.65     6.60    10.33   43.60  T2/dplocal
+T2_ga                        ok    42.88    22.96     4.27   35.04  T2/ga
+T2_identity                  ok    63.24    22.04     9.60   35.04  T2/identity
+T2_rnd0                      ok    62.20    25.15     8.46   44.77  T2/rnd0
+T2_rnd1                      ok    57.01    18.63     8.90   46.59  T2/rnd1
+T2_worst                     ok    62.06    22.71     8.42   48.17  T2/worst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 05:59:01 PM KST 2026 launching job3 (k8s/calib/job3.json)
+job.batch/dev created
+job.batch/experiment created
+job condition: FailureTarget Failed
+fetched 1 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job3
+split done
+tag                          ok   iter_s  opt(r0)  fwd(r0)   paper  topology/placement
+T1_dplocal                   ok    24.10     5.67     4.02   21.67  T1/dplocal
+T1_ga                        ok    28.46    11.13     3.07   13.91  T1/ga
+T1_identity                  ok    26.40    11.22     2.68   13.91  T1/identity
+T1_rnd0                      ok    28.37     5.58     5.13   21.67  T1/rnd0
+T1_rnd1                      ok    28.88     9.64     4.02   36.13  T1/rnd1
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+T2_dplocal                   ok    50.65     6.60    10.33   43.60  T2/dplocal
+T2_ga                        ok    42.88    22.96     4.27   35.04  T2/ga
+T2_identity                  ok    63.24    22.04     9.60   35.04  T2/identity
+T2_rnd0                      ok    62.20    25.15     8.46   44.77  T2/rnd0
+T2_rnd1                      ok    57.01    18.63     8.90   46.59  T2/rnd1
+T2_worst                     ok    62.06    22.71     8.42   48.17  T2/worst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ERR     nan      nan      nan     nan  T3/
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 06:00:09 PM KST 2026 launching job4 (k8s/calib/job4.json)
+job.batch/dev created
+job.batch/experiment created
+job condition: FailureTarget Failed
+fetched 1 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job4
+split done
+tag                          ok   iter_s  opt(r0)  fwd(r0)   paper  topology/placement
+T1_dplocal                   ok    24.10     5.67     4.02   21.67  T1/dplocal
+T1_dplocal_nooffload         ok      nan      nan      nan     nan  T1/dplocal nooffload
+T1_dplocal_rep1              ok      nan      nan      nan     nan  T1/dplocal
+T1_ga                        ok    28.46    11.13     3.07   13.91  T1/ga
+T1_identity                  ok    26.40    11.22     2.68   13.91  T1/identity
+T1_identity_b32              ok      nan      nan      nan     nan  T1/identity b32
+T1_identity_l3               ok      nan      nan      nan     nan  T1/identity l3
+T1_identity_nooffload        ok      nan      nan      nan     nan  T1/identity nooffload
+T1_identity_rep1             ok      nan      nan      nan     nan  T1/identity
+T1_rnd0                      ok    28.37     5.58     5.13   21.67  T1/rnd0
+T1_rnd1                      ok    28.88     9.64     4.02   36.13  T1/rnd1
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+T2_dplocal                   ok    50.65     6.60    10.33   43.60  T2/dplocal
+T2_ga                        ok    42.88    22.96     4.27   35.04  T2/ga
+T2_ga_rep1                   ok      nan      nan      nan     nan  T2/ga
+T2_identity                  ok    63.24    22.04     9.60   35.04  T2/identity
+T2_rnd0                      ok    62.20    25.15     8.46   44.77  T2/rnd0
+T2_rnd1                      ok    57.01    18.63     8.90   46.59  T2/rnd1
+T2_worst                     ok    62.06    22.71     8.42   48.17  T2/worst
+T3_ga_rep1                   ERR     nan      nan      nan     nan  T3/ga
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ERR     nan      nan      nan     nan  T3/
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_l3                      ok      nan      nan      nan     nan  notc/identity l3
+notc_nooffload               ok      nan      nan      nan     nan  notc/identity nooffload
+notc_rep1                    ok      nan      nan      nan     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 06:28:24 PM KST 2026 launching job5 (k8s/calib/job5.json)
+job.batch/dev created
+Tue Nov  3 06:28:58 PM KST 2026 sync failed for job5, retrying once
+job.batch/dev created
+job.batch/experiment created
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job5
+split done
+T1_identity_b32              ok    19.07    11.38     1.25     nan  T1/identity b32
+T1_identity_l3               ok    16.79     6.73     1.69     nan  T1/identity l3
+T1_identity_nooffload        ok    29.14    11.47     3.14     nan  T1/identity nooffload
+T1_identity_rep1             ok    28.16    11.28     3.00     nan  T1/identity
+T1_rnd0                      ok    28.37     5.58     5.13   21.67  T1/rnd0
+T1_rnd1                      ok    28.88     9.64     4.02   36.13  T1/rnd1
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+T2_dplocal                   ok    50.65     6.60    10.33   43.60  T2/dplocal
+T2_ga                        ok    42.88    22.96     4.27   35.04  T2/ga
+T2_ga_rep1                   ok    42.70    22.98     4.27     nan  T2/ga
+T2_identity                  ok    63.24    22.04     9.60   35.04  T2/identity
+T2_rnd0                      ok    62.20    25.15     8.46   44.77  T2/rnd0
+T2_rnd1                      ok    57.01    18.63     8.90   46.59  T2/rnd1
+T2_worst                     ok    62.06    22.71     8.42   48.17  T2/worst
+T3_ga_rep1                   ERR     nan      nan      nan     nan  T3/ga
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ERR     nan      nan      nan     nan  T3/
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_b16                     ok    10.00     5.88     0.55     nan  notc/identity b16
+notc_l3                      ok    13.61     3.00     1.54     nan  notc/identity l3
+notc_nooffload               ok    18.87     1.15     3.39     nan  notc/identity nooffload
+notc_rep1                    ok    23.12     5.89     3.24     nan  notc/identity
+p2d4_T1_dplocal              ok    37.84    10.85     4.25     nan  T1/dplocal
+p2d4_T1_identity             ok    47.11    20.14     3.36     nan  T1/identity
+p2d4_notc_identity           ok    37.30    11.18     3.35     nan  notc/identity
+p8d1_T1_identity             ok    21.16     2.33     4.05     nan  T1/identity
+p8d1_T1_rev                  ok    37.77     2.03     7.99     nan  T1/zigzag
+p8d1_notc_identity           ok    13.17     2.78     1.51     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 06:55:43 PM KST 2026 all batches done
+Tue Nov  3 06:57:06 PM KST 2026 waiting for running job (none)
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/none
+split done
+T1_identity_b32              ok    19.07    11.38     1.25     nan  T1/identity b32
+T1_identity_l3               ok    16.79     6.73     1.69     nan  T1/identity l3
+T1_identity_nooffload        ok    29.14    11.47     3.14     nan  T1/identity nooffload
+T1_identity_rep1             ok    28.16    11.28     3.00     nan  T1/identity
+T1_rnd0                      ok    28.37     5.58     5.13   21.67  T1/rnd0
+T1_rnd1                      ok    28.88     9.64     4.02   36.13  T1/rnd1
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+T2_dplocal                   ok    50.65     6.60    10.33   43.60  T2/dplocal
+T2_ga                        ok    42.88    22.96     4.27   35.04  T2/ga
+T2_ga_rep1                   ok    42.70    22.98     4.27     nan  T2/ga
+T2_identity                  ok    63.24    22.04     9.60   35.04  T2/identity
+T2_rnd0                      ok    62.20    25.15     8.46   44.77  T2/rnd0
+T2_rnd1                      ok    57.01    18.63     8.90   46.59  T2/rnd1
+T2_worst                     ok    62.06    22.71     8.42   48.17  T2/worst
+T3_ga_rep1                   ERR     nan      nan      nan     nan  T3/ga
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ERR     nan      nan      nan     nan  T3/
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_b16                     ok    10.00     5.88     0.55     nan  notc/identity b16
+notc_l3                      ok    13.61     3.00     1.54     nan  notc/identity l3
+notc_nooffload               ok    18.87     1.15     3.39     nan  notc/identity nooffload
+notc_rep1                    ok    23.12     5.89     3.24     nan  notc/identity
+p2d4_T1_dplocal              ok    37.84    10.85     4.25     nan  T1/dplocal
+p2d4_T1_identity             ok    47.11    20.14     3.36     nan  T1/identity
+p2d4_notc_identity           ok    37.30    11.18     3.35     nan  notc/identity
+p8d1_T1_identity             ok    21.16     2.33     4.05     nan  T1/identity
+p8d1_T1_rev                  ok    37.77     2.03     7.99     nan  T1/zigzag
+p8d1_notc_identity           ok    13.17     2.78     1.51     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 06:57:07 PM KST 2026 launching job3 (k8s/calib/job3.json)
+job.batch/dev created
+job.batch/experiment created
+job condition: FailureTarget Failed
+fetched 1 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job3
+split done
+T1_worst                     ok    28.40     9.24     3.95   36.13  T1/worst
+T2_dplocal                   ok    50.65     6.60    10.33   43.60  T2/dplocal
+T2_ga                        ok    42.88    22.96     4.27   35.04  T2/ga
+T2_ga_rep1                   ok    42.70    22.98     4.27     nan  T2/ga
+T2_identity                  ok    63.24    22.04     9.60   35.04  T2/identity
+T2_rnd0                      ok    62.20    25.15     8.46   44.77  T2/rnd0
+T2_rnd1                      ok    57.01    18.63     8.90   46.59  T2/rnd1
+T2_worst                     ok    62.06    22.71     8.42   48.17  T2/worst
+T3_dplocal                   ok    88.11      nan      nan   81.43  T3/dplocal
+T3_ga                        ok    80.53      nan      nan   64.46  T3/ga
+T3_ga_rep1                   ERR     nan      nan      nan     nan  T3/ga
+T3_identity                  ok    85.00      nan      nan   81.16  T3/identity
+T3_rnd0                      ok    96.87      nan      nan   67.98  T3/rnd0
+T3_rnd1                      ok    95.63      nan      nan   79.39  T3/rnd1
+T3_worst                     ok    94.68      nan      nan   97.77  T3/worst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ERR     nan      nan      nan     nan  T3/  pairs=4
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_b16                     ok    10.00     5.88     0.55     nan  notc/identity b16
+notc_l3                      ok    13.61     3.00     1.54     nan  notc/identity l3
+notc_nooffload               ok    18.87     1.15     3.39     nan  notc/identity nooffload
+notc_rep1                    ok    23.12     5.89     3.24     nan  notc/identity
+p2d4_T1_dplocal              ok    37.84    10.85     4.25     nan  T1/dplocal
+p2d4_T1_identity             ok    47.11    20.14     3.36     nan  T1/identity
+p2d4_notc_identity           ok    37.30    11.18     3.35     nan  notc/identity
+p8d1_T1_identity             ok    21.16     2.33     4.05     nan  T1/identity
+p8d1_T1_rev                  ok    37.77     2.03     7.99     nan  T1/zigzag
+p8d1_notc_identity           ok    13.17     2.78     1.51     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 07:32:53 PM KST 2026 launching job6 (k8s/calib/job6.json)
+job.batch/dev created
+job.batch/experiment created
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job6
+split done
+T3_rnd0                      ok    96.82    42.45     9.54   67.98  T3/rnd0
+T3_rnd1                      ok    95.63    34.95    14.24   79.39  T3/rnd1
+T3_worst                     ok    94.68    37.49    13.49   97.77  T3/worst
+T4_identity                  ok    41.55    15.85     5.71   34.13  T4/identity
+T4_paper                     ok    39.18    15.06     2.42   34.13  T4/paper
+T4_q25                       ok    39.26    15.56     2.53   34.13  T4/q25
+T4_sim                       ok    39.08    13.50     5.86   50.18  T4/sim
+T5_identity                  ok    33.69    14.91     3.41   34.83  T5/identity
+T5_paper                     ok    37.63    11.87     3.83   31.79  T5/paper
+T5_q25                       ok    38.75     8.79     6.92   33.44  T5/q25
+T5_q75                       ok    42.76    17.36     3.83   34.83  T5/q75
+T5_sim                       ok    26.60     7.29     4.17   38.02  T5/sim
+T5_simworst                  ok    46.13    17.16     6.39   34.83  T5/simworst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ok      nan      nan      nan     nan  T3/  pairs=27
+bench_T4                     ok      nan      nan      nan     nan  T4/  pairs=28
+bench_T5                     ok      nan      nan      nan     nan  T5/  pairs=28
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_b16                     ok    10.00     5.88     0.55     nan  notc/identity b16
+notc_l3                      ok    13.61     3.00     1.54     nan  notc/identity l3
+notc_nooffload               ok    18.87     1.15     3.39     nan  notc/identity nooffload
+notc_rep1                    ok    23.12     5.89     3.24     nan  notc/identity
+p2d4_T1_dplocal              ok    37.84    10.85     4.25     nan  T1/dplocal
+p2d4_T1_identity             ok    47.11    20.14     3.36     nan  T1/identity
+p2d4_notc_identity           ok    37.30    11.18     3.35     nan  notc/identity
+p8d1_T1_identity             ok    21.16     2.33     4.05     nan  T1/identity
+p8d1_T1_rev                  ok    37.77     2.03     7.99     nan  T1/zigzag
+p8d1_notc_identity           ok    13.17     2.78     1.51     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 08:21:42 PM KST 2026 all batches done
+Tue Nov  3 08:22:59 PM KST 2026 waiting for running job (none)
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/none
+split done
+T3_rnd0                      ok    96.82    42.45     9.54   67.98  T3/rnd0
+T3_rnd1                      ok    95.63    34.95    14.24   79.39  T3/rnd1
+T3_worst                     ok    94.68    37.49    13.49   97.77  T3/worst
+T4_identity                  ok    41.55    15.85     5.71   34.13  T4/identity
+T4_paper                     ok    39.18    15.06     2.42   34.13  T4/paper
+T4_q25                       ok    39.26    15.56     2.53   34.13  T4/q25
+T4_sim                       ok    39.08    13.50     5.86   50.18  T4/sim
+T5_identity                  ok    33.69    14.91     3.41   34.83  T5/identity
+T5_paper                     ok    37.63    11.87     3.83   31.79  T5/paper
+T5_q25                       ok    38.75     8.79     6.92   33.44  T5/q25
+T5_q75                       ok    42.76    17.36     3.83   34.83  T5/q75
+T5_sim                       ok    26.60     7.29     4.17   38.02  T5/sim
+T5_simworst                  ok    46.13    17.16     6.39   34.83  T5/simworst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ok      nan      nan      nan     nan  T3/  pairs=27
+bench_T4                     ok      nan      nan      nan     nan  T4/  pairs=28
+bench_T5                     ok      nan      nan      nan     nan  T5/  pairs=28
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_b16                     ok    10.00     5.88     0.55     nan  notc/identity b16
+notc_l3                      ok    13.61     3.00     1.54     nan  notc/identity l3
+notc_nooffload               ok    18.87     1.15     3.39     nan  notc/identity nooffload
+notc_rep1                    ok    23.12     5.89     3.24     nan  notc/identity
+p2d4_T1_dplocal              ok    37.84    10.85     4.25     nan  T1/dplocal
+p2d4_T1_identity             ok    47.11    20.14     3.36     nan  T1/identity
+p2d4_notc_identity           ok    37.30    11.18     3.35     nan  notc/identity
+p8d1_T1_identity             ok    21.16     2.33     4.05     nan  T1/identity
+p8d1_T1_rev                  ok    37.77     2.03     7.99     nan  T1/zigzag
+p8d1_notc_identity           ok    13.17     2.78     1.51     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 08:23:01 PM KST 2026 launching job7 (k8s/calib/job7.json)
+job.batch/dev created
+job.batch/experiment created
+job condition: SuccessCriteriaMet Complete
+fetched 8 pod logs into /home/kyeongmin/distributed_systems_2026_2/results/jobs/job7
+split done
+T5_q25                       ok    38.75     8.79     6.92   33.44  T5/q25
+T5_q75                       ok    42.76    17.36     3.83   34.83  T5/q75
+T5_sim                       ok    26.60     7.29     4.17   38.02  T5/sim
+T5_sim_rep1                  ok    28.02     7.80     4.18   38.02  T5/sim
+T5_sim_rep2                  ok    27.40     7.37     4.17   38.02  T5/sim
+T5_simworst                  ok    46.13    17.16     6.39   34.83  T5/simworst
+T6_identity                  ok    34.90    18.46     2.67   26.75  T6/identity
+T6_paper                     ok    34.02    18.50     2.51   26.75  T6/paper
+T6_q25                       ok    54.55    25.04     3.97   56.64  T6/q25
+T6_q75                       ok    63.40    21.23     9.70   45.47  T6/q75
+T6_sim                       ok    24.80     6.08     4.07   33.27  T6/sim
+T6_simworst                  ok    64.86    25.10     9.10   56.64  T6/simworst
+bench_T1                     ok      nan      nan      nan     nan  T1/  pairs=28
+bench_T2                     ok      nan      nan      nan     nan  T2/  pairs=28
+bench_T3                     ok      nan      nan      nan     nan  T3/  pairs=27
+bench_T4                     ok      nan      nan      nan     nan  T4/  pairs=28
+bench_T5                     ok      nan      nan      nan     nan  T5/  pairs=28
+bench_T6                     ok      nan      nan      nan     nan  T6/  pairs=28
+bench_notc                   ok      nan      nan      nan     nan  notc/  pairs=28
+case3_dplocal_rep0           ok    24.08     5.66     4.02     nan  /
+case3_identity_rep0          ok    27.20    11.36     2.69     nan  /
+case3_worst_rep0             ok    30.46    11.13     4.13     nan  /
+full_notc_rep0               ok    23.49     6.07     3.30     nan  /
+homo_d0_b1                   ok    36.66    13.64     4.83     nan  homo/identity
+homo_d100_b1                 ok   112.22    39.00    17.31     nan  homo/identity
+homo_d10_b0.3                ok   107.37    41.09    15.60     nan  homo/identity
+homo_d10_b1                  ok    36.84    12.58     5.44     nan  homo/identity
+homo_d10_b3.0                ok    21.86     5.83     2.94     nan  homo/identity
+homo_d50_b1                  ok    64.23    19.62    10.29     nan  homo/identity
+notc_b16                     ok    10.00     5.88     0.55     nan  notc/identity b16
+notc_l3                      ok    13.61     3.00     1.54     nan  notc/identity l3
+notc_nooffload               ok    18.87     1.15     3.39     nan  notc/identity nooffload
+notc_rep1                    ok    23.12     5.89     3.24     nan  notc/identity
+p2d4_T1_dplocal              ok    37.84    10.85     4.25     nan  T1/dplocal
+p2d4_T1_identity             ok    47.11    20.14     3.36     nan  T1/identity
+p2d4_notc_identity           ok    37.30    11.18     3.35     nan  notc/identity
+p8d1_T1_identity             ok    21.16     2.33     4.05     nan  T1/identity
+p8d1_T1_rev                  ok    37.77     2.03     7.99     nan  T1/zigzag
+p8d1_notc_identity           ok    13.17     2.78     1.51     nan  notc/identity
+smoke                        ok     1.31     1.04     0.05     nan  /
+Tue Nov  3 09:27:24 PM KST 2026 all batches done

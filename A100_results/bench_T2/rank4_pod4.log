@@ -1,0 +1,4 @@
+rank 4: process group ready
+pair 4-5: latency 10.05 ms, bandwidth 1.53 Gbit/s
+pair 4-6: latency 52.06 ms, bandwidth 0.38 Gbit/s
+pair 4-7: latency 52.05 ms, bandwidth 0.37 Gbit/s

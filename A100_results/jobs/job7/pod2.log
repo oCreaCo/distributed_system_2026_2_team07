@@ -1,0 +1,1517 @@
+rank=2 hostname=experiment-2 ip=10.42.0.241
+[test.py] pod=2 host=experiment-2 runs=17
+[test.py] waiting for pods: experiment-0, experiment-1, experiment-2, experiment-3, experiment-4, experiment-5, experiment-7
+[test.py] peer ips (by pod index): ['10.42.0.244', '10.42.0.238', '10.42.0.241', '10.42.0.242', '10.42.0.243', '10.42.0.239', '10.42.0.237', '10.42.0.240']
+[test.py] $ dpkg -i /workspace/debs/iproute2_5.15.0-1ubuntu2.2_amd64.deb /workspace/debs/libatm1_1%3a2.5.1-4build2_amd64.deb /workspace/debs/libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb /workspace/debs/libbsd0_0.11.5-1_amd64.deb /workspace/debs/libcap2-bin_1%3a2.44-1ubuntu0.22.04.3_amd64.deb /workspace/debs/libelf1_0.186-1ubuntu0.1_amd64.deb /workspace/debs/libmd0_1.0.4-1build1_amd64.deb /workspace/debs/libmnl0_1.0.4-3build2_amd64.deb /workspace/debs/libpam-cap_1%3a2.44-1ubuntu0.22.04.3_amd64.deb /workspace/debs/libxtables12_1.8.7-1ubuntu5.2_amd64.deb
+Selecting previously unselected package iproute2.
+(Reading database ... 6642 files and directories currently installed.)
+Preparing to unpack .../iproute2_5.15.0-1ubuntu2.2_amd64.deb ...
+Unpacking iproute2 (5.15.0-1ubuntu2.2) ...
+Selecting previously unselected package libatm1:amd64.
+Preparing to unpack .../libatm1_1%3a2.5.1-4build2_amd64.deb ...
+Unpacking libatm1:amd64 (1:2.5.1-4build2) ...
+Selecting previously unselected package libbpf0:amd64.
+Preparing to unpack .../libbpf0_1%3a0.5.0-1ubuntu22.04.1_amd64.deb ...
+Unpacking libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Selecting previously unselected package libbsd0:amd64.
+Preparing to unpack .../libbsd0_0.11.5-1_amd64.deb ...
+Unpacking libbsd0:amd64 (0.11.5-1) ...
+Selecting previously unselected package libcap2-bin.
+Preparing to unpack .../libcap2-bin_1%3a2.44-1ubuntu0.22.04.3_amd64.deb ...
+Unpacking libcap2-bin (1:2.44-1ubuntu0.22.04.3) ...
+Selecting previously unselected package libelf1:amd64.
+Preparing to unpack .../libelf1_0.186-1ubuntu0.1_amd64.deb ...
+Unpacking libelf1:amd64 (0.186-1ubuntu0.1) ...
+Selecting previously unselected package libmd0:amd64.
+Preparing to unpack .../libmd0_1.0.4-1build1_amd64.deb ...
+Unpacking libmd0:amd64 (1.0.4-1build1) ...
+Selecting previously unselected package libmnl0:amd64.
+Preparing to unpack .../libmnl0_1.0.4-3build2_amd64.deb ...
+Unpacking libmnl0:amd64 (1.0.4-3build2) ...
+Selecting previously unselected package libpam-cap:amd64.
+Preparing to unpack .../libpam-cap_1%3a2.44-1ubuntu0.22.04.3_amd64.deb ...
+Unpacking libpam-cap:amd64 (1:2.44-1ubuntu0.22.04.3) ...
+Selecting previously unselected package libxtables12:amd64.
+Preparing to unpack .../libxtables12_1.8.7-1ubuntu5.2_amd64.deb ...
+Unpacking libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libatm1:amd64 (1:2.5.1-4build2) ...
+Setting up libcap2-bin (1:2.44-1ubuntu0.22.04.3) ...
+Setting up libelf1:amd64 (0.186-1ubuntu0.1) ...
+Setting up libmd0:amd64 (1.0.4-1build1) ...
+Setting up libmnl0:amd64 (1.0.4-3build2) ...
+Setting up libpam-cap:amd64 (1:2.44-1ubuntu0.22.04.3) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Setting up libxtables12:amd64 (1.8.7-1ubuntu5.2) ...
+Setting up libbpf0:amd64 (1:0.5.0-1ubuntu22.04.1) ...
+Setting up libbsd0:amd64 (0.11.5-1) ...
+Setting up iproute2 (5.15.0-1ubuntu2.2) ...
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC contains: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.34.0 /usr/local/share/perl/5.34.0 /usr/lib/x86_64-linux-gnu/perl5/5.34 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.34 /usr/share/perl/5.34 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 7.)
+debconf: falling back to frontend: Teletype
+Processing triggers for libc-bin (2.35-0ubuntu3.8) ...
+[test.py] barrier run 0: waiting for pods [0, 3, 4]
+[test.py] === run 1/17 tag=T5_sim_rep1 rank=4 master=experiment-0.experiment:29500
+[test.py] $ tc qdisc del dev eth0 root
+Error: Cannot delete qdisc with handle of zero.
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 6
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 3.0ms rate 3.0Gbit limit 202500
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 20.0ms rate 1.5Gbit limit 675000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 45.0ms rate 0.9Gbit limit 911250
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:6
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 6 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 911250 delay 45ms rate 900Mbit
+qdisc netem 40: parent 1:4 limit 202500 delay 3ms rate 3Gbit
+qdisc netem 50: parent 1:5 limit 675000 delay 20ms rate 1500Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29500 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T5_sim_rep1 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 4.94s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 6.79s
+Rank 4 node forward pass 1/2 takes 4.21s
+Rank 4 node backward pass 1/2 takes 6.42s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.31s
+Rank 4 node whole iteration takes 30.66s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.17s
+Rank 4 node backward pass 0/2 takes 6.56s
+Rank 4 node forward pass 1/2 takes 4.22s
+Rank 4 node backward pass 1/2 takes 5.75s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.42s
+Rank 4 node whole iteration takes 29.12s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.16s
+Rank 4 node backward pass 0/2 takes 5.90s
+Rank 4 node forward pass 1/2 takes 4.21s
+Rank 4 node backward pass 1/2 takes 5.97s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.78s
+Rank 4 node whole iteration takes 28.02s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.16s
+Rank 4 node backward pass 0/2 takes 5.80s
+Rank 4 node forward pass 1/2 takes 4.20s
+Rank 4 node backward pass 1/2 takes 5.83s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.57s
+Rank 4 node whole iteration takes 27.56s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.16s
+Rank 4 node backward pass 0/2 takes 5.76s
+Rank 4 node forward pass 1/2 takes 4.18s
+Rank 4 node backward pass 1/2 takes 5.83s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.47s
+Rank 4 node whole iteration takes 27.39s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 28.020969688892365
+[test.py] run T5_sim_rep1 exited with 0
+[test.py] barrier run 1: waiting for pods [0, 1, 3, 4, 5, 6, 7]
+[test.py] === run 2/17 tag=T5_sim_rep2 rank=4 master=experiment-0.experiment:29501
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 6
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 3.0ms rate 3.0Gbit limit 202500
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 20.0ms rate 1.5Gbit limit 675000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 45.0ms rate 0.9Gbit limit 911250
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:6
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 6 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 911250 delay 45ms rate 900Mbit
+qdisc netem 40: parent 1:4 limit 202500 delay 3ms rate 3Gbit
+qdisc netem 50: parent 1:5 limit 675000 delay 20ms rate 1500Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29501 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T5_sim_rep2 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 4.96s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 6.83s
+Rank 4 node forward pass 1/2 takes 4.23s
+Rank 4 node backward pass 1/2 takes 6.85s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.72s
+Rank 4 node whole iteration takes 30.59s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.17s
+Rank 4 node backward pass 0/2 takes 5.97s
+Rank 4 node forward pass 1/2 takes 4.22s
+Rank 4 node backward pass 1/2 takes 5.85s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.47s
+Rank 4 node whole iteration takes 27.69s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.17s
+Rank 4 node backward pass 0/2 takes 5.73s
+Rank 4 node forward pass 1/2 takes 4.21s
+Rank 4 node backward pass 1/2 takes 5.82s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.52s
+Rank 4 node whole iteration takes 27.46s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.18s
+Rank 4 node backward pass 0/2 takes 5.68s
+Rank 4 node forward pass 1/2 takes 4.21s
+Rank 4 node backward pass 1/2 takes 5.75s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.40s
+Rank 4 node whole iteration takes 27.23s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 4.17s
+Rank 4 node backward pass 0/2 takes 5.64s
+Rank 4 node forward pass 1/2 takes 4.20s
+Rank 4 node backward pass 1/2 takes 5.82s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 7.42s
+Rank 4 node whole iteration takes 27.26s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 27.406778573989868
+[test.py] run T5_sim_rep2 exited with 0
+[test.py] barrier run 2: waiting for pods [0, 1, 3, 4, 5, 7]
+[test.py] === run 3/17 tag=T5_paper_rep1 rank=4 master=experiment-4.experiment:29502
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 6
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 3.0ms rate 3.0Gbit limit 202500
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 20.0ms rate 1.5Gbit limit 675000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 45.0ms rate 0.9Gbit limit 911250
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:6
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 6 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 911250 delay 45ms rate 900Mbit
+qdisc netem 40: parent 1:4 limit 202500 delay 3ms rate 3Gbit
+qdisc netem 50: parent 1:5 limit 675000 delay 20ms rate 1500Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-4.experiment:29502 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T5_paper_rep1 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 7.32s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 9.04s
+Rank 4 node forward pass 1/2 takes 6.43s
+Rank 4 node backward pass 1/2 takes 8.34s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 9.79s
+Rank 4 node whole iteration takes 40.92s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.35s
+Rank 4 node backward pass 0/2 takes 8.14s
+Rank 4 node forward pass 1/2 takes 6.33s
+Rank 4 node backward pass 1/2 takes 8.08s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.99s
+Rank 4 node whole iteration takes 37.89s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.34s
+Rank 4 node backward pass 0/2 takes 8.19s
+Rank 4 node forward pass 1/2 takes 6.33s
+Rank 4 node backward pass 1/2 takes 8.17s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.97s
+Rank 4 node whole iteration takes 38.00s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.33s
+Rank 4 node backward pass 0/2 takes 8.39s
+Rank 4 node forward pass 1/2 takes 6.28s
+Rank 4 node backward pass 1/2 takes 8.17s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.97s
+Rank 4 node whole iteration takes 38.13s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.33s
+Rank 4 node backward pass 0/2 takes 8.26s
+Rank 4 node forward pass 1/2 takes 6.33s
+Rank 4 node backward pass 1/2 takes 8.22s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.96s
+Rank 4 node whole iteration takes 38.10s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 38.03160226345062
+[test.py] run T5_paper_rep1 exited with 0
+[test.py] barrier run 3: waiting for pods [1, 4, 6]
+[test.py] === run 4/17 tag=T5_paper_rep2 rank=4 master=experiment-4.experiment:29503
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 6
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 3.0ms rate 3.0Gbit limit 202500
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 20.0ms rate 1.5Gbit limit 675000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 45.0ms rate 0.9Gbit limit 911250
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:6
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 6 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 911250 delay 45ms rate 900Mbit
+qdisc netem 40: parent 1:4 limit 202500 delay 3ms rate 3Gbit
+qdisc netem 50: parent 1:5 limit 675000 delay 20ms rate 1500Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-4.experiment:29503 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T5_paper_rep2 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 7.25s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 9.09s
+Rank 4 node forward pass 1/2 takes 6.60s
+Rank 4 node backward pass 1/2 takes 8.55s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 9.46s
+Rank 4 node whole iteration takes 40.94s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.55s
+Rank 4 node backward pass 0/2 takes 8.36s
+Rank 4 node forward pass 1/2 takes 6.33s
+Rank 4 node backward pass 1/2 takes 8.23s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 9.00s
+Rank 4 node whole iteration takes 38.47s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.34s
+Rank 4 node backward pass 0/2 takes 8.30s
+Rank 4 node forward pass 1/2 takes 6.34s
+Rank 4 node backward pass 1/2 takes 8.24s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.97s
+Rank 4 node whole iteration takes 38.18s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.33s
+Rank 4 node backward pass 0/2 takes 8.25s
+Rank 4 node forward pass 1/2 takes 6.34s
+Rank 4 node backward pass 1/2 takes 8.09s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.99s
+Rank 4 node whole iteration takes 38.00s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.34s
+Rank 4 node backward pass 0/2 takes 8.28s
+Rank 4 node forward pass 1/2 takes 6.34s
+Rank 4 node backward pass 1/2 takes 8.18s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 8.96s
+Rank 4 node whole iteration takes 38.12s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 38.191304326057434
+[test.py] run T5_paper_rep2 exited with 0
+[test.py] barrier run 4: waiting for pods [0, 1, 4, 6]
+[test.py] === run 5/17 tag=T4_sim_rep1 rank=4 master=experiment-0.experiment:29504
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 5
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 30.0ms rate 0.8Gbit limit 540000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:5
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 5 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 40: parent 1:4 limit 180000 delay 2ms rate 4Gbit
+qdisc netem 50: parent 1:5 limit 540000 delay 30ms rate 800Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29504 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T4_sim_rep1 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 6.60s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 7.60s
+Rank 4 node forward pass 1/2 takes 6.13s
+Rank 4 node backward pass 1/2 takes 7.22s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 14.01s
+Rank 4 node whole iteration takes 41.57s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.02s
+Rank 4 node backward pass 0/2 takes 7.01s
+Rank 4 node forward pass 1/2 takes 6.06s
+Rank 4 node backward pass 1/2 takes 6.83s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.56s
+Rank 4 node whole iteration takes 39.48s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.01s
+Rank 4 node backward pass 0/2 takes 6.74s
+Rank 4 node forward pass 1/2 takes 6.01s
+Rank 4 node backward pass 1/2 takes 6.84s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.59s
+Rank 4 node whole iteration takes 39.18s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.01s
+Rank 4 node backward pass 0/2 takes 6.75s
+Rank 4 node forward pass 1/2 takes 6.02s
+Rank 4 node backward pass 1/2 takes 6.83s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.54s
+Rank 4 node whole iteration takes 39.14s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.01s
+Rank 4 node backward pass 0/2 takes 6.76s
+Rank 4 node forward pass 1/2 takes 6.01s
+Rank 4 node backward pass 1/2 takes 6.79s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.55s
+Rank 4 node whole iteration takes 39.12s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 39.23204290866852
+[test.py] run T4_sim_rep1 exited with 0
+[test.py] barrier run 5: waiting for pods [0, 1, 3, 4, 5, 6, 7]
+[test.py] === run 6/17 tag=T4_sim_rep2 rank=4 master=experiment-0.experiment:29505
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 5
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 30.0ms rate 0.8Gbit limit 540000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:5
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 5 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 40: parent 1:4 limit 180000 delay 2ms rate 4Gbit
+qdisc netem 50: parent 1:5 limit 540000 delay 30ms rate 800Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29505 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T4_sim_rep2 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 6.63s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 7.75s
+Rank 4 node forward pass 1/2 takes 6.05s
+Rank 4 node backward pass 1/2 takes 7.12s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 14.08s
+Rank 4 node whole iteration takes 41.63s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.03s
+Rank 4 node backward pass 0/2 takes 6.81s
+Rank 4 node forward pass 1/2 takes 6.01s
+Rank 4 node backward pass 1/2 takes 6.89s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.54s
+Rank 4 node whole iteration takes 39.29s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.01s
+Rank 4 node backward pass 0/2 takes 6.76s
+Rank 4 node forward pass 1/2 takes 6.01s
+Rank 4 node backward pass 1/2 takes 6.84s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.56s
+Rank 4 node whole iteration takes 39.19s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.01s
+Rank 4 node backward pass 0/2 takes 6.76s
+Rank 4 node forward pass 1/2 takes 6.02s
+Rank 4 node backward pass 1/2 takes 6.86s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.54s
+Rank 4 node whole iteration takes 39.20s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 6.01s
+Rank 4 node backward pass 0/2 takes 6.71s
+Rank 4 node forward pass 1/2 takes 6.01s
+Rank 4 node backward pass 1/2 takes 6.85s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 13.55s
+Rank 4 node whole iteration takes 39.13s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 39.20003169775009
+[test.py] run T4_sim_rep2 exited with 0
+[test.py] barrier run 6: waiting for pods [0, 1, 3, 4, 6, 7]
+[test.py] === run 7/17 tag=T4_paper_rep1 rank=7 master=experiment-4.experiment:29506
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 5
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 30.0ms rate 0.8Gbit limit 540000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:5
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 5 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 40: parent 1:4 limit 180000 delay 2ms rate 4Gbit
+qdisc netem 50: parent 1:5 limit 540000 delay 30ms rate 800Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-4.experiment:29506 --world-size 8 --rank 7 --cuda-id 0 --trace-postfix T4_paper_rep1 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 3
+Initialize NCCLCommunicator: < data_group_3 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 306350082, element size: 2, total size 584 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 306350082, element size: 2.
+Flattened parameter grad number: 306350082, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 7 node forward pass 0/2 takes 7.77s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 7 node backward pass 0/2 takes 7.02s
+Rank 7 node forward pass 1/2 takes 7.39s
+Rank 7 node backward pass 1/2 takes 6.39s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 16.76s
+Rank 7 node whole iteration takes 45.32s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.19s
+Rank 7 node backward pass 0/2 takes 6.26s
+Rank 7 node forward pass 1/2 takes 6.77s
+Rank 7 node backward pass 1/2 takes 6.20s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.13s
+Rank 7 node whole iteration takes 39.55s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.12s
+Rank 7 node backward pass 0/2 takes 6.24s
+Rank 7 node forward pass 1/2 takes 6.72s
+Rank 7 node backward pass 1/2 takes 6.21s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.25s
+Rank 7 node whole iteration takes 39.54s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.12s
+Rank 7 node backward pass 0/2 takes 6.13s
+Rank 7 node forward pass 1/2 takes 6.77s
+Rank 7 node backward pass 1/2 takes 6.18s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.12s
+Rank 7 node whole iteration takes 39.32s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.11s
+Rank 7 node backward pass 0/2 takes 6.14s
+Rank 7 node forward pass 1/2 takes 6.79s
+Rank 7 node backward pass 1/2 takes 6.16s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.26s
+Rank 7 node whole iteration takes 39.46s
+-------------------------------------------
+[test.py] run T4_paper_rep1 exited with 0
+[test.py] barrier run 7: waiting for pods [0, 3, 4, 5, 7]
+[test.py] === run 8/17 tag=T4_paper_rep2 rank=7 master=experiment-4.experiment:29507
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 5
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 30.0ms rate 0.8Gbit limit 540000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:5
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 5 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 40: parent 1:4 limit 180000 delay 2ms rate 4Gbit
+qdisc netem 50: parent 1:5 limit 540000 delay 30ms rate 800Mbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-4.experiment:29507 --world-size 8 --rank 7 --cuda-id 0 --trace-postfix T4_paper_rep2 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 3
+Initialize NCCLCommunicator: < data_group_3 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 306350082, element size: 2, total size 584 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 306350082, element size: 2.
+Flattened parameter grad number: 306350082, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 7 node forward pass 0/2 takes 6.70s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 7 node backward pass 0/2 takes 6.96s
+Rank 7 node forward pass 1/2 takes 6.83s
+Rank 7 node backward pass 1/2 takes 6.41s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 16.98s
+Rank 7 node whole iteration takes 43.88s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.10s
+Rank 7 node backward pass 0/2 takes 6.26s
+Rank 7 node forward pass 1/2 takes 6.82s
+Rank 7 node backward pass 1/2 takes 6.22s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.11s
+Rank 7 node whole iteration takes 39.52s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.09s
+Rank 7 node backward pass 0/2 takes 6.11s
+Rank 7 node forward pass 1/2 takes 6.82s
+Rank 7 node backward pass 1/2 takes 6.20s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.23s
+Rank 7 node whole iteration takes 39.45s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.10s
+Rank 7 node backward pass 0/2 takes 6.16s
+Rank 7 node forward pass 1/2 takes 6.80s
+Rank 7 node backward pass 1/2 takes 6.13s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.11s
+Rank 7 node whole iteration takes 39.30s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 6.09s
+Rank 7 node backward pass 0/2 takes 6.08s
+Rank 7 node forward pass 1/2 takes 6.73s
+Rank 7 node backward pass 1/2 takes 6.16s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 14.14s
+Rank 7 node whole iteration takes 39.21s
+-------------------------------------------
+[test.py] run T4_paper_rep2 exited with 0
+[test.py] barrier run 8: waiting for pods [0, 1, 3, 4, 5, 7]
+[test.py] === run 9/17 tag=T2_simbest_rep1 rank=4 master=experiment-6.experiment:29508
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 67.0ms rate 1.15Gbit limit 1733624
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 10.0ms rate 2.0Gbit limit 450000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 12.0ms rate 1.25Gbit limit 337500
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 49.0ms rate 1.1Gbit limit 1212750
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 337500 delay 12ms rate 1250Mbit
+qdisc netem 40: parent 1:4 limit 1733624 delay 67ms rate 1150Mbit
+qdisc netem 70: parent 1:7 limit 1212750 delay 49ms rate 1100Mbit
+qdisc netem 50: parent 1:5 limit 450000 delay 10ms rate 2Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-6.experiment:29508 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T2_simbest_rep1 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 4.72s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 6.83s
+Rank 4 node forward pass 1/2 takes 4.05s
+Rank 4 node backward pass 1/2 takes 6.40s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 22.09s
+Rank 4 node whole iteration takes 44.08s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.96s
+Rank 4 node backward pass 0/2 takes 6.11s
+Rank 4 node forward pass 1/2 takes 3.99s
+Rank 4 node backward pass 1/2 takes 6.15s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.43s
+Rank 4 node whole iteration takes 39.64s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.95s
+Rank 4 node backward pass 0/2 takes 6.04s
+Rank 4 node forward pass 1/2 takes 3.99s
+Rank 4 node backward pass 1/2 takes 5.98s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.54s
+Rank 4 node whole iteration takes 39.51s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.96s
+Rank 4 node backward pass 0/2 takes 5.94s
+Rank 4 node forward pass 1/2 takes 3.99s
+Rank 4 node backward pass 1/2 takes 6.29s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.40s
+Rank 4 node whole iteration takes 39.58s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.96s
+Rank 4 node backward pass 0/2 takes 5.88s
+Rank 4 node forward pass 1/2 takes 4.00s
+Rank 4 node backward pass 1/2 takes 6.22s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.42s
+Rank 4 node whole iteration takes 39.48s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 39.55064433813095
+[test.py] run T2_simbest_rep1 exited with 0
+[test.py] barrier run 9: waiting for pods [4, 5]
+[test.py] === run 10/17 tag=T2_simbest_rep2 rank=4 master=experiment-6.experiment:29509
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 67.0ms rate 1.15Gbit limit 1733624
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 10.0ms rate 2.0Gbit limit 450000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 12.0ms rate 1.25Gbit limit 337500
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 49.0ms rate 1.1Gbit limit 1212750
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 337500 delay 12ms rate 1250Mbit
+qdisc netem 40: parent 1:4 limit 1733624 delay 67ms rate 1150Mbit
+qdisc netem 70: parent 1:7 limit 1212750 delay 49ms rate 1100Mbit
+qdisc netem 50: parent 1:5 limit 450000 delay 10ms rate 2Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-6.experiment:29509 --world-size 8 --rank 4 --cuda-id 0 --trace-postfix T2_simbest_rep2 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 0
+Initialize NCCLCommunicator: < data_group_0 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 365731840, element size: 2, total size 697 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 365731840, element size: 2.
+Flattened parameter grad number: 365731840, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 4 node forward pass 0/2 takes 4.71s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 4 node backward pass 0/2 takes 7.05s
+Rank 4 node forward pass 1/2 takes 4.05s
+Rank 4 node backward pass 1/2 takes 6.67s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 22.13s
+Rank 4 node whole iteration takes 44.60s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.96s
+Rank 4 node backward pass 0/2 takes 6.04s
+Rank 4 node forward pass 1/2 takes 3.99s
+Rank 4 node backward pass 1/2 takes 6.16s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.41s
+Rank 4 node whole iteration takes 39.56s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.95s
+Rank 4 node backward pass 0/2 takes 5.87s
+Rank 4 node forward pass 1/2 takes 3.98s
+Rank 4 node backward pass 1/2 takes 6.05s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.43s
+Rank 4 node whole iteration takes 39.30s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.96s
+Rank 4 node backward pass 0/2 takes 5.94s
+Rank 4 node forward pass 1/2 takes 4.01s
+Rank 4 node backward pass 1/2 takes 6.15s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.41s
+Rank 4 node whole iteration takes 39.48s
+-------------------------------------------
+Rank 4 node forward pass 0/2 takes 3.96s
+Rank 4 node backward pass 0/2 takes 6.04s
+Rank 4 node forward pass 1/2 takes 4.00s
+Rank 4 node backward pass 1/2 takes 6.01s
+cpu cpu cuda:0
+Rank 4 node optimizer step takes 19.43s
+Rank 4 node whole iteration takes 39.43s
+-------------------------------------------
+Finished running  5  iterations, averaged (exclude the first iter) run time: 39.44360131025314
+[test.py] run T2_simbest_rep2 exited with 0
+[test.py] barrier run 10: waiting for pods [0, 3, 5, 6]
+[test.py] === run 11/17 tag=bench_T6 rank=2 master=experiment-0.experiment:29510
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u /workspace/nccl_bench.py --out /workspace/results/bench_T6/bench.json
+rank 2: process group ready
+pair 2-3: latency 2.05 ms, bandwidth 3.42 Gbit/s
+pair 2-4: latency 15.05 ms, bandwidth 0.89 Gbit/s
+pair 2-5: latency 15.05 ms, bandwidth 0.89 Gbit/s
+pair 2-6: latency 30.06 ms, bandwidth 0.42 Gbit/s
+pair 2-7: latency 30.06 ms, bandwidth 0.42 Gbit/s
+[test.py] run bench_T6 exited with 0
+[test.py] barrier run 11: waiting for pods [1, 3, 5, 6, 7]
+[test.py] === run 12/17 tag=T6_identity rank=2 master=experiment-0.experiment:29511
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29511 --world-size 8 --rank 2 --cuda-id 0 --trace-postfix T6_identity --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 2
+Initialize NCCLCommunicator: < data_group_2 >; rank: 0
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 2 node forward pass 0/2 takes 3.48s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 2 node backward pass 0/2 takes 5.93s
+Rank 2 node forward pass 1/2 takes 3.56s
+Rank 2 node backward pass 1/2 takes 5.84s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 22.71s
+Rank 2 node whole iteration takes 41.52s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.62s
+Rank 2 node backward pass 0/2 takes 5.39s
+Rank 2 node forward pass 1/2 takes 3.15s
+Rank 2 node backward pass 1/2 takes 5.23s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.63s
+Rank 2 node whole iteration takes 35.01s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.55s
+Rank 2 node backward pass 0/2 takes 5.48s
+Rank 2 node forward pass 1/2 takes 3.24s
+Rank 2 node backward pass 1/2 takes 5.21s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.51s
+Rank 2 node whole iteration takes 35.00s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.69s
+Rank 2 node backward pass 0/2 takes 5.37s
+Rank 2 node forward pass 1/2 takes 3.09s
+Rank 2 node backward pass 1/2 takes 5.08s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.79s
+Rank 2 node whole iteration takes 35.02s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.66s
+Rank 2 node backward pass 0/2 takes 5.27s
+Rank 2 node forward pass 1/2 takes 3.16s
+Rank 2 node backward pass 1/2 takes 5.18s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.62s
+Rank 2 node whole iteration takes 34.89s
+-------------------------------------------
+[test.py] run T6_identity exited with 0
+[test.py] barrier run 12: waiting for pods [0, 1, 4, 5]
+[test.py] === run 13/17 tag=T6_paper rank=2 master=experiment-1.experiment:29512
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-1.experiment:29512 --world-size 8 --rank 2 --cuda-id 0 --trace-postfix T6_paper --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 2
+Initialize NCCLCommunicator: < data_group_2 >; rank: 0
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 2 node forward pass 0/2 takes 3.05s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 2 node backward pass 0/2 takes 5.69s
+Rank 2 node forward pass 1/2 takes 3.39s
+Rank 2 node backward pass 1/2 takes 5.45s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 20.70s
+Rank 2 node whole iteration takes 38.28s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.51s
+Rank 2 node backward pass 0/2 takes 5.06s
+Rank 2 node forward pass 1/2 takes 2.92s
+Rank 2 node backward pass 1/2 takes 5.03s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.63s
+Rank 2 node whole iteration takes 34.16s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.52s
+Rank 2 node backward pass 0/2 takes 5.01s
+Rank 2 node forward pass 1/2 takes 3.00s
+Rank 2 node backward pass 1/2 takes 5.05s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.59s
+Rank 2 node whole iteration takes 34.17s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.51s
+Rank 2 node backward pass 0/2 takes 4.91s
+Rank 2 node forward pass 1/2 takes 2.89s
+Rank 2 node backward pass 1/2 takes 5.03s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.67s
+Rank 2 node whole iteration takes 34.00s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 2.51s
+Rank 2 node backward pass 0/2 takes 5.00s
+Rank 2 node forward pass 1/2 takes 2.95s
+Rank 2 node backward pass 1/2 takes 4.85s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 18.72s
+Rank 2 node whole iteration takes 34.04s
+-------------------------------------------
+[test.py] run T6_paper exited with 0
+[test.py] === run 14/17 tag=T6_sim rank=1 master=experiment-0.experiment:29513
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29513 --world-size 8 --rank 1 --cuda-id 0 --trace-postfix T6_sim --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 1
+Initialize NCCLCommunicator: < data_group_1 >; rank: 0
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 1 node forward pass 0/2 takes 4.93s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 1 node backward pass 0/2 takes 5.89s
+Rank 1 node forward pass 1/2 takes 4.30s
+Rank 1 node backward pass 1/2 takes 5.77s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 7.14s
+Rank 1 node whole iteration takes 28.02s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 4.24s
+Rank 1 node backward pass 0/2 takes 5.11s
+Rank 1 node forward pass 1/2 takes 4.25s
+Rank 1 node backward pass 1/2 takes 5.14s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 6.23s
+Rank 1 node whole iteration takes 24.97s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 4.22s
+Rank 1 node backward pass 0/2 takes 5.14s
+Rank 1 node forward pass 1/2 takes 4.25s
+Rank 1 node backward pass 1/2 takes 5.09s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 5.86s
+Rank 1 node whole iteration takes 24.56s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 4.24s
+Rank 1 node backward pass 0/2 takes 5.05s
+Rank 1 node forward pass 1/2 takes 4.27s
+Rank 1 node backward pass 1/2 takes 5.05s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 6.17s
+Rank 1 node whole iteration takes 24.78s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 4.24s
+Rank 1 node backward pass 0/2 takes 5.07s
+Rank 1 node forward pass 1/2 takes 4.28s
+Rank 1 node backward pass 1/2 takes 5.09s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 6.29s
+Rank 1 node whole iteration takes 24.98s
+-------------------------------------------
+[test.py] run T6_sim exited with 0
+[test.py] barrier run 14: waiting for pods [0]
+[test.py] === run 15/17 tag=T6_simworst rank=1 master=experiment-0.experiment:29514
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-0.experiment:29514 --world-size 8 --rank 1 --cuda-id 0 --trace-postfix T6_simworst --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 1
+Initialize NCCLCommunicator: < data_group_1 >; rank: 0
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 1 node forward pass 0/2 takes 10.62s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 1 node backward pass 0/2 takes 10.88s
+Rank 1 node forward pass 1/2 takes 9.52s
+Rank 1 node backward pass 1/2 takes 10.36s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 26.32s
+Rank 1 node whole iteration takes 67.70s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 9.49s
+Rank 1 node backward pass 0/2 takes 10.36s
+Rank 1 node forward pass 1/2 takes 9.52s
+Rank 1 node backward pass 1/2 takes 10.36s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 25.15s
+Rank 1 node whole iteration takes 64.88s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 9.49s
+Rank 1 node backward pass 0/2 takes 10.36s
+Rank 1 node forward pass 1/2 takes 9.52s
+Rank 1 node backward pass 1/2 takes 10.36s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 25.16s
+Rank 1 node whole iteration takes 64.88s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 9.48s
+Rank 1 node backward pass 0/2 takes 10.36s
+Rank 1 node forward pass 1/2 takes 9.51s
+Rank 1 node backward pass 1/2 takes 10.37s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 25.14s
+Rank 1 node whole iteration takes 64.86s
+-------------------------------------------
+Rank 1 node forward pass 0/2 takes 9.50s
+Rank 1 node backward pass 0/2 takes 10.36s
+Rank 1 node forward pass 1/2 takes 9.52s
+Rank 1 node backward pass 1/2 takes 10.36s
+cpu cpu cuda:0
+Rank 1 node optimizer step takes 25.15s
+Rank 1 node whole iteration takes 64.89s
+-------------------------------------------
+[test.py] run T6_simworst exited with 0
+[test.py] barrier run 15: waiting for pods [0, 1, 3, 4, 5, 6, 7]
+[test.py] === run 16/17 tag=T6_q25 rank=7 master=experiment-5.experiment:29515
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-5.experiment:29515 --world-size 8 --rank 7 --cuda-id 0 --trace-postfix T6_q25 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 3
+Initialize NCCLCommunicator: < data_group_3 >; rank: 1
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 306350082, element size: 2, total size 584 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 306350082, element size: 2.
+Flattened parameter grad number: 306350082, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 7 node forward pass 0/2 takes 9.40s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 7 node backward pass 0/2 takes 9.57s
+Rank 7 node forward pass 1/2 takes 8.68s
+Rank 7 node backward pass 1/2 takes 8.13s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 22.12s
+Rank 7 node whole iteration takes 57.90s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 8.40s
+Rank 7 node backward pass 0/2 takes 7.99s
+Rank 7 node forward pass 1/2 takes 8.66s
+Rank 7 node backward pass 1/2 takes 7.96s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 21.60s
+Rank 7 node whole iteration takes 54.62s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 8.39s
+Rank 7 node backward pass 0/2 takes 7.96s
+Rank 7 node forward pass 1/2 takes 8.68s
+Rank 7 node backward pass 1/2 takes 7.96s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 21.60s
+Rank 7 node whole iteration takes 54.60s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 8.41s
+Rank 7 node backward pass 0/2 takes 7.97s
+Rank 7 node forward pass 1/2 takes 8.68s
+Rank 7 node backward pass 1/2 takes 7.97s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 21.60s
+Rank 7 node whole iteration takes 54.63s
+-------------------------------------------
+Rank 7 node forward pass 0/2 takes 8.39s
+Rank 7 node backward pass 0/2 takes 7.97s
+Rank 7 node forward pass 1/2 takes 8.68s
+Rank 7 node backward pass 1/2 takes 7.97s
+cpu cpu cuda:0
+Rank 7 node optimizer step takes 21.60s
+Rank 7 node whole iteration takes 54.61s
+-------------------------------------------
+[test.py] run T6_q25 exited with 0
+[test.py] barrier run 16: waiting for pods [0, 1, 3, 5, 6, 7]
+[test.py] === run 17/17 tag=T6_q75 rank=6 master=experiment-6.experiment:29516
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] $ tc qdisc add dev eth0 root handle 1: prio bands 7
+[test.py] $ tc qdisc add dev eth0 parent 1:4 handle 40: netem delay 8.0ms rate 2.0Gbit limit 360000
+[test.py] $ tc qdisc add dev eth0 parent 1:5 handle 50: netem delay 2.0ms rate 4.0Gbit limit 180000
+[test.py] $ tc qdisc add dev eth0 parent 1:6 handle 60: netem delay 15.0ms rate 1.2Gbit limit 405000
+[test.py] $ tc qdisc add dev eth0 parent 1:7 handle 70: netem delay 30.0ms rate 0.6Gbit limit 405000
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.244/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.238/32 flowid 1:4
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.242/32 flowid 1:5
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.243/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.239/32 flowid 1:6
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.237/32 flowid 1:7
+[test.py] $ tc filter add dev eth0 parent 1:0 protocol ip prio 1 u32 match ip dst 10.42.0.240/32 flowid 1:7
+[test.py] $ tc qdisc show dev eth0
+qdisc prio 1: root refcnt 129 bands 7 priomap 1 2 2 2 1 2 0 0 1 1 1 1 1 1 1 1
+qdisc netem 60: parent 1:6 limit 405000 delay 15ms rate 1200Mbit
+qdisc netem 40: parent 1:4 limit 360000 delay 8ms rate 2Gbit
+qdisc netem 70: parent 1:7 limit 405000 delay 30ms rate 600Mbit
+qdisc netem 50: parent 1:5 limit 180000 delay 2ms rate 4Gbit
+[test.py] $ /workspace/venv/bin/python -u dist_runner.py --dist-url tcp://experiment-6.experiment:29516 --world-size 8 --rank 6 --cuda-id 0 --trace-postfix T6_q75 --pp-mode gpipe --dp-mode central_ps --pipeline-group-size 4 --data-group-size 2 --embedding-dim 2048 --num-heads 16 --fp16 --num-layers 6 --batch-size 64 --micro-batch-size 1 --gradient-accumulate-step 2 --num-iters 5 --train-data ./task_datasets/data/QQP/train_small.tsv
+Initialize NCCLCommunicator: < pipeline_group_1 >; rank: 2
+Initialize NCCLCommunicator: < data_group_2 >; rank: 1
+Running  gpipe  with data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+Data parallel implementation:  central_ps
+Total number of parameters: 302149632, element size: 2, total size 576 MB.
+/workspace/DT-FM/data_parallel/flatten_utils.py:23: UserWarning: TypedStorage is deprecated. It will be removed in the future and UntypedStorage will be the only storage class. This should only matter to you if you are using storages directly.  To access UntypedStorage directly, use tensor.untyped_storage() instead of tensor.storage()
+  flatten_weights_storage = flatten_weights_tensor.storage()
+Flattened parameter number: 302149632, element size: 2.
+Flattened parameter grad number: 302149632, element size: 2.
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 6 node forward pass 0/2 takes 6.34s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 6 node backward pass 0/2 takes 11.99s
+Rank 6 node forward pass 1/2 takes 5.68s
+Rank 6 node backward pass 1/2 takes 15.88s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 26.26s
+Rank 6 node whole iteration takes 66.15s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 5.48s
+Rank 6 node backward pass 0/2 takes 11.11s
+Rank 6 node forward pass 1/2 takes 5.71s
+Rank 6 node backward pass 1/2 takes 15.43s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 25.66s
+Rank 6 node whole iteration takes 63.38s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 5.51s
+Rank 6 node backward pass 0/2 takes 11.04s
+Rank 6 node forward pass 1/2 takes 5.68s
+Rank 6 node backward pass 1/2 takes 15.48s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 25.68s
+Rank 6 node whole iteration takes 63.39s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 5.50s
+Rank 6 node backward pass 0/2 takes 11.05s
+Rank 6 node forward pass 1/2 takes 5.66s
+Rank 6 node backward pass 1/2 takes 15.42s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 25.76s
+Rank 6 node whole iteration takes 63.39s
+-------------------------------------------
+Rank 6 node forward pass 0/2 takes 5.48s
+Rank 6 node backward pass 0/2 takes 11.18s
+Rank 6 node forward pass 1/2 takes 5.67s
+Rank 6 node backward pass 1/2 takes 15.34s
+cpu cpu cuda:0
+Rank 6 node optimizer step takes 25.71s
+Rank 6 node whole iteration takes 63.38s
+-------------------------------------------
+[test.py] run T6_q75 exited with 0
+[test.py] $ tc qdisc del dev eth0 root
+[test.py] batch done: T5_sim_rep1=0, T5_sim_rep2=0, T5_paper_rep1=0, T5_paper_rep2=0, T4_sim_rep1=0, T4_sim_rep2=0, T4_paper_rep1=0, T4_paper_rep2=0, T2_simbest_rep1=0, T2_simbest_rep2=0, bench_T6=0, T6_identity=0, T6_paper=0, T6_sim=0, T6_simworst=0, T6_q25=0, T6_q75=0

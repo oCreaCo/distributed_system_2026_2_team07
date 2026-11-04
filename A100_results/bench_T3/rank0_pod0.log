@@ -1,0 +1,9 @@
+rank 0: process group ready
+pair 0-1: latency 16.80 ms, bandwidth 0.62 Gbit/s
+pair 0-2: latency 12.30 ms, bandwidth 0.88 Gbit/s
+pair 0-3: latency 24.05 ms, bandwidth 0.38 Gbit/s
+pair 0-4: latency 31.05 ms, bandwidth 0.32 Gbit/s
+pair 0-5: latency 34.06 ms, bandwidth 0.28 Gbit/s
+pair 0-6: latency 35.81 ms, bandwidth 0.26 Gbit/s
+pair 0-7: latency 31.05 ms, bandwidth 0.32 Gbit/s
+[rank0]:[E1103 10:03:05.713165206 ProcessGroupNCCL.cpp:1664] [PG 0 (default_pg) Rank 0] Exception (either an error or timeout) detected by watchdog at work: 54, last enqueued NCCL work: 54, last completed NCCL work: 53.
