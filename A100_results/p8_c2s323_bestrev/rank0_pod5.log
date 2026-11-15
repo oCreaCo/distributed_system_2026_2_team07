@@ -1,0 +1,72 @@
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 0
+> building BertWordPieceLowerCase tokenizer ...
+ > padded vocab (size: 28998) with 58 dummy tokens (new size: 29056)
+token vocab size: 28998
+ > building QQP dataset for training:
+  > paths: ./task_datasets/data/QQP/train_small.tsv
+ > Processing ./task_datasets/data/QQP/train_small.tsv ...
+    reading id, question1, question2, and is_duplicate columns ...
+ >> processed 2000 samples.
+  >> total number of samples: 2000
+Running  gpipe  without data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 0 node forward pass 0/2 takes 15.72s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 0 node backward pass 0/2 takes 17.97s
+Rank 0 node forward pass 1/2 takes 14.47s
+Rank 0 node backward pass 1/2 takes 17.05s
+cpu cpu cuda:0
+Rank 0 node optimizer step takes 1.06s
+Rank 0 node whole iteration takes 66.27s
+-------------------------------------------
+Rank 0 node forward pass 0/2 takes 14.46s
+Rank 0 node backward pass 0/2 takes 17.17s
+Rank 0 node forward pass 1/2 takes 14.46s
+Rank 0 node backward pass 1/2 takes 17.17s
+cpu cpu cuda:0
+Rank 0 node optimizer step takes 0.97s
+Rank 0 node whole iteration takes 64.22s
+-------------------------------------------
+Rank 0 node forward pass 0/2 takes 14.46s
+Rank 0 node backward pass 0/2 takes 17.15s
+Rank 0 node forward pass 1/2 takes 14.46s
+Rank 0 node backward pass 1/2 takes 17.18s
+cpu cpu cuda:0
+Rank 0 node optimizer step takes 0.87s
+Rank 0 node whole iteration takes 64.12s
+-------------------------------------------
+Rank 0 node forward pass 0/2 takes 14.46s
+Rank 0 node backward pass 0/2 takes 17.16s
+Rank 0 node forward pass 1/2 takes 14.46s
+Rank 0 node backward pass 1/2 takes 17.18s
+cpu cpu cuda:0
+Rank 0 node optimizer step takes 0.85s
+Rank 0 node whole iteration takes 64.10s
+-------------------------------------------
+Rank 0 node forward pass 0/2 takes 14.46s
+Rank 0 node backward pass 0/2 takes 17.16s
+Rank 0 node forward pass 1/2 takes 14.46s
+Rank 0 node backward pass 1/2 takes 17.17s
+cpu cpu cuda:0
+Rank 0 node optimizer step takes 0.76s
+Rank 0 node whole iteration takes 64.01s
+-------------------------------------------
+Rank 0 node forward pass 0/2 takes 14.47s
+Rank 0 node backward pass 0/2 takes 17.17s
+Rank 0 node forward pass 1/2 takes 14.46s
+Rank 0 node backward pass 1/2 takes 17.17s
+cpu cpu cuda:0
+Rank 0 node optimizer step takes 1.12s
+Rank 0 node whole iteration takes 64.39s
+-------------------------------------------
+Finished running  6  iterations, averaged (exclude the first iter) run time: 64.16844787597657

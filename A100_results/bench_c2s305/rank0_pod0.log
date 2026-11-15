@@ -1,0 +1,9 @@
+rank 0: process group ready
+pair 0-1: latency 39.15 ms, bandwidth 0.52 Gbit/s
+pair 0-2: latency 10.48 ms, bandwidth 0.89 Gbit/s
+pair 0-3: latency 62.18 ms, bandwidth 0.22 Gbit/s
+pair 0-4: latency 39.16 ms, bandwidth 0.51 Gbit/s
+pair 0-5: latency 39.16 ms, bandwidth 0.51 Gbit/s
+pair 0-6: latency 39.15 ms, bandwidth 0.51 Gbit/s
+pair 0-7: latency 10.48 ms, bandwidth 0.89 Gbit/s
+wrote /workspace/results/bench_c2s305/bench.json (28 pairs)

@@ -1,0 +1,62 @@
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 5
+Running  gpipe  without data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 5 node forward pass 0/2 takes 18.07s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 5 node backward pass 0/2 takes 17.85s
+Rank 5 node forward pass 1/2 takes 16.60s
+Rank 5 node backward pass 1/2 takes 16.22s
+cpu cpu cuda:0
+Rank 5 node optimizer step takes 2.26s
+Rank 5 node whole iteration takes 71.00s
+-------------------------------------------
+Rank 5 node forward pass 0/2 takes 15.73s
+Rank 5 node backward pass 0/2 takes 16.19s
+Rank 5 node forward pass 1/2 takes 16.68s
+Rank 5 node backward pass 1/2 takes 16.22s
+cpu cpu cuda:0
+Rank 5 node optimizer step takes 1.66s
+Rank 5 node whole iteration takes 66.50s
+-------------------------------------------
+Rank 5 node forward pass 0/2 takes 15.78s
+Rank 5 node backward pass 0/2 takes 16.20s
+Rank 5 node forward pass 1/2 takes 16.67s
+Rank 5 node backward pass 1/2 takes 16.23s
+cpu cpu cuda:0
+Rank 5 node optimizer step takes 1.67s
+Rank 5 node whole iteration takes 66.55s
+-------------------------------------------
+Rank 5 node forward pass 0/2 takes 15.74s
+Rank 5 node backward pass 0/2 takes 16.20s
+Rank 5 node forward pass 1/2 takes 16.63s
+Rank 5 node backward pass 1/2 takes 16.16s
+cpu cpu cuda:0
+Rank 5 node optimizer step takes 1.64s
+Rank 5 node whole iteration takes 66.36s
+-------------------------------------------
+Rank 5 node forward pass 0/2 takes 15.73s
+Rank 5 node backward pass 0/2 takes 16.20s
+Rank 5 node forward pass 1/2 takes 16.62s
+Rank 5 node backward pass 1/2 takes 16.17s
+cpu cpu cuda:0
+Rank 5 node optimizer step takes 1.68s
+Rank 5 node whole iteration takes 66.41s
+-------------------------------------------
+Rank 5 node forward pass 0/2 takes 15.75s
+Rank 5 node backward pass 0/2 takes 16.22s
+Rank 5 node forward pass 1/2 takes 16.62s
+Rank 5 node backward pass 1/2 takes 16.16s
+cpu cpu cuda:0
+Rank 5 node optimizer step takes 1.74s
+Rank 5 node whole iteration takes 66.50s
+-------------------------------------------

@@ -1,0 +1,62 @@
+Initialize NCCLCommunicator: < pipeline_group_0 >; rank: 2
+Running  gpipe  without data parallel.
+=======Initialize Gpipe.
+=======Gpipe use FP16
+=======Gradient accumulate step:  2
+=======Current micro-batch send/recv size: 8 MB (fp16)
+=======Number of micro-batches: 64.
+fp16 uses ConstantGradScaler.
+/workspace/DT-FM/optimizer/grad_scalar.py:11: UserWarning: The torch.cuda.*DtypeTensor constructors are no longer recommended. It's best to use methods such as torch.tensor(data, dtype=*, device='cuda') to create tensors. (Triggered internally at ../torch/csrc/tensor/python_tensor.cpp:78.)
+  self._scale = torch.cuda.FloatTensor([initial_scale]) if not offload else torch.FloatTensor([initial_scale])
+/opt/conda/lib/python3.11/site-packages/torch/_dynamo/eval_frame.py:600: UserWarning: torch.utils.checkpoint: the use_reentrant parameter should be passed explicitly. In version 2.4 we will raise an exception if use_reentrant is not passed. use_reentrant=False is recommended, but if you need to preserve the current default behavior, you can pass use_reentrant=True. Refer to docs for more details on the differences between the two variants.
+  return fn(*args, **kwargs)
+Rank 2 node forward pass 0/2 takes 19.42s
+/opt/conda/lib/python3.11/site-packages/torch/utils/checkpoint.py:295: FutureWarning: `torch.cpu.amp.autocast(args...)` is deprecated. Please use `torch.amp.autocast('cpu', args...)` instead.
+  with torch.enable_grad(), device_autocast_ctx, torch.cpu.amp.autocast(**ctx.cpu_autocast_kwargs):  # type: ignore[attr-defined]
+Rank 2 node backward pass 0/2 takes 21.43s
+Rank 2 node forward pass 1/2 takes 17.50s
+Rank 2 node backward pass 1/2 takes 19.98s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 1.05s
+Rank 2 node whole iteration takes 79.38s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 17.38s
+Rank 2 node backward pass 0/2 takes 19.97s
+Rank 2 node forward pass 1/2 takes 17.50s
+Rank 2 node backward pass 1/2 takes 19.98s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 1.11s
+Rank 2 node whole iteration takes 75.95s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 17.37s
+Rank 2 node backward pass 0/2 takes 19.97s
+Rank 2 node forward pass 1/2 takes 17.49s
+Rank 2 node backward pass 1/2 takes 19.98s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 1.12s
+Rank 2 node whole iteration takes 75.92s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 17.37s
+Rank 2 node backward pass 0/2 takes 19.97s
+Rank 2 node forward pass 1/2 takes 17.49s
+Rank 2 node backward pass 1/2 takes 19.98s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 0.96s
+Rank 2 node whole iteration takes 75.77s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 17.37s
+Rank 2 node backward pass 0/2 takes 19.97s
+Rank 2 node forward pass 1/2 takes 17.49s
+Rank 2 node backward pass 1/2 takes 19.97s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 0.98s
+Rank 2 node whole iteration takes 75.78s
+-------------------------------------------
+Rank 2 node forward pass 0/2 takes 17.36s
+Rank 2 node backward pass 0/2 takes 19.97s
+Rank 2 node forward pass 1/2 takes 17.49s
+Rank 2 node backward pass 1/2 takes 19.97s
+cpu cpu cuda:0
+Rank 2 node optimizer step takes 1.04s
+Rank 2 node whole iteration takes 75.83s
+-------------------------------------------

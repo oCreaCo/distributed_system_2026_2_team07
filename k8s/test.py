@@ -171,8 +171,7 @@ def main():
 
     peer_ips = resolve_peers(world_size)
     log(f"peer ips (by pod index): {peer_ips}")
-    if any(r.get("delay_ms") is not None for r in runs):
-        ensure_tc()
+    ensure_tc()  # always: apply_tc() and the final cleanup call `tc qdisc del` even for no-tc runs
 
     env = dict(os.environ)
     env["LD_LIBRARY_PATH"] = NCCL_LIB + ":" + env.get("LD_LIBRARY_PATH", "")
