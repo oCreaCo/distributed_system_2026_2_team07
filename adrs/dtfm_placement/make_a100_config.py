@@ -22,6 +22,9 @@ def main():
     ap.add_argument("program", nargs="?", default=os.path.join(HERE, "output", "best", "best_program.py"))
     ap.add_argument("--out", default=os.path.join(HERE, "output", "a100_N8.json"))
     ap.add_argument("--split", choices=("heldout", "train"), default="heldout")
+    ap.add_argument("--seeds", type=int, nargs="+", help="N=8 topology seeds (overrides --split)")
+    ap.add_argument("--label", default="found", help="tag suffix for the program's placement")
+    ap.add_argument("--no-dtfm", action="store_true", help="only the program's placement")
     args = ap.parse_args()
 
     spec = importlib.util.spec_from_file_location("program", args.program)
@@ -30,11 +33,13 @@ def main():
     theta, ref = REF.load_theta(), REF.load()
 
     runs = []
-    for seed in (T.HELDOUT_SEEDS if args.split == "heldout" else T.TRAIN_SEEDS):
+    for seed in args.seeds or (T.HELDOUT_SEEDS if args.split == "heldout" else T.TRAIN_SEEDS):
         topo = T.make_topology(8, seed)
         found = program.schedule(topo["delay_ms"], topo["bandwidth_gbps"], topo["pp"], topo["dp"],
                                  lambda rm: REF.predict(theta, topo, rm), REF.BUDGET)
-        for name, rm in (("dtfm", ref[topo["name"]]["paper_ga"]["rank_map"]), ("found", [int(x) for x in found])):
+        dtfm = ref[topo["name"]]["paper_ga"]["rank_map"] if topo["name"] in ref else REF.paper_ga(topo)
+        pairs = [] if args.no_dtfm else [("dtfm", [int(x) for x in dtfm])]
+        for name, rm in pairs + [(args.label, [int(x) for x in found])]:
             runs.append({"tag": f"adrs_{topo['name']}_{name}", "rank_map": rm,
                          "delay_ms": topo["delay_ms"], "bandwidth_gbps": topo["bandwidth_gbps"], "args": []})
             print(f"{runs[-1]['tag']:22s} rank_map={rm}  predicted {REF.predict(theta, topo, rm):6.1f} s/iter")

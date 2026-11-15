@@ -41,6 +41,33 @@ def load():
         runs.append({"tag": tag, "topology": r["topology"], "placement": r.get("placement", ""),
                      "spec": spec, "measured": r["iter_s"], "paper_cost": paper_cost(r, topologies),
                      "breakdown": {k: r0.get(k) for k in ("fwd", "bwd", "opt")}})
+    return runs + load_inline(summary)
+
+
+# 2026-11-15 runs: configs with inline delay/bandwidth matrices (ADRS N=8 topologies and calib2), PP4xDP2 unless
+# the run args say otherwise. topology = physical topology (held out together in leave-one-topology-out),
+# group = topology + parallel config (ranking metrics compare placements within a group).
+INLINE_CONFIGS = ["adrs/dtfm_placement/output/a100_N8_heldout_val.json", "adrs/dtfm_placement/output/a100_N8_rank_a.json",
+                  "adrs/dtfm_placement/output/a100_N8_rank_b.json", "k8s/calib2/p8.json", "k8s/calib2/p4d2.json",
+                  "k8s/calib2/p2d4.json"]
+
+
+def load_inline(summary, configs=INLINE_CONFIGS):
+    runs, seen = [], set()
+    for path in configs:
+        cfg = json.load(open(os.path.join(ROOT, path)))
+        for r in cfg["runs"]:
+            m = summary.get(r["tag"])
+            if r.get("type") == "bench" or r["tag"] in seen or not m or not m.get("ok") or m.get("iter_s") is None:
+                continue
+            seen.add(r["tag"])
+            spec = SS.spec_from_summary(dict(r, args=cfg["common_args"] + r.get("args", [])), {})
+            parts = r["tag"].split("_")
+            topo = parts[1] if parts[0] in ("p8", "p4d2", "p2d4") else parts[2]          # c2s305 / s100
+            r0 = m.get("ranks", {}).get("0") or {}
+            runs.append({"tag": r["tag"], "topology": topo, "group": f"{topo}/pp{spec.pp}dp{spec.dp}",
+                         "placement": parts[-1], "spec": spec, "measured": m["iter_s"], "paper_cost": None,
+                         "breakdown": {k: r0.get(k) for k in ("fwd", "bwd", "opt")}})
     return runs
 
 
@@ -62,14 +89,14 @@ def paper_cost(r, topologies):
 def report(name, runs, pred_key):
     groups = defaultdict(list)
     for r in runs:
-        groups[r["topology"]].append(r)
+        groups[r.get("group", r["topology"])].append(r)
     print(f"\n[{name}]")
     for topo, rs in sorted(groups.items()):
         pred = [r[pred_key] for r in rs]
         if any(p is None for p in pred) or len(rs) < 2:
             continue
         m = SS.ranking_metrics(pred, [r["measured"] for r in rs])
-        print(f"  {topo:6s} n={m['n']:2d}  MAPE={m['mape']:.3f}  spearman={m.get('spearman', float('nan')):.2f}  "
+        print(f"  {topo:14s} n={m['n']:2d}  MAPE={m['mape']:.3f}  spearman={m.get('spearman', float('nan')):.2f}  "
               f"pairwise={m['pairwise_acc'] if m['pairwise_acc'] is not None else float('nan'):.2f}  top1_regret={m['top1_regret_s']:.2f}s")
 
 

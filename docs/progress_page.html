@@ -1,0 +1,484 @@
+<title>DT-FM 배치 탐색 현황</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: single reading column (lab notebook), wide tables scroll in their own box */
+:root {
+  --bg: #f7f8f7; --surface: #ffffff; --fg: #15191c; --muted: #5b6468; --line: #dfe3e2;
+  --accent: #2a78d6; --accent-soft: #e4eefa; --neutral-bar: #b7bfc2;
+  --good: #1b7f4b; --good-soft: #e3f3ea; --warn: #9a6a00; --warn-soft: #fbf0d6; --run: #2a78d6; --run-soft: #e4eefa;
+  --font-body: "IBM Plex Sans KR", "Apple SD Gothic Neo", "Noto Sans KR", system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #121516; --surface: #1a1e20; --fg: #e9eceb; --muted: #a2abae; --line: #2d3336;
+  --accent: #3987e5; --accent-soft: #1b2b40; --neutral-bar: #59646a;
+  --good: #5cc48b; --good-soft: #17301f; --warn: #e0b04a; --warn-soft: #3a2f14; --run: #6aa6ee; --run-soft: #1b2b40;
+  color-scheme: dark; } }
+:root[data-theme="dark"] {
+  --bg: #121516; --surface: #1a1e20; --fg: #e9eceb; --muted: #a2abae; --line: #2d3336;
+  --accent: #3987e5; --accent-soft: #1b2b40; --neutral-bar: #59646a;
+  --good: #5cc48b; --good-soft: #17301f; --warn: #e0b04a; --warn-soft: #3a2f14; --run: #6aa6ee; --run-soft: #1b2b40;
+  color-scheme: dark; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.65; }
+.wrap { max-width: 860px; margin: 0 auto; padding-block: 40px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
+  display: grid; gap: 44px; }
+h1 { font-size: 1.9rem; line-height: 1.25; margin: 0; font-weight: 600; text-wrap: balance; }
+h2 { font-size: 1.2rem; margin: 0 0 6px; font-weight: 600; text-wrap: balance; }
+p { margin: 0; max-width: 68ch; }
+.eyebrow { font-family: var(--font-mono); font-size: .75rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.lede { color: var(--muted); font-size: 1.02rem; }
+section { display: grid; gap: 14px; min-width: 0; }
+.mono, td.num, th.num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; }
+.goals { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 10px; }
+.goal { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 14px; display: grid; gap: 6px; align-content: start; min-width: 0; }
+.goal b { font-weight: 600; }
+.goal small { color: var(--muted); font-size: .85rem; line-height: 1.5; }
+.pill { justify-self: start; font-size: .75rem; font-weight: 600; padding: 1px 9px; border-radius: 99px; }
+.pill.done { background: var(--good-soft); color: var(--good); }
+.pill.run { background: var(--run-soft); color: var(--run); }
+.pill.part { background: var(--warn-soft); color: var(--warn); }
+.flow { display: flex; flex-wrap: wrap; align-items: stretch; gap: 8px; }
+.step { flex: 1 1 150px; background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; font-size: .88rem; min-width: 0; }
+.step b { display: block; font-size: .92rem; }
+.step.off { border-style: dashed; color: var(--muted); }
+.arrow { align-self: center; color: var(--muted); font-family: var(--font-mono); }
+.scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); }
+table { border-collapse: collapse; width: 100%; font-size: .88rem; }
+th, td { padding: 7px 12px; text-align: left; border-bottom: 1px solid var(--line); white-space: nowrap; }
+th { font-weight: 500; color: var(--muted); font-size: .8rem; }
+td.num, th.num { text-align: right; }
+tr:last-child td { border-bottom: 0; }
+td.best { color: var(--accent); font-weight: 600; }
+.chart { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 16px 16px 10px; position: relative; }
+.chart svg { width: 100%; height: auto; display: block; overflow: visible; }
+.chart text { fill: var(--muted); font-family: var(--font-mono); font-size: 12px; }
+.chart text.lab { fill: var(--fg); font-family: var(--font-body); font-size: 13px; }
+.chart text.val { fill: var(--fg); }
+.tip { position: absolute; pointer-events: none; background: var(--fg); color: var(--bg); font-size: .8rem; padding: 6px 9px; border-radius: 6px; max-width: 240px; line-height: 1.45; }
+.callout { border-left: 3px solid var(--accent); padding: 4px 0 4px 14px; }
+.meter { height: 10px; background: var(--line); border-radius: 99px; overflow: hidden; }
+.meter > i { display: block; height: 100%; background: var(--accent); border-radius: 99px; min-width: 3px; }
+ol, ul { margin: 0; padding-left: 1.3em; display: grid; gap: 6px; max-width: 70ch; }
+code { font-family: var(--font-mono); font-size: .86em; background: var(--accent-soft); padding: 0 4px; border-radius: 4px; }
+.foot { color: var(--muted); font-size: .82rem; }
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; }
+summary { cursor: pointer; }
+@media (prefers-reduced-motion: no-preference) { .bar { transition: opacity .15s; } }
+</style>
+
+<div class="wrap">
+  <header style="display:grid;gap:10px">
+    <div class="eyebrow">분산시스템 team07 · 진행 현황 · 2026-11-15 21:40 갱신</div>
+    <h1>DT-FM GPU 배치 알고리즘, 어디까지 왔나</h1>
+    <p class="lede">이종 네트워크에서 GPU를 파이프라인 stage와 데이터 병렬 그룹에 배치하는 알고리즘을 LLM으로 진화시켜 개선하는 프로젝트입니다. A100 실측으로 보정한 시뮬레이터로 후보를 채점하고, 좋은 후보만 A100에서 다시 검증합니다.</p>
+  </header>
+
+  <section>
+    <h2>목표별 상태</h2>
+    <div class="goals">
+      <div class="goal"><span class="pill done">완료</span><b>G1. DT-FM 재현</b><small>원 scheduler 실행, A100 8장으로 74 run 실측</small></div>
+      <div class="goal"><span class="pill done">완료</span><b>G2. 시뮬레이터</b><small>v2(11-15): 120 run으로 재보정, 처음 보는 topology 예측 오차 10.8%, 배치 쌍 순서 89%. 느린 hop 누적과 PP8은 미반영</small></div>
+      <div class="goal"><span class="pill run">진행 중</span><b>G3. 자동 탐색</b><small>v1 기준 탐색은 사실상 최적(N64 0.5%). v2 기준 최고 프로그램 1.269 / held-out 1.307, N64에 2.6% 여지가 다시 생김</small></div>
+      <div class="goal"><span class="pill run">진행 중</span><b>G4. 실측 검증</b><small>현재 최적 policy가 N8 10개 topology에서 DT-FM보다 <b>평균 1.139배</b> 빠름 (처음 보는 topology 1.089). 1개는 22% 손해</small></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>실측 채점: 현재 최적 policy (16:33)</h2>
+    <p>시뮬레이터 점수가 가장 높은 프로그램(agent_cc)이 고른 배치를, 같은 topology의 원 DT-FM 배치와 함께 A100에서 채점했습니다. GPU 8장이라 N=8만 실측할 수 있고, train 3개·held-out 3개·어디에도 쓰지 않은 새 topology 4개를 재습니다. 점수는 combined_score와 같은 식(DT-FM 시간 / policy 시간의 기하평균)에 실측 시간을 넣은 것입니다. 17 run, 2시간 4분(14:28–16:32).</p>
+    <div class="callout"><p><b>topology와 세 구분의 뜻.</b> topology는 GPU를 region 2–8개에 나눠 담은 가상 네트워크입니다. region 안 링크는 1–5 ms, 2–5 Gbit/s이고, region 사이 링크는 DT-FM 논문의 실제 도시 쌍 지연·대역폭을 씁니다(지연은 0.2–0.5배로 축소). seed가 같으면 항상 같은 topology가 만들어집니다(<code>topologies.py</code>).</p>
+      <ul>
+        <li><b>train (seed 0–2):</b> 진화·에이전트 탐색 중에 점수를 매길 때 쓴 topology입니다. 프로그램이 이 topology에 맞춰졌을 수 있어 가장 낙관적인 지표입니다.</li>
+        <li><b>held-out (seed 100–102):</b> 탐색 중에는 쓰지 않고, 끝난 뒤 최고 프로그램을 확인할 때만 쓴 topology입니다. 다만 이 N=8 topology 3개의 A100 측정값은 시뮬레이터 v2 보정 데이터에 들어갔습니다. policy에는 노출되지 않았지만, 이 3개에 대한 시뮬 v2 예측은 실측에 유리하게 맞춰져 있습니다.</li>
+        <li><b>처음 보는 topology (seed 5000–5003):</b> 탐색에도 시뮬레이터 보정에도 쓰지 않은 topology입니다. 일반화 성능을 가장 공정하게 보여 줍니다.</li>
+      </ul></div>
+    <div class="kpis" style="display:flex;flex-wrap:wrap;gap:12px;margin:8px 0">
+      <div class="goal" style="flex:1;min-width:140px"><small>전체 (10)</small><b style="font-size:1.6rem">1.139×</b><small>시뮬 v1 1.212 · v2 1.175</small></div>
+      <div class="goal" style="flex:1;min-width:140px"><small>train (3)</small><b style="font-size:1.6rem">1.182×</b><small>시뮬 v1 1.336 · v2 1.304</small></div>
+      <div class="goal" style="flex:1;min-width:140px"><small>held-out (3)</small><b style="font-size:1.6rem">1.164×</b><small>시뮬 v1 1.204 · v2 1.168</small></div>
+      <div class="goal" style="flex:1;min-width:140px"><small>처음 보는 topology (4)</small><b style="font-size:1.6rem">1.089×</b><small>시뮬 v1 1.133 · v2 1.090</small></div>
+    </div>
+    <div class="scroll"><table>
+      <thead><tr><th>topology</th><th>구분</th><th class="num">DT-FM 실측 (s)</th><th class="num">policy 실측 (s)</th><th class="num">실측 비율</th><th class="num">시뮬 v1</th><th class="num">시뮬 v2</th></tr></thead>
+      <tbody>
+        <tr><td>N8_s0</td><td>train</td><td class="num">60.99</td><td class="num">44.63</td><td class="num best">1.367</td><td class="num">1.407</td><td class="num">1.353</td></tr>
+        <tr><td>N8_s1</td><td>train</td><td class="num">65.03</td><td class="num">79.12</td><td class="num"><b>0.822</b></td><td class="num">1.063</td><td class="num">1.023</td></tr>
+        <tr><td>N8_s2</td><td>train</td><td class="num">79.89</td><td class="num">54.33</td><td class="num best">1.470</td><td class="num">1.594</td><td class="num">1.604</td></tr>
+        <tr><td>N8_s100</td><td>held-out</td><td class="num">77.77</td><td class="num">60.18</td><td class="num best">1.292</td><td class="num">1.443</td><td class="num">1.388</td></tr>
+        <tr><td>N8_s101</td><td>held-out</td><td class="num">73.01</td><td class="num">67.19</td><td class="num best">1.087</td><td class="num">1.067</td><td class="num">1.012</td></tr>
+        <tr><td>N8_s102</td><td>held-out</td><td class="num">95.54</td><td class="num">85.00</td><td class="num best">1.124</td><td class="num">1.133</td><td class="num">1.135</td></tr>
+        <tr><td>N8_s5000</td><td>새 topology</td><td class="num">75.12</td><td class="num">76.98</td><td class="num">0.976</td><td class="num">1.066</td><td class="num">1.005</td></tr>
+        <tr><td>N8_s5001</td><td>새 topology</td><td class="num">79.17</td><td class="num">70.18</td><td class="num best">1.128</td><td class="num">1.282</td><td class="num">1.223</td></tr>
+        <tr><td>N8_s5002</td><td>새 topology</td><td class="num">76.68</td><td class="num">75.15</td><td class="num">1.020</td><td class="num">1.020</td><td class="num">1.021</td></tr>
+        <tr><td>N8_s5003</td><td>새 topology</td><td class="num">45.53</td><td class="num">36.42</td><td class="num best">1.250</td><td class="num">1.182</td><td class="num">1.125</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>실측에서도 평균 13.9% 빠릅니다.</b> 10개 중 8개에서 빨랐고, 가장 크게는 1.47배입니다. 시뮬레이터는 이득을 과장하며(v1 1.212), v2(1.175)가 더 가깝습니다.</li>
+      <li><b>처음 보는 topology에서는 1.089배</b>로 작고, 2개는 사실상 비깁니다.</li>
+      <li><b>N8_s1에서는 22% 느렸습니다.</b> 시뮬레이터는 파이프라인 시간을 가장 느린 링크 하나로만 정하는데, policy는 같은 병목 안에서 느린 파이프라인 hop을 4개로 늘렸고(DT-FM은 1개), 실측에서는 느린 hop마다 micro-batch당 약 그 지연만큼 더 걸렸습니다. s5000(−2.4%)도 같은 패턴이고, PP8 과소 추정과 같은 현상으로 보입니다. hop 지연 합 항을 넣어 보니 쌍 순서가 387→394/438로 좋아졌고, 정식 검증은 다음 단계입니다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>작업 흐름</h2>
+    <p>11-15에 A100 할당을 받아 마지막 단계(검증)까지 한 바퀴 돌렸습니다.</p>
+    <div class="flow" aria-label="작업 흐름">
+      <div class="step"><b>A100 실측</b>tc로 지연·대역폭을 건 8 GPU 학습</div><span class="arrow">→</span>
+      <div class="step"><b>시뮬레이터 보정</b>파라미터 9개를 실측에 맞춤</div><span class="arrow">→</span>
+      <div class="step"><b>LLM 진화</b>SkyDiscover가 <code>schedule()</code>를 고쳐 나감</div><span class="arrow">→</span>
+      <div class="step"><b>A100 검증</b>찾은 배치를 N=8에서 다시 측정</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>시뮬레이터는 믿을 만한가</h2>
+    <p>11-03 A100 실측(topology T1–T6, topology마다 배치 여러 개)으로 두 모델을 비교했습니다. 시뮬레이터는 각 topology를 빼고 보정한 뒤 그 topology를 예측했습니다(leave-one-out). 비교 대상인 <b>DT-FM 논문의 통신 비용 모델</b>(원 scheduler가 최적화하는 목적함수: DP 그룹 내 지연 + gradient/대역폭, 파이프라인은 open-loop TSP 경로 비용)은 같은 topology 안에서 어느 배치가 빠른지를 잘 맞히지 못했고, T4·T5에서는 정확도가 0.5(동전 던지기)보다 낮아 빠르다고 본 배치가 실제로는 더 느린 경향이었습니다.</p>
+    <p>원인으로 보이는 것: 이 환경에서는 tc로 만든 고지연 링크에서 TCP window(약 10 MB) 때문에 실제 대역폭이 window ÷ RTT로 제한되는데, 시뮬레이터는 이를 반영하고 논문 모델은 명목 대역폭을 그대로 씁니다. 그래서 이 결과는 “이 실험 환경에서 시뮬레이터가 배치 순위를 더 잘 맞힌다”는 뜻이지, 논문이 측정한 실제 지리 분산 네트워크에서도 논문 모델이 틀렸다는 뜻은 아닙니다. 또 모든 실측이 N=8이고, 시뮬레이터 구조는 T1–T3을 보고 설계해서 T4–T6이 더 독립적인 증거입니다.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>측정 topology</th><th class="num">run 수</th><th class="num">시뮬레이터 오차</th><th class="num">시뮬레이터 순위 일치</th><th class="num">논문 모델 순위 일치</th></tr></thead>
+      <tbody>
+        <tr><td>T1</td><td class="num">21</td><td class="num">8.3%</td><td class="num best">0.86</td><td class="num">0.55</td></tr>
+        <tr><td>T2</td><td class="num">10</td><td class="num">5.5%</td><td class="num best">0.96</td><td class="num">0.78</td></tr>
+        <tr><td>T3</td><td class="num">6</td><td class="num">9.2%</td><td class="num best">0.93</td><td class="num">0.53</td></tr>
+        <tr><td>T4 (held-out)</td><td class="num">8</td><td class="num">14.6%</td><td class="num best">0.75</td><td class="num">0.36</td></tr>
+        <tr><td>T5 (held-out)</td><td class="num">10</td><td class="num">6.7%</td><td class="num best">0.87</td><td class="num">0.27</td></tr>
+        <tr><td>T6 (held-out)</td><td class="num">6</td><td class="num">9.8%</td><td class="num best">1.00</td><td class="num">0.73</td></tr>
+        <tr><td>균일 네트워크</td><td class="num">6</td><td class="num">8.8%</td><td class="num">0.93</td><td class="num">0.93</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot">순위 일치 = 두 배치 중 어느 쪽이 빠른지 맞힌 비율(pairwise accuracy). 오차 = 평균 절대 백분율 오차.</p>
+  </section>
+
+  <section>
+    <h2>넘어야 할 기준선</h2>
+    <p>점수 1.0은 원 DT-FM 알고리즘의 배치입니다. 1보다 크면 그만큼 학습 iteration이 빠릅니다(시뮬레이터 예측, train topology 12개의 기하평균).</p>
+    <div class="chart" id="chart"></div>
+    <div class="callout"><p><b>핵심 발견.</b> 원 DT-FM 탐색 알고리즘에 목적함수만 시뮬레이터로 바꿔 끼워도 1.22가 나옵니다. 지금 seed 프로그램(1.05)은 사실상 무작위 탐색 수준입니다. 그래서 LLM이 찾은 알고리즘이 "DT-FM보다 낫다"고 말하려면 1.05가 아니라 <b>1.22</b>를 넘어야 합니다.</p></div>
+    <details><summary><b>점수는 어떻게 계산하나</b> (<code>evaluator.py</code>, 모든 방법 공통)</summary>
+      <ol style="margin-top:8px">
+        <li>후보의 <code>schedule()</code>을 train topology 12개(N = 8, 16, 32, 64 × seed 0–2)에서 각각 별도 프로세스로 실행합니다. 시뮬레이터 호출은 topology당 2,000회, 시간은 30초까지입니다.</li>
+        <li>나온 배치를 보정된 시뮬레이터로 평가해 iteration당 예측 시간을 구합니다.</li>
+        <li>기준은 원 DT-FM 배치의 예측 시간입니다. 이 배치는 논문 방식대로 논문의 통신 비용 모델을 목적함수로 GA(4,900회)를 돌려 얻습니다.</li>
+        <li>점수 = topology별 (DT-FM 시간 ÷ 후보 시간)의 기하평균. 실패·시간 초과는 그 topology를 0.1로, N = 2, 4 검사에서 하나라도 틀리면 전체에 0.1을 곱합니다. 시뮬레이터·채점 모듈을 직접 import하면 0점입니다.</li>
+        <li>held-out(seed 100–102)은 진화 중에는 쓰지 않고, 끝난 뒤 최고 프로그램에만 한 번 씁니다.</li>
+      </ol>
+      <p style="margin-top:8px">주의: 이 점수에는 "더 정확한 목적함수를 쓴 효과"와 "더 나은 탐색의 효과"가 섞여 있습니다. 탐색 효과만 보려면 같은 시뮬레이터·같은 예산의 DT-FM GA(ga_sim) 대비 점수(<code>vs_ga_sim</code>)를 봅니다. adaevolve 1.044, EvoX 1.042, 에이전트 1.050.</p>
+    </details>
+    <div class="callout"><p><b>첫 결과.</b> 15 iteration pilot의 최고 알고리즘은 1.249로 이 기준을 약 2.7% 넘었고, 진화에 쓰지 않은 topology에서도 1.277(기준 1.256)을 냈습니다. 기준선을 난수 seed 3개로 돌려 보니 1.213–1.227 사이였고, 100 iteration 본 실행(1.270)은 이 범위를 분명히 넘습니다. 시뮬레이터 기준으로는 잡음이 아닌 개선입니다.</p></div>
+  </section>
+
+  <section>
+    <h2>topology별 예측 iteration 시간</h2>
+    <p>초 단위, 낮을수록 좋습니다. 각 행에서 가장 빠른 값을 강조했습니다. N=8은 무작위 탐색도 최적에 도달해서 비교에 쓸모가 없고, 차이는 N≥16에서 납니다.</p>
+    <div class="scroll"><table id="topo"><thead><tr><th>topology</th><th class="num">DT-FM</th><th class="num">seed GA</th><th class="num">random</th><th class="num">greedy</th><th class="num">DT-FM + 시뮬레이터</th></tr></thead><tbody></tbody></table></div>
+    <p class="foot">이름 규칙: N64_s1 = GPU 64장, topology seed 1. random·seed GA·DT-FM + 시뮬레이터는 시뮬레이터 2,000회, greedy는 0회.</p>
+  </section>
+
+  <section>
+    <h2>LLM 진화 실행</h2>
+    <p>flash급 모델 두 개를 같은 조건(adaevolve, 15 iteration)으로 비교했습니다. 점수는 같고 DeepSeek가 3.3배 싸고 2.3배 빨라서 본 실행에 DeepSeek를 씁니다.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>실행</th><th>모델</th><th class="num">iteration</th><th class="num">최고 점수 (train / held-out)</th><th class="num">비용</th><th>상태</th></tr></thead>
+      <tbody id="runs">
+        <tr><td>pilot</td><td class="mono">deepseek-v4.1-flash</td><td class="num">15</td><td class="num best">1.249 / 1.277</td><td class="num">$0.41</td><td><span class="pill done">완료 · 13.5분</span></td></tr>
+        <tr><td>pilot</td><td class="mono">gemini-3.8-flash</td><td class="num">15</td><td class="num">1.250 / 1.255</td><td class="num">$1.32</td><td><span class="pill done">완료 · 31분</span></td></tr>
+        <tr><td>본 실행 (adaevolve)</td><td class="mono">deepseek-v4.1-flash</td><td class="num">100</td><td class="num best">1.270 / 1.288</td><td class="num">$2.68</td><td><span class="pill done">완료 · 72분</span></td></tr>
+        <tr><td>본 실행 (evox)</td><td class="mono">deepseek-v4.1-flash</td><td class="num">100</td><td class="num best">1.267 / 1.307</td><td class="num">$2.72</td><td><span class="pill done">완료 · 88분</span></td></tr>
+        <tr><td>CEGAS (LLM 100회)</td><td class="mono">deepseek-v4.1-flash</td><td class="num">평가 24</td><td class="num">1.206 / 1.221</td><td class="num">$0.28</td><td><span class="pill done">완료 · 13분</span></td></tr>
+        <tr><td>CEGAS, 반례 순서 반전 (N64 먼저)</td><td class="mono">deepseek-v4.1-flash</td><td class="num">평가 62</td><td class="num best">1.247 / 1.286</td><td class="num">$0.49</td><td><span class="pill done">완료 · 30분</span></td></tr>
+        <tr><td>CEGAS, LLM 300회 (원래 순서)</td><td class="mono">deepseek-v4.1-flash</td><td class="num">평가 150</td><td class="num best">1.271 / 1.296</td><td class="num">$1.37</td><td><span class="pill done">완료 · 93분</span></td></tr>
+      </tbody>
+    </table></div>
+    <div style="display:grid;gap:6px">
+      <div style="display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap"><b>OpenRouter 예산</b><span class="mono" id="budget-label">$9.4 / $50 사용</span></div>
+      <div class="meter" role="img" aria-label="예산 사용률 19%"><i id="budget-bar" style="width:19%"></i></div>
+    </div>
+    <div style="display:grid;gap:8px">
+      <h2 style="font-size:1.05rem">iteration을 늘리면 더 오르나</h2>
+      <div class="scroll"><table>
+        <thead><tr><th>iteration</th><th class="num">5</th><th class="num">10</th><th class="num">20</th><th class="num">25</th><th class="num">45</th><th class="num">100</th></tr></thead>
+        <tbody><tr><td>최고 점수</td><td class="num">1.229</td><td class="num">1.241</td><td class="num">1.259</td><td class="num">1.267</td><td class="num">1.269</td><td class="num best">1.270</td></tr></tbody>
+      </table></div>
+      <p>오르긴 하지만 빨리 포화합니다. 이득 대부분이 25 iteration까지 나오고, 나머지 75 iteration은 +0.003입니다.</p>
+    </div>
+    <div style="display:grid;gap:8px">
+      <h2 style="font-size:1.05rem">CEGAS 비교 준비</h2>
+      <p>TCResearch 논문의 방법입니다. 진화 대신 에이전트 하나가 도구로 코드를 고치고, 평가할 때마다 작은 테스트 8개에서 참조 프로그램보다 못한 입력을 반례로 돌려받습니다. 이 과제용 테스트를 만들어 논문의 자동 검증(V0–V4)을 통과했고(공식 점수와 순위 상관 0.67), 짧은 점검 실행에서 도구 호출과 반례 피드백이 동작하는 것을 확인했습니다.</p>
+      <p>LLM 100회 실행 결과는 1.206(held-out 1.221)으로, 비용은 adaevolve의 10분의 1이지만 같은 비용 지점의 adaevolve(1.241)보다도 낮습니다. 다만 평가를 24번만 했고 끝까지 점수가 오르던 중이었으며, 1회 실행이라 결론을 내기엔 이릅니다.</p>
+      <p><b>실행 기록을 보니:</b> 에이전트는 제시된 반례를 정확히 따랐습니다. 반례로 받은 작은 테스트 하나(N16)에 요청 40회를 써서 원인을 찾고 해결했고, 그 뒤 점수가 가장 크게 올랐습니다. 문제는 반례가 작은 입력부터 하나씩 제시돼서, 격차가 가장 큰 64장 테스트는 한 번도 다뤄지지 않았다는 점입니다. 마지막 7회 요청에서 최고치가 3번 갱신돼 예산도 모자랐고, 응답의 9%는 모델 고유의 도구 호출 표기 때문에 버려졌습니다.</p>
+      <p><b>정정 (03:00):</b> 원래 순서로 돌린 300회 실행이 요청 81번째(비용 $0.46)에 이미 1.270에 도달했습니다. 같은 설정끼리도 1.206과 1.270으로 차이가 커서, 아래 ‘순서를 뒤집었더니 올랐다’는 해석은 실행 간 편차로 설명됩니다. 순서 효과는 확인되지 않았고, CEGAS는 잘 풀리면 adaevolve와 같은 점수를 약 5분의 1 비용으로 얻지만 편차가 큽니다. 세 탐색법 모두 train 1.27 근처에서 멈춥니다.</p>
+      <p><b>(이전 해석) 반례 순서를 뒤집었더니:</b> 테스트 목록을 64장 → 16장 순으로만 바꾸자 에이전트가 64장 테스트를 직접 겨냥했고, 점수가 1.206 → 1.247(held-out 1.221 → 1.286)로 올랐습니다. held-out은 adaevolve 100 iteration(1.288)과 비슷하고 비용은 약 5분의 1입니다. 평가 횟수도 24 → 62회로 늘었는데, 이것이 순서 효과인지 실행 간 차이인지는 아직 1회씩이라 구별하지 못합니다.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>1.27은 상한인가, 탐색이 멈춘 것인가</h2>
+    <p>세 탐색법(adaevolve, EvoX, CEGAS)이 모두 train 1.27 근처에서 멈춰서 두 가지로 확인했습니다.</p>
+    <p><b>1) 큰 예산으로 더 찾아보기</b> (<code>adrs/dtfm_placement/headroom.py</code>). 세 프로그램이 찾은 배치에서 시작해 simulated annealing을 topology당 시뮬레이터 20만 회(정규 예산의 100배) 돌렸습니다. 개선은 0이었습니다. 다만 이 SA는 무작위 시작에서 N=32는 프로그램과 같은 값에 닿지만 N=64는 훨씬 못 미쳐서(69–78초 vs 62–64초), N=64에 대해서는 증거가 되지 못합니다.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>N</th><th>판단</th></tr></thead>
+      <tbody>
+        <tr><td>8</td><td>전수 탐색 최적값을 세 프로그램 모두 찾음. 여유 없음</td></tr>
+        <tr><td>16, 32</td><td>세 프로그램·SA가 같은 값. 최적 근처</td></tr>
+        <tr><td>64</td><td>프로그램마다 다름 (예: s0 62.3 vs 68.2초). topology별 셋 중 최선만 골라도 <b>1.2773</b></td></tr>
+      </tbody>
+    </table></div>
+    <p><b>2) 코딩 에이전트로 직접 최적화</b> (Claude Code subagent, 23분, evaluator 7회). 같은 규칙(2,000회, 30초, train만, 파일 읽기·topology별 하드코딩 금지)에서 세 프로그램을 출발점으로 N=64를 겨냥했습니다.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>프로그램</th><th class="num">train</th><th class="num">held-out</th><th class="num">vs ga_sim (train)</th><th class="num">N64 s0 / s1 / s2 (초)</th></tr></thead>
+      <tbody>
+        <tr><td>EvoX 100 it.</td><td class="num">1.2674</td><td class="num">1.307</td><td class="num">1.042</td><td class="num">68.2 / 64.6 / 64.3</td></tr>
+        <tr><td>adaevolve 100 it.</td><td class="num">1.2696</td><td class="num">1.288</td><td class="num">1.044</td><td class="num">62.3 / 69.5 / 64.3</td></tr>
+        <tr><td>CEGAS 300회</td><td class="num">1.2706</td><td class="num">1.296</td><td class="num">1.044</td><td class="num">62.3 / 64.6 / 68.6</td></tr>
+        <tr><td>Claude Code 에이전트</td><td class="num best">1.2773</td><td class="num best">1.322</td><td class="num best">1.050</td><td class="num">62.3 / 64.65 / 64.35</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><p><b>결론.</b> 에이전트는 train에서 셋 중 최선(1.2773)과 정확히 같았고 넘지 못했습니다. 구조가 다른 네 가지 탐색이 N16–N64 모든 topology에서 소수 둘째 자리까지 같은 값에 닿고, 탐색량을 두 배로 늘려도 변화가 없어서, <b>이 12개 topology에서는 약 1.277이 시뮬레이터상 상한</b>으로 보입니다(정확한 해법이 없어 증명은 아님). 대신 처음 보는 topology에서는 차이가 납니다. 에이전트 프로그램은 held-out에서 1.322로 가장 높고, 새 N=64 topology 30개에서 셋 중 최선보다 평균 1%, 최대 7% 좋았습니다. 즉 train 점수는 포화됐지만 알고리즘의 일반화 성능은 아직 개선 여지가 있습니다.</p></div>
+    <p class="foot">에이전트가 찾은 N=64 구조: iteration 시간 ≈ 284 × (가장 느린 파이프라인 링크) + (stage 내 hub까지 가장 느린 gradient 링크) + 0.5. 파이프라인 병목이 훨씬 무겁고, 첫·마지막 stage의 gradient가 약 42% 커서 먼 지역을 그 stage에 두지 않는 배치가 이깁니다. 주의: 에이전트는 DeepSeek flash보다 강한 모델이고 <code>sim/stepsim.py</code>를 읽을 수 있었으며, 프로그램이 시간 기준으로 탐색을 멈춰서 결과가 CPU 속도에 따라 조금 달라질 수 있습니다. ADRS 방법들과 같은 조건의 비교가 아니라 "더 나은 알고리즘이 있는가"를 본 실험입니다.</p>
+    <h2 style="font-size:1.05rem;margin-top:8px">과적합 확인: 처음 보는 topology와 N=128</h2>
+    <p>아무 방법도 본 적 없는 topology(N = 16, 32, 64, 그리고 처음 쓰는 128 × seed 5000–5004)에서 프로그램을 같은 예산의 ga_sim과 비교했습니다 (<code>adrs/dtfm_placement/generalization.py</code>, 36분). 값은 ga_sim 대비 비율로, 1보다 크면 좋습니다.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>프로그램</th><th class="num">N16 train → 새</th><th class="num">N32</th><th class="num">N64</th><th class="num">N128 (새)</th><th class="num">N128 30초 초과</th></tr></thead>
+      <tbody>
+        <tr><td>EvoX</td><td class="num">1.045 → 1.028</td><td class="num">1.052 → 1.046</td><td class="num">1.053 → <b>0.927</b></td><td class="num">1.062</td><td class="num">1/5</td></tr>
+        <tr><td>adaevolve</td><td class="num">1.046 → 1.033</td><td class="num">1.052 → 1.032</td><td class="num">1.060 → 1.022</td><td class="num">1.060</td><td class="num">0/5</td></tr>
+        <tr><td>CEGAS 300</td><td class="num">1.046 → <b>0.929</b></td><td class="num">1.052 → 1.015</td><td class="num">1.063 → 1.021</td><td class="num">1.026</td><td class="num"><b>5/5</b></td></tr>
+        <tr><td>Claude Code 에이전트</td><td class="num">– → 1.033</td><td class="num">– → 1.064</td><td class="num">– → 1.051</td><td class="num best">1.084</td><td class="num">0/5</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>“작은 N에 과적합”은 아닙니다.</b> 세 ADRS 프로그램 모두 처음 보는 N=128에서도 ga_sim보다 2.6–6.2% 좋습니다.</li>
+      <li><b>대신 train topology 12개에 맞춰진 흔적이 있습니다.</b> 새 topology에서는 우위가 줄고, EvoX는 N64에서, CEGAS는 N16에서 기준선보다 7% 나빠집니다. 가장 고르게 일반화한 것은 adaevolve입니다.</li>
+      <li><b>실행 시간이 숨은 문제입니다.</b> CEGAS 프로그램은 N128 5개 모두 30초를 넘겨 공식 채점이었다면 전부 실패입니다. train에 N ≤ 64만 있어 진화 중에는 드러나지 않았습니다.</li>
+      <li>에이전트 프로그램은 모든 N에서 가장 좋고 20초 안에 끝납니다.</li>
+    </ul>
+    <p class="foot">크기별 seed 5개라 2–3% 차이는 확정적이지 않습니다(ga_sim seed 편차 약 1%). 12코어를 꽉 채운 상태에서 재서 시간 수치는 단독 실행보다 길 수 있습니다. 개선 방향: 채점 topology를 늘리거나 매번 바꾸기, 큰 N의 시간 검사 추가.</p>
+    <h2 style="font-size:1.05rem;margin-top:8px">N=64 개선 시도와 정확한 최적값</h2>
+    <p>두 번째 에이전트가 새 N64 topology 20개 dev set에서 에이전트 프로그램을 넘는 것을 목표로 21분 작업했지만 <b>개선하지 못했습니다.</b> 대신 목적함수가 두 임계값(가장 느린 파이프라인 링크, 가장 느린 gradient 링크)으로만 정해진다는 구조를 이용해 MILP로 <b>N=64의 정확한 최적 배치</b>를 구했습니다(연구용 seed 1000–1059, 내가 직접 다시 검산함).</p>
+    <div class="scroll"><table>
+      <thead><tr><th></th><th class="num">값</th></tr></thead>
+      <tbody>
+        <tr><td>현재 최고 프로그램이 최적과 같은 topology</td><td class="num best">55 / 60</td></tr>
+        <tr><td>최적 대비 차이 (기하평균)</td><td class="num best">0.3%</td></tr>
+        <tr><td>놓친 5개</td><td class="num">+0.7 ~ +6.1% (모두 지역 7–8개)</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout"><p><b>결론.</b> N8은 전수 탐색 최적, N16–32는 여러 탐색이 같은 값, N64는 정확한 최적과 55/60 일치. 이 시뮬레이터와 예산에서 <b>배치 탐색은 사실상 최적에 도달</b>했습니다. 남은 개선 여지는 탐색보다 시뮬레이터 자체의 정확도(A100 대비 8–21% 과대 추정, 파이프라인 방향 미반영)에 있습니다.</p></div>
+    <p class="foot">MILP가 4개 seed(1005, 1027, 1037, 1054)에서 시간 초과를 내서 그만큼은 최적이 증명되지 않았습니다(진짜 최적은 더 낮을 수 있음). 놓친 경우는 실현 가능한 배치를 찾지 못한 것이 원인이고, 프로그램은 표준 라이브러리만 써야 해서 MILP를 넣을 수 없습니다. 이것은 시뮬레이터상의 최적이며 실제 하드웨어 최적과는 시뮬레이터 오차만큼 다를 수 있습니다.</p>
+    <h2 style="font-size:1.05rem;margin-top:8px">다른 크기에서도 최적인가 (09:40)</h2>
+    <p>같은 MILP를 N16·N32·N128에도 적용해, 과적합 확인에 쓴 새 topology 20개(seed 5000–5004)에서 각 프로그램을 정확한 최적값과 비교했습니다. 값은 프로그램 배치 시간 / 최적 시간의 기하평균이고 1.000이 최적입니다(<code>exact_gap.py</code>).</p>
+    <div class="scroll"><table>
+      <thead><tr><th>프로그램</th><th class="num">N16</th><th class="num">N32</th><th class="num">N64</th><th class="num">N128</th></tr></thead>
+      <tbody>
+        <tr><td>ga_sim</td><td class="num">1.033</td><td class="num">1.064</td><td class="num">1.056</td><td class="num">1.094</td></tr>
+        <tr><td>EvoX</td><td class="num">1.005</td><td class="num">1.018</td><td class="num">1.139</td><td class="num">1.030</td></tr>
+        <tr><td>adaevolve</td><td class="num">1.000</td><td class="num">1.031</td><td class="num">1.034</td><td class="num">1.032</td></tr>
+        <tr><td>CEGAS 300</td><td class="num">1.112</td><td class="num">1.049</td><td class="num">1.034</td><td class="num">1.066</td></tr>
+        <tr><td>agent_cc</td><td class="num best">1.000</td><td class="num best">1.000</td><td class="num best">1.005</td><td class="num best">1.010</td></tr>
+      </tbody>
+    </table></div>
+    <p>agent_cc는 20개 중 15개에서 정확한 최적이고 최대 차이는 4.8%(N128_s5003)입니다. 시뮬레이터 점수 기준으로 탐색을 더 돌려 얻을 몫은 1% 미만입니다. MILP 시간 초과 2건(N64_s5002, N128_s5004)은 최적이 증명되지 않았습니다.</p>
+    <p><b>시뮬레이터 오류에 얼마나 민감한가.</b> 아래 A100 분석에서 확인한 마지막 stage 파라미터 오류를 고친 모델(P)로 agent_cc를 다시 돌려 비교했습니다(<code>model_sensitivity.py</code>). 현재 모델 기준 DT-FM 대비 train 1.277 / held-out 1.321은, 같은 배치를 P로 채점하면 1.257 / 1.293, P로 다시 최적화하면 1.262 / 1.302입니다. 즉 이 오류가 맞다면 이득이 1.6–2.1% 줄지만, 틀린 모델로 최적화한 손해는 0.4–0.7%에 그칩니다.</p>
+  </section>
+
+  <section>
+    <h2>A100 실측 검증 (2026-11-15)</h2>
+    <p>시뮬레이터가 예측한 개선이 실제 GPU에서도 나오는지, 진화에 쓰지 않은 held-out N=8 topology 3개(seed 100–102)에서 측정했습니다.</p>
+    <details><summary><b>설정과 코드</b></summary>
+      <ul style="margin-top:8px">
+        <li>클러스터: Kubernetes, A100 8장(pod 8개, pod당 1장), pod 간 지연·대역폭은 <code>tc netem</code>으로 설정. 실행 <code>k8s/run_batches.sh</code> → <code>k8s/sync.sh</code> → pod마다 <code>k8s/test.py</code>.</li>
+        <li>학습: DT-FM <code>dist_runner.py</code>, GPipe + central parameter server, PP4 × DP2, stage당 6 layer(GPT3-XL 24층 분할), embedding 2048, 16 head, fp16, batch 64, micro-batch 1, gradient accumulation 2, 6 iteration(첫 iteration 제외 평균), QQP 2,000줄. 11-03 보정 실험과 같은 설정입니다.</li>
+        <li>배치(topology마다 3개, 같은 tc): 원 DT-FM 배치, EvoX 최고 프로그램의 배치, adaevolve 최고 프로그램의 배치. 뒤의 둘은 시뮬레이터 예측이 같지만 rank_map은 다릅니다. 설정 생성 <code>adrs/dtfm_placement/make_a100_config.py</code>.</li>
+        <li>고친 것: <code>k8s/test.py</code>가 tc 없는 run에서도 <code>tc</code>를 호출하는데 설치는 tc 있는 run에서만 해서 smoke test가 실패했습니다. 시작 시 항상 설치하도록 한 줄 수정했습니다.</li>
+      </ul>
+    </details>
+    <div class="scroll"><table>
+      <thead><tr><th>topology</th><th>배치</th><th class="num">시뮬레이터 (s/iter)</th><th class="num">A100 실측 (s/iter)</th><th class="num">과대 추정</th></tr></thead>
+      <tbody>
+        <tr><td>N8_s100</td><td>DT-FM</td><td class="num">94.1</td><td class="num">77.8</td><td class="num">+21%</td></tr>
+        <tr><td></td><td>EvoX</td><td class="num">65.2</td><td class="num best">60.2</td><td class="num">+8%</td></tr>
+        <tr><td></td><td>adaevolve</td><td class="num">65.2</td><td class="num best">59.6</td><td class="num">+10%</td></tr>
+        <tr><td>N8_s101</td><td>DT-FM</td><td class="num">84.4</td><td class="num">73.0</td><td class="num">+16%</td></tr>
+        <tr><td></td><td>EvoX</td><td class="num">79.1</td><td class="num best">67.2</td><td class="num">+18%</td></tr>
+        <tr><td></td><td>adaevolve</td><td class="num">79.1</td><td class="num best">67.2</td><td class="num">+18%</td></tr>
+        <tr><td>N8_s102</td><td>DT-FM</td><td class="num">105.5</td><td class="num">95.5</td><td class="num">+10%</td></tr>
+        <tr><td></td><td>EvoX</td><td class="num">93.2</td><td class="num best">86.4</td><td class="num">+8%</td></tr>
+        <tr><td></td><td>adaevolve</td><td class="num">93.2</td><td class="num best">86.3</td><td class="num">+8%</td></tr>
+      </tbody>
+    </table></div>
+    <div class="scroll"><table>
+      <thead><tr><th>topology</th><th class="num">DT-FM 대비 속도 향상: 예측</th><th class="num">실측</th></tr></thead>
+      <tbody>
+        <tr><td>N8_s100</td><td class="num">1.44×</td><td class="num best">1.29–1.31×</td></tr>
+        <tr><td>N8_s101</td><td class="num">1.07×</td><td class="num best">1.09×</td></tr>
+        <tr><td>N8_s102</td><td class="num">1.13×</td><td class="num best">1.11×</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>방향은 모두 맞았습니다.</b> 찾은 배치는 세 topology 모두 실측으로도 DT-FM보다 1.09–1.31배 빠릅니다.</li>
+      <li><b>시뮬레이터가 같다고 본 배치는 실측도 같았습니다.</b> EvoX와 adaevolve의 배치는 서로 다르지만 실측 차이가 0.1–1.2%입니다.</li>
+      <li><b>오차는 항상 같은 방향입니다.</b> 모든 run을 8–21% 느리게 예측했습니다. 보정 때 오차(3–15%)보다 크고, 폭이 배치마다 달라서(s100: DT-FM 21%, 찾은 배치 9%) s100의 개선폭은 과장됐습니다.</li>
+      <li><b>실행 시간:</b> 9 run에 72분(02:03–03:15). run당 7–9분이며 대부분 학습 6 iteration(60–95초 × 6)이고 pod 생성·동기화가 약 1분입니다. smoke test는 run 1개에 약 1.5분.</li>
+    </ul>
+    <h2 style="font-size:1.05rem;margin-top:8px">순서는 보존되나</h2>
+    <p>과대 추정이라도 배치 간 순서만 맞으면 최적화에 쓸 수 있습니다. 같은 topology에서 예측값이 서로 다른 배치(greedy, 무작위, 시뮬레이터 예측 범위에서 고르게 고른 배치)를 13개 더 재서 topology당 6–8개로 늘렸고, 한 배치는 반복 측정했습니다(14 run, 124분).</p>
+    <div class="scroll"><table>
+      <thead><tr><th>topology</th><th class="num">배치 수</th><th class="num">Spearman</th><th class="num">순서 맞춘 쌍</th><th class="num">가장 빠르다고 본 배치가 실측 최선?</th></tr></thead>
+      <tbody>
+        <tr><td>N8_s100</td><td class="num">8</td><td class="num">0.85</td><td class="num">23 / 27</td><td class="num">아니오 (예측 2위가 5.4% 더 빠름)</td></tr>
+        <tr><td>N8_s101</td><td class="num">6</td><td class="num">0.93</td><td class="num">13 / 14</td><td class="num">예</td></tr>
+        <tr><td>N8_s102</td><td class="num">7</td><td class="num"><b>0.34</b></td><td class="num">12 / 20</td><td class="num">예</td></tr>
+      </tbody>
+    </table></div>
+    <ul>
+      <li><b>대체로 순서는 보존됩니다.</b> 예측 차이가 1%를 넘는 쌍의 78%(48/61)를 맞혔고, 가장 빠르다고 본 배치는 3개 중 2개에서 실측 최선, 나머지도 상위 2개 안이었습니다.</li>
+      <li><b>측정 잡음은 거의 없습니다.</b> 같은 배치 반복 측정: 77.77 → 77.76초.</li>
+      <li><b>순서를 깨뜨린 것은 과소 추정 4건입니다.</b> 나머지 18 run은 4–21% 과대 추정인데, 4건은 실측이 예측보다 7–15% 느렸습니다. s102에서는 그런 배치 3개가 실측으로 무작위 배치보다도 느려서 순위 상관이 낮아졌습니다. 시뮬레이터에 없는 메커니즘(파이프라인 방향·링크 비대칭, 또는 parameter server 경합)이 있다는 신호이고, 원인은 아직 확인하지 않았습니다.</li>
+    </ul>
+    <h2 style="font-size:1.05rem;margin-top:8px">추가 보정 데이터: 다른 PP×DP, 파이프라인 방향, 링크 실측</h2>
+    <p>시뮬레이터는 고치지 않고 데이터만 모았습니다. 새 topology 2개(seed 305, 323)에서 구성 3개마다 시뮬레이터 기준 최선 / 최선을 파이프라인 역순으로 뒤집은 배치(시뮬레이터 예측은 같음) / 중간 / 최악 배치를 측정했고, topology별 NCCL 쌍 측정도 했습니다. 26 run, 05:19–08:57(3시간 38분), 전부 성공(<code>k8s/make_calib2_configs.py</code>).</p>
+    <div class="scroll"><table>
+      <thead><tr><th>구성</th><th>topology</th><th class="num">최선</th><th class="num">역순</th><th class="num">중간</th><th class="num">최악</th><th class="num">Spearman</th></tr></thead>
+      <tbody>
+        <tr><td>PP8×DP1</td><td>s305</td><td class="num">35.3 → 66.5</td><td class="num">35.3 → 66.6</td><td class="num">57.8 → 75.9</td><td class="num">67.8 → 85.1</td><td class="num">0.95</td></tr>
+        <tr><td>PP8×DP1</td><td>s323</td><td class="num">53.6 → 65.4</td><td class="num">53.6 → 64.2</td><td class="num">70.6 → 80.4</td><td class="num">80.9 → 111.5</td><td class="num">0.95</td></tr>
+        <tr><td>PP4×DP2</td><td>s305</td><td class="num">43.7 → 52.2</td><td class="num">43.7 → 50.6</td><td class="num">64.9 → 57.1</td><td class="num">86.4 → 75.9</td><td class="num">0.95</td></tr>
+        <tr><td>PP4×DP2</td><td>s323</td><td class="num">76.6 → 69.2</td><td class="num">76.6 → 68.3</td><td class="num">96.8 → 88.7</td><td class="num">110.4 → 103.5</td><td class="num">0.95</td></tr>
+        <tr><td>PP2×DP4</td><td>s305</td><td class="num">63.5 → 73.3</td><td class="num">63.5 → 77.8</td><td class="num">80.8 → 69.4</td><td class="num">105.3 → 97.2</td><td class="num"><b>0.32</b></td></tr>
+        <tr><td>PP2×DP4</td><td>s323</td><td class="num">93.9 → 93.6</td><td class="num">93.9 → 100.7</td><td class="num">129.2 → 116.9</td><td class="num">138.6 → 125.7</td><td class="num">0.95</td></tr>
+      </tbody>
+    </table></div>
+    <p class="foot" style="margin-top:4px">예측 → 실측, 초/iteration. Spearman 0.95는 시뮬레이터상 동점인 최선·역순 한 쌍만 순서가 다르다는 뜻입니다.</p>
+    <ul>
+      <li><b>순서는 6개 중 5개에서 유지됐습니다.</b> 최선 &lt; 중간 &lt; 최악을 그대로 맞혔습니다. 예외는 PP2×DP4 s305로, 실측에서는 중간 배치가 최선보다 5% 빨랐습니다.</li>
+      <li><b>절대 오차는 구성에 따라 크게 다릅니다.</b> PP8×DP1은 8 run 모두 12–47% 과소 추정했습니다(s305 최선은 예측 35초, 실측 66초). 보정에 쓴 PP4×DP2는 −16~+14%, PP2×DP4는 −18~+17%입니다. 같은 topology 안에서도 최선 배치는 과소, 중간·최악은 과대 추정되는 경우가 많아, 실측 차이가 예측 차이보다 작습니다.</li>
+      <li><b>파이프라인 방향 효과는 실재합니다.</b> 시뮬레이터는 역순을 같은 시간으로 보지만, 실측 역순/최선 비율은 PP8 1.00 / 0.98, PP4×DP2 0.97 / 0.99, PP2×DP4 <b>1.06 / 1.08</b>입니다. 반복 측정 잡음(0.01%)보다 훨씬 크고, 빨라지는지 느려지는지는 구성마다 다릅니다. 메커니즘은 아직 확인하지 않았습니다.</li>
+      <li><b>링크 지연은 설정 그대로, 대역폭은 설정보다 낮습니다.</b> NCCL 64 MB 전송 실측에서 지연은 55쌍 모두 tc 설정 +0.05 ms 이내였습니다. 대역폭은 설정의 50–88%이고, 지연이 클수록 낮았습니다(지연 1–2 ms에서 0.87, 20–30 ms에서 0.65–0.72, 40–70 ms에서 0.50–0.62). 시뮬레이터의 window 항(10.1 MB / RTT)은 이 링크들에서 한 번도 걸리지 않아 모든 링크를 설정값 100%로 봅니다. 실측 × RTT가 1.0–5.1 MB로 일정하지 않으므로, 고정 window 하나로는 설명되지 않습니다.</li>
+    </ul>
+    <h2 style="font-size:1.05rem;margin-top:8px">원인 분석과 수정 후보 (09:40, 시뮬레이터는 그대로)</h2>
+    <ul>
+      <li><b>확인된 오류: 마지막 stage에는 embedding이 없습니다.</b> 로그의 파라미터 수가 PP4에서 stage 0 = 365.7M, 마지막 stage = 306.4M(6 layer + 분류 head 4.2M)입니다. 시뮬레이터는 마지막 stage에도 embedding 63.6M을 더해 그 stage의 gradient·optimizer 작업량을 10%(PP2)–38%(PP8) 크게 봅니다. 방향 효과의 일부(PP2×DP4 s305에서 역순이 느린 것)를 설명합니다.</li>
+      <li><b>PP8 과소 추정은 파이프라인 단계에서 생깁니다.</b> micro-batch당 실측 0.19–0.36 s, 예측 병목 0.11–0.28 s로 실측 폭이 좁습니다. 설정 대역폭 병목, bench 실측 대역폭 병목, 앞뒤 링크 합 어느 것도 맞지 않습니다. N32·N64 채점이 PP8을 쓰므로 가장 중요한 남은 오차입니다.</li>
+      <li><b>DP 동기화 단계는 대체로 맞습니다</b>(측정 opt 단계와 상관 0.95). tc가 같은 (지연, 대역폭) 목적지들에 대역폭을 나눠 쓰게 한다는 가설은 넣어 봐도 나아지지 않았습니다.</li>
+    </ul>
+    <p>수정 후보를 11-03 데이터 74 run으로 재보정하고 오늘 실측 46 run을 held-out으로 채점했습니다(<code>sim/variants_eval.py</code>).</p>
+    <div class="scroll"><table>
+      <thead><tr><th>후보</th><th class="num">11-03 MAPE</th><th class="num">오늘 MAPE</th><th class="num">순서 맞춘 쌍</th><th class="num">top-1 손해 평균</th></tr></thead>
+      <tbody>
+        <tr><td>현재 시뮬레이터</td><td class="num">7.7%</td><td class="num">14.5%</td><td class="num">85/101</td><td class="num">2.1%</td></tr>
+        <tr><td>P: 마지막 stage 파라미터 수정</td><td class="num best">6.9%</td><td class="num best">13.8%</td><td class="num">85/101</td><td class="num">3.1%</td></tr>
+        <tr><td>S: 앞뒤 링크 시간 합산</td><td class="num">26.0%</td><td class="num">43.4%</td><td class="num">85/101</td><td class="num">2.6%</td></tr>
+        <tr><td>R: 메시지마다 6 RTT (bench 추정)</td><td class="num">161%</td><td class="num">227%</td><td class="num">80/101</td><td class="num">6.0%</td></tr>
+      </tbody>
+    </table></div>
+    <p>P는 근거가 확실하고 절대 오차를 줄이지만 순위는 그대로입니다. S와 R은 기각합니다. PP8 오차를 설명할 모델은 아직 찾지 못했습니다.</p>
+  </section>
+
+  <section>
+    <h2>시뮬레이터 v2 (15:00)</h2>
+    <p>두 가지를 함께 고쳤습니다. ① 마지막 stage에는 embedding이 없고 분류 head(4.2M)만 있음(로그로 확인). ② 큰 gradient(DP) 전송에 대역폭 효율 계수(적합값 0.94, NCCL 실측 50–88%와 같은 방향). ①만 고치면 N8_s101에서 DT-FM 배치를 더 빠르다고 잘못 보는데, v1의 마지막 stage 과대 계산이 링크 속도 과대 가정을 우연히 상쇄하고 있었기 때문입니다. 11-03 74 run + 11-15 46 run으로 재보정하고 topology를 하나씩 빼고 검증했습니다(<code>sim/compare_versions.py</code>).</p>
+    <div class="scroll"><table>
+      <thead><tr><th></th><th class="num">v1</th><th class="num">①만</th><th class="num">v2 (채택)</th></tr></thead>
+      <tbody>
+        <tr><td>예측 오차 (MAPE)</td><td class="num">10.9%</td><td class="num">10.2%</td><td class="num">10.8%</td></tr>
+        <tr><td>순서 맞춘 쌍</td><td class="num">388/438</td><td class="num">389/438</td><td class="num best">391/438</td></tr>
+        <tr><td>그룹 평균 Spearman</td><td class="num">0.839</td><td class="num">0.843</td><td class="num best">0.854</td></tr>
+        <tr><td>top-1 손해 평균 / 최대</td><td class="num">1.19 / 6.66%</td><td class="num">1.73 / 8.69%</td><td class="num">1.19 / 6.66%</td></tr>
+        <tr><td>PP8 오차</td><td class="num">26.0%</td><td class="num">26.0%</td><td class="num">26.0%</td></tr>
+      </tbody>
+    </table></div>
+    <p>개선 폭은 작습니다. PP8 오차는 그대로이고, 하나의 TCP window로 PP8과 PP4를 함께 맞출 수 없었습니다(W=4 MB면 PP8 10% / PP4 28%). v2로 기존 프로그램을 다시 채점하면 agent_cc 1.269 / 1.307, EvoX 1.259 / 1.300, CEGAS 1.255 / 1.289, adaevolve 1.251 / 1.278(train / held-out)입니다. v2 기준 MILP 정확 최적값과의 차이는 agent_cc가 N16 0.2%, N32 1.1%, <b>N64 2.6%</b>, N128 0.1%로, v1 구조에 맞춰진 탐색에 다시 여지가 생겼습니다. 평가기를 동시에 여러 개 돌리면 wall-clock 상한 때문에 점수가 떨어지므로(EvoX·CEGAS 0.65), 공식 점수는 단독 실행으로 쟽니다.</p>
+  </section>
+
+  <section>
+    <h2>알아둘 한계</h2>
+    <ul>
+      <li>A100 실측은 GPU 8장(N=8)에서만 가능합니다. 시뮬레이터상 개선이 큰 N=32, 64는 실측으로 확인할 수 없습니다.</li>
+      <li><code>k8s/sync.sh</code>가 실행할 때마다 클러스터의 결과 폴더를 로컬 <code>A100_results/</code>에 덮어써서, 커밋된 11-03 로그 파일이 헤더 줄 없는 버전으로 바뀝니다(측정값은 같음). 오늘 batch가 끝난 뒤 <code>git restore</code>로 되돌렸고, 다시 만든 <code>summary.json</code>의 기존 83개 항목이 커밋본과 같은지 확인했습니다. <code>sync.sh</code> 자체는 아직 고치지 않았습니다.</li>
+      <li>시뮬레이터는 N=8 실측으로만 보정했는데 64장 배치까지 채점합니다. 데이터 병렬 서버로 gradient가 몰리는 경합은 모델에 없습니다.</li>
+      <li>파이프라인을 역순으로 놓은 run(<code>p8d1_T1_rev</code>)은 오차가 −39%입니다. 통신 방향의 영향을 시뮬레이터가 놓치는 것으로 보이며 원인은 아직 확인하지 않았습니다.</li>
+      <li>원 DT-FM 코드는 난수 seed 설정과 교체 조건에 버그가 있습니다. 재현에는 수정 없이 사용했습니다.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>다음 단계</h2>
+    <ol>
+      <li>시뮬레이터 v3: 느린 파이프라인 hop 누적 항을 넣고, 기존 절차(<code>fit_two_stage</code>)로 재보정해 LOTO와 이번 17 run으로 검증. PP8 과소 추정도 같은 메커니즘인지 확인</li>
+      <li>그 시뮬레이터로 policy 재최적화 (v2에서도 N64 2.6% 여지). MILP는 두 임계값 구조가 깨지므로 재정식화 필요</li>
+      <li>다음 A100 슬롯에서 N8_s1·s5000의 재최적화 배치 확인</li>
+    </ol>
+  </section>
+
+  <p class="foot">작업 기록: <code>docs/worklog/</code> (파일명에 시각), 전체 현황: <code>docs/overview.md</code>.</p>
+</div>
+
+<script>
+const SCORES = [
+  {name: "DT-FM (원 알고리즘)", v: 1.000, calls: "논문 모델 4,900회", ref: true},
+  {name: "seed GA", v: 1.048, calls: "시뮬레이터 2,000회"},
+  {name: "random", v: 1.050, calls: "시뮬레이터 2,000회"},
+  {name: "greedy", v: 1.087, calls: "시뮬레이터 0회"},
+  {name: "DT-FM + 시뮬레이터", v: 1.217, calls: "시뮬레이터 2,000회 · 넘어야 할 기준", hi: true},
+  {name: "LLM pilot 최고", v: 1.249, calls: "DeepSeek 15 iteration · held-out 1.277", hi: true},
+  {name: "adaevolve 본 실행 최고", v: 1.270, calls: "DeepSeek 100 iteration · held-out 1.288", hi: true},
+  {name: "EvoX 본 실행 최고", v: 1.267, calls: "DeepSeek 100 iteration · held-out 1.307", hi: true},
+  {name: "Claude Code 에이전트", v: 1.277, calls: "train 상한으로 보이는 값 · held-out 1.322", hi: true},
+  {name: "CEGAS (LLM 100회)", v: 1.206, calls: "DeepSeek · 평가 24회 · held-out 1.221 · $0.28"},
+  {name: "CEGAS 300회", v: 1.271, calls: "DeepSeek · 평가 150회 · held-out 1.296 · $1.37", hi: true},
+  {name: "CEGAS 순서 반전", v: 1.247, calls: "DeepSeek · 평가 62회 · held-out 1.286 · $0.49", hi: true},
+];
+const TOPO = [["N8_s0",70.9,50.4,50.4,50.4,50.4],["N8_s1",73.8,69.4,69.4,72.9,72.9],["N8_s2",90.6,56.8,56.8,56.8,56.8],["N16_s0",66.7,81.7,78.9,64.2,63.7],["N16_s1",71.9,66.0,70.4,98.4,64.7],["N16_s2",70.5,63.8,64.0,68.0,65.9],["N32_s0",80.7,92.7,93.8,65.7,56.9],["N32_s1",71.5,71.5,71.5,87.6,64.3],["N32_s2",70.3,70.9,70.9,60.6,65.3],["N64_s0",74.2,92.1,92.1,62.3,69.5],["N64_s1",100.6,98.7,98.4,104.8,69.6],["N64_s2",97.3,92.7,86.7,85.3,68.6]];
+
+(function chart() {
+  const el = document.getElementById("chart");
+  const W = 760, rowH = 34, top = 6, left = 150, right = 56, H = top + SCORES.length * rowH + 26;
+  const x0 = 0.9, x1 = 1.3, sx = v => left + (v - x0) / (x1 - x0) * (W - left - right);
+  const ns = "http://www.w3.org/2000/svg";
+  const svg = document.createElementNS(ns, "svg");
+  svg.setAttribute("viewBox", `0 0 ${W} ${H}`);
+  svg.setAttribute("role", "img");
+  svg.setAttribute("aria-label", "방법별 DT-FM 대비 점수 막대 그래프");
+  const add = (tag, attrs, text) => { const n = document.createElementNS(ns, tag); for (const k in attrs) n.setAttribute(k, attrs[k]); if (text != null) n.textContent = text; svg.appendChild(n); return n; };
+  for (let t = 0.9; t <= 1.301; t += 0.1) {
+    const x = sx(t);
+    add("line", {x1: x, x2: x, y1: top, y2: H - 22, stroke: "var(--line)", "stroke-width": 1});
+    add("text", {x, y: H - 6, "text-anchor": "middle"}, t.toFixed(1));
+  }
+  const tip = document.createElement("div"); tip.className = "tip"; tip.hidden = true; el.appendChild(tip);
+  SCORES.forEach((s, i) => {
+    const y = top + i * rowH + 7, h = rowH - 14;
+    add("text", {x: left - 10, y: y + h / 2 + 4, "text-anchor": "end", class: "lab"}, s.name);
+    const xs = sx(x0), xe = sx(s.v);
+    const bar = add("rect", {x: xs, y, width: Math.max(2, xe - xs), height: h, rx: 4, class: "bar",
+      fill: s.hi ? "var(--accent)" : "var(--neutral-bar)"});
+    add("text", {x: xe + 6, y: y + h / 2 + 4, class: "val"}, s.v.toFixed(3));
+    const hit = add("rect", {x: 0, y: y - 6, width: W, height: rowH, fill: "transparent"});
+    hit.addEventListener("pointermove", e => {
+      tip.hidden = false;
+      tip.innerHTML = `<b>${s.name}</b><br>점수 ${s.v.toFixed(3)}<br>${s.calls}`;
+      const r = el.getBoundingClientRect();
+      tip.style.left = Math.min(e.clientX - r.left + 12, r.width - 200) + "px";
+      tip.style.top = (e.clientY - r.top + 12) + "px";
+    });
+    hit.addEventListener("pointerleave", () => { tip.hidden = true; });
+  });
+  const xr = sx(1.0);
+  add("line", {x1: xr, x2: xr, y1: top - 2, y2: H - 22, stroke: "var(--fg)", "stroke-width": 1.5, "stroke-dasharray": "4 3"});
+  el.prepend(svg);
+})();
+
+(function table() {
+  const tb = document.querySelector("#topo tbody");
+  for (const r of TOPO) {
+    const tr = document.createElement("tr");
+    const best = Math.min(...r.slice(1));
+    tr.innerHTML = `<td class="mono">${r[0]}</td>` + r.slice(1).map(v => `<td class="num${v === best ? " best" : ""}">${v.toFixed(1)}</td>`).join("");
+    tb.appendChild(tr);
+  }
+})();
+</script>

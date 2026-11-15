@@ -12,11 +12,14 @@ step, G accumulation steps):
   T_opt           = overlap(opt_per_gparam * params_max, T_dp, beta)             (CPU-offload optimizer)
   T_iter          = T_pipe + T_opt
 
-Free parameters theta = [f_layer, b_layer, f_emb, b_emb, alpha, beta, opt_per_gparam, lat_fixed_ms, tcp_window_mb].
+Free parameters theta = [f_layer, b_layer, f_emb, b_emb, alpha, beta, opt_per_gparam, lat_fixed_ms, tcp_window_mb,
+dp_bw_eff].
 Effective link bandwidth is min(bw, tcp_window / RTT): measured iteration time doubled going from
 10 ms to 50 ms one-way delay at 1 Gbit, which the paper's pure delay+size/bw model cannot produce.
 alpha / beta in [0,1] are the non-overlapped fractions for PP activation transfer vs compute and
-for DP gradient transfer vs optimizer work. The paper's communication-only cost model
+for DP gradient transfer vs optimizer work. dp_bw_eff scales the link bandwidth for the large DP gradient transfers
+(NCCL pair bench 2026-11-15: 64 MB transfers reach 50-88% of the tc rate; v2, 2026-11-15, together with the
+last-stage parameter count). The paper's communication-only cost model
 is kept separately in k8s/run_scheduler.py for comparison.
 """
 import itertools
@@ -27,9 +30,11 @@ import numpy as np
 from scipy.optimize import least_squares
 from scipy.stats import spearmanr
 
-PARAM_NAMES = ["f_layer", "b_layer", "f_emb", "b_emb", "alpha", "beta", "opt_per_gparam", "lat_fixed_ms", "tcp_window_mb"]
+PARAM_NAMES = ["f_layer", "b_layer", "f_emb", "b_emb", "alpha", "beta", "opt_per_gparam", "lat_fixed_ms", "tcp_window_mb",
+               "dp_bw_eff"]
 LAYER_PARAMS = 50_358_272          # measured: 302,149,632 / 6 layers (hidden 2048)
-EMB_PARAMS = 63_582_208            # measured: 365,731,840 - 302,149,632 (stage 0 and stage S-1)
+EMB_PARAMS = 63_582_208            # measured: 365,731,840 - 302,149,632 (stage 0 only: word embedding)
+HEAD_PARAMS = 4_200_450            # measured: 306,350,082 - 302,149,632 (last stage: classification head)
 ACT_BYTES = 2048 * 2048 * 2        # seq x hidden x fp16 per micro-batch (micro-batch size 1)
 LINK_SUM = False                   # stage comm = max(upstream, downstream) link time; True (sum) fits worse overall
 
@@ -47,19 +52,19 @@ class RunSpec:
         for pod, rank in enumerate(rank_map):
             self.pod[(rank % pp, rank // pp)] = pod
 
-    def link(self, a, b, lat_fixed_ms, tcp_window_mb):
+    def link(self, a, b, lat_fixed_ms, tcp_window_mb, bw_eff=1.0):
         """(latency_s, effective bandwidth_bytes_per_s) for pod a -> pod b."""
         if self.delay is None:
             lat, bw = lat_fixed_ms / 1e3, 10e9 / 8     # measured no-tc baseline ~10 Gbit/s, 0.06 ms
         else:
-            lat, bw = self.delay[a, b] / 1e3 + lat_fixed_ms / 1e3, self.bw[a, b] * 1e9 / 8
+            lat, bw = self.delay[a, b] / 1e3 + lat_fixed_ms / 1e3, self.bw[a, b] * 1e9 / 8 * bw_eff
         rtt = 2 * lat
         if rtt > 0:
             bw = min(bw, tcp_window_mb * 1e6 / rtt)
         return lat, bw
 
     def params(self, s):
-        return self.layers * LAYER_PARAMS + (EMB_PARAMS if s in (0, self.pp - 1) else 0)
+        return self.layers * LAYER_PARAMS + (EMB_PARAMS if s == 0 else HEAD_PARAMS if s == self.pp - 1 else 0)
 
 
 def overlap(compute, comm, k):
@@ -68,7 +73,7 @@ def overlap(compute, comm, k):
 
 
 def predict_breakdown(theta, spec):
-    f_layer, b_layer, f_emb, b_emb, alpha, beta, opt_per_gparam, lat_fixed_ms, tcp_window_mb = theta
+    f_layer, b_layer, f_emb, b_emb, alpha, beta, opt_per_gparam, lat_fixed_ms, tcp_window_mb, dp_bw_eff = theta
     S, M, G = spec.pp, spec.M, spec.G
     fwd_terms, bwd_terms, dp_terms = [], [], []
     for s in range(S):
@@ -92,7 +97,7 @@ def predict_breakdown(theta, spec):
         # DP: every replica of stage s exchanges grads/params with the replica-0 "server"
         grad_bytes = spec.params(s) * 2
         for d in range(1, spec.dp):
-            lat, bw = spec.link(spec.pod[(s, d)], spec.pod[(s, 0)], lat_fixed_ms, tcp_window_mb)
+            lat, bw = spec.link(spec.pod[(s, d)], spec.pod[(s, 0)], lat_fixed_ms, tcp_window_mb, dp_bw_eff)
             dp_terms.append(2 * (lat + grad_bytes / bw))
     t_fwd = G * (M + S - 1) * max(fwd_terms)
     t_bwd = G * (M + S - 1) * max(bwd_terms)
@@ -112,9 +117,9 @@ def predict(theta, spec):
 def fit(specs, measured, theta0=None, breakdowns=None):
     """measured: iteration times; breakdowns (optional): per-run dicts with any of fwd/bwd/opt
     (rank-0 phase means) used as extra relative residuals so the parameters are identifiable."""
-    theta0 = theta0 or [0.05, 0.08, 0.01, 0.01, 0.3, 1.0, 8.0, 0.1, 6.0]
-    lo = [0, 0, 0, 0, 0, 0, 0, 0, 0.5]
-    hi = [1, 1, 1, 1, 1.0, 3.0, 100, 5, 1000]
+    theta0 = theta0 or [0.05, 0.08, 0.01, 0.01, 0.3, 1.0, 8.0, 0.1, 6.0, 1.0]
+    lo = [0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.3]
+    hi = [1, 1, 1, 1, 1.0, 3.0, 100, 5, 1000, 1.0]
     breakdowns = breakdowns or [{} for _ in specs]
 
     def residuals(th):
@@ -170,16 +175,16 @@ def spec_from_summary(run, topologies):
 
 
 COMPUTE_IDX = [0, 1, 2, 3, 6]      # f_layer, b_layer, f_emb, b_emb, opt_per_gparam
-NET_IDX = [4, 5, 7, 8]             # alpha, beta, lat_fixed_ms, tcp_window_mb
+NET_IDX = [4, 5, 7, 8, 9]          # alpha, beta, lat_fixed_ms, tcp_window_mb, dp_bw_eff
 
 
 def fit_two_stage(specs, measured, breakdowns, is_notc, theta0=None):
     """Stage 1: compute + optimizer parameters on runs without tc (network terms cannot matter there).
     Stage 2: network parameters on all runs with the compute parameters frozen. Avoids the trade-off
     where the joint fit shrinks compute to absorb network error."""
-    theta = list(theta0 or [0.0066, 0.0095, 0.004, 0.025, 0.0, 0.13, 13.7, 0.0, 9.6])
-    lo = [0, 0, 0, 0, 0, 0, 0, 0, 0.5]
-    hi = [1, 1, 1, 1, 1, 3, 100, 5, 1000]
+    theta = list(theta0 or [0.0066, 0.0095, 0.004, 0.025, 0.0, 0.13, 13.7, 0.0, 9.6, 0.9])
+    lo = [0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.3]
+    hi = [1, 1, 1, 1, 1, 3, 100, 5, 1000, 1.0]
 
     def residuals(th, idxs):
         out = []

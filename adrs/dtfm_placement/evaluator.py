@@ -19,13 +19,14 @@ from collections import defaultdict
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
+import baselines as BL  # noqa: E402
 import reference as REF  # noqa: E402
 import topologies as T  # noqa: E402
 
 FAIL_RATIO = 0.1
 RUN_TIMEOUT_S = 600
 # the simulator must only be reached through the budgeted cost_fn
-FORBIDDEN = re.compile(r"\bstepsim\b|theta\.json|\b(import|from)\s+(reference|evaluator|_run_candidate|topologies)\b")
+FORBIDDEN = re.compile(r"\bstepsim\b|theta\.json|\b(import|from)\s+(reference|baselines|evaluator|_run_candidate|topologies)\b")
 
 
 def is_permutation(rank_map, n):
@@ -66,8 +67,10 @@ def evaluate(program_path, split="train"):
 
     theta = REF.load_theta()
     ref = REF.load()
+    bl = BL.load() or {}
     scored, checks = T.topology_set(split)
     ratios, vs_random, by_n, regret_n8, lines, failures = [], [], defaultdict(list), [], [], 0
+    vs_bl = defaultdict(list)
 
     for topo in checks:
         r = results[topo["name"]]
@@ -85,6 +88,8 @@ def evaluate(program_path, split="train"):
             sim_s = REF.predict(theta, topo, r["rank_map"])
             ratio = base["paper_ga"]["sim_s"] / sim_s
             vs_random.append(base["random"]["sim_s"] / sim_s)
+            for k, v in bl.get(topo["name"], {}).items():
+                vs_bl[k].append(v["sim_s"] / sim_s)
             if "optimum" in base:
                 regret_n8.append(sim_s / base["optimum"]["sim_s"] - 1)
             lines.append(f"{topo['name']}: {sim_s:7.2f}s  (DT-FM GA {base['paper_ga']['sim_s']:7.2f}s, "
@@ -100,6 +105,8 @@ def evaluate(program_path, split="train"):
                "vs_random": geomean(vs_random),
                "mean_regret_vs_optimum_N8": sum(regret_n8) / len(regret_n8) if regret_n8 else None,
                "mean_time_s": sum(r["time_s"] for r in results.values()) / len(results)}
+    for k, rs in sorted(vs_bl.items()):
+        metrics[f"vs_{k}"] = geomean(rs)
     for n, rs in sorted(by_n.items()):
         metrics[f"speedup_vs_dtfm_N{n}"] = geomean(rs)
     metrics["artifacts"] = {"feedback": "Per topology (predicted seconds per iteration, lower is better):\n"

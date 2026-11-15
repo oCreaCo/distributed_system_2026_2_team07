@@ -2,7 +2,7 @@
 # Usage (from skydiscover/):
 #   uv run skydiscover optimize ../adrs/dtfm_placement/initial_program.py ../adrs/dtfm_placement/evaluator.py \
 #       -c ../adrs/dtfm_placement/config.yaml -s adaevolve -i 100 -o ../adrs/dtfm_placement/output
-# The LLM is set below or overridden with --model / --api-base.
+# The LLM is set below (OpenRouter; export OPENROUTER_COURSE_PROJECT_KEY first).
 language: python
 diff_based_generation: true
 max_iterations: 100
@@ -10,9 +10,12 @@ checkpoint_interval: 5
 max_solution_length: 60000
 
 llm:
-  api_base: https://api.openai.com/v1
+  # OpenRouter (course key, $50 cap). Per-model api_base/api_key keep SkyDiscover from treating the
+  # "deepseek/" prefix as its native DeepSeek provider (which would rewrite the endpoint).
   models:
-    - name: "gpt-5"
+    - name: "deepseek/deepseek-v4.1-flash"
+      api_base: https://openrouter.ai/api/v1
+      api_key: ${OPENROUTER_COURSE_PROJECT_KEY}
       weight: 1.0
   max_tokens: 32000
   timeout: 600
