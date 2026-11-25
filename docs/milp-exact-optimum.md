@@ -1,6 +1,6 @@
 # 시뮬레이터 목적함수의 정확한 최적값 (MILP)
 
-작성: 2026-11-15 (21:40 갱신: 5a절 추가). 1–5절은 시뮬레이터 v1(11-03 보정) 기준, 5b절은 v2 기준. 관련 작업 기록:
+작성: 2026-11-15 (21:40 5a절 추가, 11-25 재현 절차 연결). 1–5절은 시뮬레이터 v1(11-03 보정) 기준, 5b절은 v2 기준. 관련 작업 기록:
 [0520 n64-exact-optimum](worklog/2026-11-15_0520_n64-exact-optimum.md),
 [0941 calib2-analysis-and-optimization-status](worklog/2026-11-15_0941_calib2-analysis-and-optimization-status.md).
 
@@ -10,6 +10,7 @@
   결과는 직접 재검산했다. `output/`은 gitignore 대상이라 레포에는 없다.
 - `adrs/dtfm_placement/exact_gap.py`: N16–N128 비교.
 - 결과 파일(`output/`, 레포 밖): `agent_cc2/study/exact_1000_1059.json`, `exact_gap.json`(v1), `exact_gap_v2.json`(v2).
+- 재현 명령: [reproduce.md 7절](reproduce.md#7-분석-재현). 프로그램별 비교는 [policies.md](policies.md#4-정확한-최적값과의-차이).
 
 ## 왜 필요했나
 

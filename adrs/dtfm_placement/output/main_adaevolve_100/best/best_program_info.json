@@ -1,0 +1,39 @@
+{
+  "id": "a8cc2f6c-b812-4323-9f89-d30bca2e5869",
+  "generation": 10,
+  "iteration": 65,
+  "timestamp": 1794661929.1964521,
+  "parent_id": "8507d5c6-24d1-47ee-bc6b-6113f768425b",
+  "metrics": {
+    "combined_score": 1.269639575614871,
+    "failures": 0,
+    "vs_random": 1.2093145680867676,
+    "mean_regret_vs_optimum_N8": 0.0,
+    "mean_time_s": 0.5473714355612174,
+    "vs_ga_sim": 1.0436257926634487,
+    "vs_greedy": 1.1683616559918535,
+    "speedup_vs_dtfm_N8": 1.33583474661565,
+    "speedup_vs_dtfm_N16": 1.1257544701132818,
+    "speedup_vs_dtfm_N32": 1.2556569444795849,
+    "speedup_vs_dtfm_N64": 1.3761139143865948,
+    "artifacts": {
+      "feedback": "Per topology (predicted seconds per iteration, lower is better):\nN8_s0:   50.38s  (DT-FM GA   70.87s, random   50.38s, optimum   50.38s)  calls=2000  time=0.1s\nN8_s1:   69.42s  (DT-FM GA   73.79s, random   69.42s, optimum   69.42s)  calls=2000  time=0.1s\nN8_s2:   56.82s  (DT-FM GA   90.57s, random   56.82s, optimum   56.82s)  calls=2000  time=0.2s\nN16_s0:   58.00s  (DT-FM GA   66.69s, random   78.91s)  calls=2000  time=0.3s\nN16_s1:   64.11s  (DT-FM GA   71.94s, random   70.40s)  calls=2000  time=0.3s\nN16_s2:   63.77s  (DT-FM GA   70.52s, random   63.96s)  calls=2000  time=0.2s\nN32_s0:   56.24s  (DT-FM GA   80.74s, random   93.76s)  calls=2000  time=0.7s\nN32_s1:   60.11s  (DT-FM GA   71.54s, random   71.48s)  calls=2000  time=0.6s\nN32_s2:   60.65s  (DT-FM GA   70.28s, random   70.88s)  calls=2000  time=0.4s\nN64_s0:   62.30s  (DT-FM GA   74.17s, random   92.08s)  calls=2000  time=1.8s\nN64_s1:   69.47s  (DT-FM GA  100.61s, random   98.35s)  calls=2000  time=1.4s\nN64_s2:   64.35s  (DT-FM GA   97.25s, random   86.66s)  calls=2000  time=1.3s"
+    },
+    "test_combined_score": 1.269639575614871,
+    "test_failures": 0,
+    "test_vs_random": 1.2093145680867676,
+    "test_mean_regret_vs_optimum_N8": 0.0,
+    "test_mean_time_s": 0.5031827598411057,
+    "test_vs_ga_sim": 1.0436257926634487,
+    "test_vs_greedy": 1.1683616559918535,
+    "test_speedup_vs_dtfm_N8": 1.33583474661565,
+    "test_speedup_vs_dtfm_N16": 1.1257544701132818,
+    "test_speedup_vs_dtfm_N32": 1.2556569444795849,
+    "test_speedup_vs_dtfm_N64": 1.3761139143865948,
+    "test_artifacts": {
+      "feedback": "Per topology (predicted seconds per iteration, lower is better):\nN8_s0:   50.38s  (DT-FM GA   70.87s, random   50.38s, optimum   50.38s)  calls=2000  time=0.1s\nN8_s1:   69.42s  (DT-FM GA   73.79s, random   69.42s, optimum   69.42s)  calls=2000  time=0.1s\nN8_s2:   56.82s  (DT-FM GA   90.57s, random   56.82s, optimum   56.82s)  calls=2000  time=0.2s\nN16_s0:   58.00s  (DT-FM GA   66.69s, random   78.91s)  calls=2000  time=0.3s\nN16_s1:   64.11s  (DT-FM GA   71.94s, random   70.40s)  calls=2000  time=0.2s\nN16_s2:   63.77s  (DT-FM GA   70.52s, random   63.96s)  calls=2000  time=0.2s\nN32_s0:   56.24s  (DT-FM GA   80.74s, random   93.76s)  calls=2000  time=0.6s\nN32_s1:   60.11s  (DT-FM GA   71.54s, random   71.48s)  calls=2000  time=0.6s\nN32_s2:   60.65s  (DT-FM GA   70.28s, random   70.88s)  calls=2000  time=0.4s\nN64_s0:   62.30s  (DT-FM GA   74.17s, random   92.08s)  calls=2000  time=1.8s\nN64_s1:   69.47s  (DT-FM GA  100.61s, random   98.35s)  calls=2000  time=1.3s\nN64_s2:   64.35s  (DT-FM GA   97.25s, random   86.66s)  calls=2000  time=1.3s"
+    }
+  },
+  "language": "python",
+  "saved_at": 1794663881.0581548
+}

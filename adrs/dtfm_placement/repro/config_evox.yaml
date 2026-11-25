@@ -1,0 +1,60 @@
+# Task config (../config.yaml) + search.share_llm for EvoX. Used for output/main_evox_100 (2026-11-14).
+# DT-FM GPU placement: evolve schedule() in initial_program.py, scored by the calibrated simulator.
+# Usage (from skydiscover/):
+#   uv run skydiscover optimize ../adrs/dtfm_placement/initial_program.py ../adrs/dtfm_placement/evaluator.py \
+#       -c ../adrs/dtfm_placement/config.yaml -s adaevolve -i 100 -o ../adrs/dtfm_placement/output
+# The LLM is set below (OpenRouter; export OPENROUTER_COURSE_PROJECT_KEY first).
+language: python
+diff_based_generation: true
+max_iterations: 100
+checkpoint_interval: 5
+max_solution_length: 60000
+
+llm:
+  # OpenRouter (course key, $50 cap). Per-model api_base/api_key keep SkyDiscover from treating the
+  # "deepseek/" prefix as its native DeepSeek provider (which would rewrite the endpoint).
+  models:
+    - name: "deepseek/deepseek-v4.1-flash"
+      api_base: https://openrouter.ai/api/v1
+      api_key: ${OPENROUTER_COURSE_PROJECT_KEY}
+      weight: 1.0
+  max_tokens: 32000
+  timeout: 600
+
+prompt:
+  system_message: |-
+    You are an expert in distributed training systems and combinatorial optimization. Improve the
+    GPU placement algorithm `schedule()` used to train a 24-layer GPT-3 XL model with pipeline
+    parallelism (PP) and data parallelism (DP) over a heterogeneous, geo-distributed network.
+
+    Problem
+    - N = pp * dp GPUs. Return rank_map, a permutation of 0..N-1: rank_map[gpu] = rank,
+      stage = rank % pp, data-parallel replica = rank // pp.
+    - GPUs with the same stage form a data-parallel group: they exchange the full gradients of
+      that stage (hundreds of MB) every iteration, through replica 0 of the stage.
+    - GPUs with the same replica form a pipeline: each micro-batch sends an 8 MB activation from
+      stage s to stage s+1 (and gradients back), 128 micro-batches per iteration.
+    - Inputs: delay_ms[i][j], bandwidth_gbps[i][j] (asymmetric matrices are possible), pp, dp,
+      cost_fn(rank_map) -> predicted seconds per iteration, budget = max number of cost_fn calls.
+
+    What the simulator (cost_fn) captures, measured on real A100 GPUs
+    - Effective bandwidth is limited by the TCP window: min(bw, ~10 MB / round-trip time), so
+      high-latency links are much slower than their nominal bandwidth.
+    - Pipeline activation transfers overlap almost fully with compute unless a link is very slow;
+      the slowest link adjacent to a stage bounds every micro-batch.
+    - Data-parallel gradient sync overlaps only partly with the CPU optimizer, so putting a
+      data-parallel group across a slow link is usually costly.
+
+    Goal: minimize cost_fn of the returned rank_map, averaged over many topologies with
+    N = 8, 16, 32, 64 (and it must also work for N = 2, 4). The score is the speedup over the
+    original DT-FM genetic algorithm. Use the network matrices for structure-aware construction
+    (clustering GPUs by region, matching stages, ordering pipelines) and spend the cost_fn budget
+    wisely. Never call cost_fn more than `budget` times, finish within 30 s per topology, and
+    use only the Python standard library.
+
+evaluator:
+  timeout: 900
+
+# EvoX only: the meta-level search-strategy LLM uses the same OpenRouter model as the main discovery LLM
+search:
+  share_llm: true

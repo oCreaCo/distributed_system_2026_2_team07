@@ -1,7 +1,12 @@
 # docs
 
-- [`overview.md`](overview.md): 프로젝트 현황, 확인된 수치, 알려진 문제 (항상 최신 상태로 유지)
+- [`handoff.md`](handoff.md): 이어받는 사람용. 현재 상태, 다음 단계, 주의사항, 레포 지도
+- [`overview.md`](overview.md): 목표별 상태와 주요 수치 요약 (항상 최신 상태로 유지)
+- [`simulator.md`](simulator.md): 시뮬레이터 v2 모델, 파라미터, 정확도, 알려진 오차
 - [`milp-exact-optimum.md`](milp-exact-optimum.md): 시뮬레이터 목적함수의 정확한 최적값(MILP) 정식화, 결과, 한계
+- [`policies.md`](policies.md): adaevolve·EvoX·agent_cc 최고 프로그램의 점수, 구조, 한계
+- [`reproduce.md`](reproduce.md): 보정, 채점, 탐색, 분석, A100 실측 재현 절차
+- [`progress_page.html`](progress_page.html): 진행 현황 웹페이지 원본
 - [`worklog/`](worklog/): 작업 단위 기록. 파일명과 제목에 `YYYY-MM-DD_HHMM` timestamp를 붙인다.
 
 ## 작업 내역
@@ -28,3 +33,4 @@
 | 2026-11-15 15:00 | [simulator-v2](worklog/2026-11-15_1500_simulator-v2.md) | 시뮬레이터 v2: 마지막 stage 파라미터 수정 + DP 대역폭 효율 0.94, 120 run으로 재보정. LOTO 순서 쌍 388→391/438, Spearman 0.839→0.854, top-1 손해 동일, PP8은 그대로(26%). v2 재채점 agent_cc 1.269/1.307. v2에서는 N64 탐색 여지 2.6% |
 | 2026-11-15 16:33 | [a100-measured-score-agent-cc](worklog/2026-11-15_1633_a100-measured-score-agent-cc.md) | 현재 최적 policy(agent_cc)의 A100 실측: N8 10개 topology에서 DT-FM보다 평균 1.139배 빠름 (train 1.18, held-out 1.16, 처음 보는 topology 1.09). N8_s1에서 22% 손해: 느린 파이프라인 hop 누적을 시뮬레이터가 못 봄. 시뮬 v2가 v1보다 실측에 가까움 |
 | 2026-11-15 21:40 | [docs-update-and-commit](worklog/2026-11-15_2140_docs-update-and-commit.md) | MILP 문서에 "정확해가 가능한 이유와 범위" 추가, overview 갱신. 11-15 결과·시뮬레이터 v2·도구·문서 커밋. `sim/theta.json`은 시작점 의존성(기본 재적합 시 최대 3.5% 차이) 때문에 추적 |
+| 2026-11-25 15:00 | [docs-restructure-and-repro](worklog/2026-11-25_1500_docs-restructure-and-repro.md) | docs를 simulator / MILP / policies / reproduce / handoff로 분리. adaevolve·EvoX·agent_cc 최고 프로그램과 과정 기록, 재현 스크립트(`repro/`) 커밋. v1 worktree에서 기록된 점수 재현 확인 (agent_cc held-out만 wall-clock 차이) |

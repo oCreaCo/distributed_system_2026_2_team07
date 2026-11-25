@@ -16,14 +16,28 @@ project_team07.pdf
 adrs/dtfm_placement/reference.json
 adrs/dtfm_placement/baselines.json
 adrs/dtfm_placement/output/*
-# kept: A100 batch configs (fit.py and a100_score.py read them), the v1 theta, and the measured policy
+# kept: A100 batch configs (fit.py and a100_score.py read them), the v1 theta and caches, and the best programs of
+# agent_cc / adaevolve / EvoX (docs/policies.md); checkpoints and logs stay local
 !adrs/dtfm_placement/output/a100_N8_*.json
 !adrs/dtfm_placement/output/sim_v1/
-adrs/dtfm_placement/output/sim_v1/*
-!adrs/dtfm_placement/output/sim_v1/theta.json
 !adrs/dtfm_placement/output/agent_cc/
 adrs/dtfm_placement/output/agent_cc/*
 !adrs/dtfm_placement/output/agent_cc/best_program.py
+!adrs/dtfm_placement/output/agent_cc/log.md
+!adrs/dtfm_placement/output/agent_cc/v[0-9].py
+!adrs/dtfm_placement/output/main_adaevolve_100/
+!adrs/dtfm_placement/output/main_evox_100/
+adrs/dtfm_placement/output/main_*_100/*
+!adrs/dtfm_placement/output/main_*_100/best/
+adrs/dtfm_placement/output/main_*_100/best/*
+!adrs/dtfm_placement/output/main_*_100/best/best_program.py
+!adrs/dtfm_placement/output/main_*_100/best/best_program_info.json
+# CEGAS: only the program agent_cc was given as a starting point
+!adrs/dtfm_placement/output/cegas_r300_s0/
+adrs/dtfm_placement/output/cegas_r300_s0/*
+!adrs/dtfm_placement/output/cegas_r300_s0/best/
+adrs/dtfm_placement/output/cegas_r300_s0/best/*
+!adrs/dtfm_placement/output/cegas_r300_s0/best/best_program.py
 
 # per-pod job status files copied back with the logs
 A100_results/**/status_pod*.txt

@@ -42,10 +42,8 @@
 | `fit.py` | 실행 스크립트. `A100_results/summary.json`에 맞춰 파라미터를 적합하고 `sim/theta.json` 저장 |
 
 
-```bash
-python3 sim/fit.py                                                              # -> sim/theta.json (전체 74 run)
-python3 sim/fit.py --exclude '^T[456]_|simbest' --out sim/theta_preheldout.json  # held-out 검증에 쓴 보정값
-```
+현재 θ(v2, 120 run)는 `sim/theta.json`으로 커밋되어 있습니다. 적합 결과가 시작점에 따라 달라지므로, 다시 만들 때는
+`docs/reproduce.md`의 절차(`fit.py --init`)를 따르세요. 모델과 정확도는 `docs/simulator.md`에 있습니다.
 
 시뮬레이터 사용 예:
 
@@ -251,8 +249,9 @@ uv sync                                            # skydiscover/.venv 생성
 uv pip install --python .venv/bin/python scipy     # 시뮬레이터(sim/stepsim.py)가 scipy를 씀
 cd ..
 
-python3 sim/fit.py                                 # sim/theta.json
-python3 adrs/dtfm_placement/reference.py           # 기준값 캐시, 약 7분 (생략하면 첫 평가 때 자동으로 만듦)
+# sim/theta.json은 커밋되어 있음
+skydiscover/.venv/bin/python adrs/dtfm_placement/reference.py   # 기준값 캐시, 약 7분 (생략하면 첫 평가 때 자동으로 만듦)
+skydiscover/.venv/bin/python adrs/dtfm_placement/baselines.py   # ga_sim, greedy 기준선 캐시
 ```
 
 `reference.py`는 원 DT-FM GA를 N=64까지 돌리기 때문에 오래 걸립니다. topology 24개를 프로세스 24개로 병렬 실행합니다.
@@ -277,11 +276,13 @@ N=8은 random search로도 최적값에 도달할 만큼 쉬워서, 알고리즘
 
 ### 3. LLM 설정
 
-SkyDiscover는 OpenAI 호환 API를 씁니다. `config.yaml`의 기본값은 OpenAI `gpt-5`입니다.
+SkyDiscover는 OpenAI 호환 API를 씁니다. `config.yaml`은 OpenRouter의 `deepseek/deepseek-v4.1-flash`를 씁니다.
 
 ```bash
-export OPENAI_API_KEY=...         # 또는 ANTHROPIC_API_KEY / GEMINI_API_KEY
+export OPENROUTER_COURSE_PROJECT_KEY=...
 ```
+
+실제로 쓴 실행 스크립트(비용 기록 포함)와 EvoX 설정은 `adrs/dtfm_placement/repro/`에 있습니다 (`docs/reproduce.md`).
 
 다른 모델은 실행할 때 `--model`(예: `anthropic/claude-sonnet-4-6`)로 바꾸고, 로컬 서버 같은 OpenAI 호환 주소는 `--api-base`로 지정합니다. 형식은 `skydiscover/skydiscover/optimize/README.md`의 모델 설정 부분을 참고하세요.
 
